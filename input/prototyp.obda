@@ -1,0 +1,963 @@
+[PrefixDeclaration]
+:		urn:absolute/smadiont#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	dielectric_strength
+target		:{concr_param_id} a :dielectric_strength . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'dielectric_strength'
+
+mappingId	relative_permittivity
+target		:{concr_param_id} a :relative_permittivity . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'relative_permittivity'
+
+mappingId	electric_field
+target		:{concr_param_id} a :electric_field . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'electric_field'
+
+mappingId	vacuum_permittivity
+target		:{concr_param_id} a :vacuum_permittivity . 
+source		Select 'vacuum_permittivity' as concr_param_id
+
+mappingId	electrostatic_pressure_model
+target		:{mod_meas_id} a :electrostatic_pressure_model . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'electrostatic_pressure_model'
+
+mappingId	has_value
+target		:{concr_param_id} :has_value {data}^^xsd:decimal . 
+source		Select
+			c.concr_param_id,
+			CASE
+			WHEN d.param_id is not null THEN CAST(d.semantic as varchar)
+			ELSE  CAST(round9(c.value) as varchar)
+			END as data
+			from
+			concr_parameter c
+			LEFT JOIN param_semantic d
+			ON (c.param_id = d.param_id and c.value = d.value)
+
+mappingId	maximal_blocking_stress_hold
+target		:{concr_param_id} a :maximum_blocking_stress_hold . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'maximal_blocking_stress_hold'
+
+mappingId	maximal_blocking_stress_load
+target		:{concr_param_id} a :maximum_blocking_stress_load . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'maximal_blocking_stress_load'
+
+mappingId	maximal_blocking_stress
+target		:{concr_param_id} a :maximum_blocking_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'maximal_blocking_stress'
+
+mappingId	stress-strain-stick
+target		:{concr_component_id} a :MSMA-stick . 
+source		select concr_component_id
+			from concr_component
+			where component_id = 'stress-strain-stick'
+
+mappingId	twinning_stress
+target		:{concr_param_id} a :twinning_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'twinning_stress'
+
+mappingId	max_magnetic_stress
+target		:{concr_param_id} a :max_magnetic_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'max_magnetic_stress'
+
+mappingId	magnetic_field_strength
+target		:{concr_param_id} a :magnetic_field_strength . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'magnetic_field_strength'
+
+mappingId	magnetization
+target		:{concr_param_id} a :magnetization . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'magnetization'
+
+mappingId	flux_density
+target		:{concr_param_id} a :flux_density . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'flux_density'
+
+mappingId	magnetic_polarization
+target		:{concr_param_id} a :magnetic_polarization . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'magnetic_polarization'
+
+mappingId	relative_permeability
+target		:{concr_param_id} a :relative_permeability . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'relative_permeability'
+
+mappingId	magnetic_curve_hard_axis
+target		:{concr_curve_id} a :magnetic_curve_hard_axis . 
+source		select concr_curve_id
+			from concr_curve
+			where curve_id = 'magnetic_curve_hard_axis'
+
+mappingId	magnetic_curve_easy_axis
+target		:{concr_curve_id} a :magnetic_curve_easy_axis . 
+source		select concr_curve_id
+			from concr_curve
+			where curve_id = 'magnetic_curve_easy_axis'
+
+mappingId	vacuum_permeability
+target		:{concr_param_id} a :vacuum_permeability . 
+source		Select 'vacuum_permeability' as concr_param_id
+
+mappingId	has_curve
+target		:{mat_sample_id} :has_curve :{concr_curve_id} . 
+source		Select distinct mat_sample_id, concr_curve_id
+			from concr_curve, concr_curve_params
+			where concr_curve.id_curve = concr_curve_params.id_curve
+
+mappingId	has_boundary_condition
+target		:{id} :has_boundary_condition :{concr_param_id} . 
+source		Select
+			concr_curve_id as id,
+			concr_param_id
+			from
+			(
+			select
+			distinct on (id_curve)
+			mat_sample_id,
+			id_curve,
+			curve_id,
+			meas_time
+			from
+			concr_curve_params
+			) cp,
+			(
+			select
+			distinct concr_curve_id,
+			id_curve
+			from
+			concr_curve
+			) c,
+			concr_parameter,
+			curve_condition
+			where
+			cp.id_curve = c.id_curve
+			and concr_parameter.mat_sample_id = cp.mat_sample_id
+			and concr_parameter.meas_time = cp.meas_time
+			and concr_parameter.param_id = curve_condition.param_id
+			and curve_condition.curve_id = cp.curve_id
+			UNION
+			Select
+			X.mod_meas_id as id,
+			c.concr_param_id
+			from
+			concr_parameter X,
+			model_condition,
+			concr_parameter c
+			where
+			X.mod_meas_id_abstract = model_condition.mod_id
+			and X.mat_sample_id = c.mat_sample_id
+			and X.meas_time = c.meas_time
+			and c.param_id = model_condition.param_id
+			and X.mod_meas_id is not null
+
+mappingId	has_tuple
+target		:{concr_curve_id} :has_tuple :{concr_tuple_id} . 
+source		select concr_curve_id, concr_tuple_id
+			from concr_curve_params_temp
+
+mappingId	curve_param1
+target		:{concr_tuple_id} :curve_param1 :{concr_param_id1} . 
+source		select concr_tuple_id, concr_param_id1
+			from concr_curve_params_temp
+
+mappingId	curve_param2
+target		:{concr_tuple_id} :curve_param2 :{concr_param_id2} . 
+source		select concr_tuple_id, concr_param_id2
+			from concr_curve_params_temp
+
+mappingId	magnetic_stress
+target		:{concr_param_id} a :magnetic_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'magnetic_stress'
+
+mappingId	mag_energy_density
+target		:{concr_param_id} a :mag_energy_density . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'mag_energy_density'
+
+mappingId	maximum_strain_mag
+target		:{concr_param_id} a :maximum_strain_mag . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'maximum_strain_mag'
+
+mappingId	Yeoh_vector_1
+target		:{concr_param_id} a :Yeoh_vector_1 . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'Yeoh_vector_1'
+
+mappingId	Yeoh_vector_2
+target		:{concr_param_id} a :Yeoh_vector_2 . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'Yeoh_vector_2'
+
+mappingId	Yeoh_vector_3
+target		:{concr_param_id} a :Yeoh_vector_3 . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'Yeoh_vector_3'
+
+mappingId	young_modulus
+target		:{concr_param_id} a :young_modulus . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'young_modulus'
+
+mappingId	youngmodulus_neo_Hookean
+target		:{concr_param_id} a :young_modulus_neo_Hookean . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'young_modulus_neo_Hookean'
+
+mappingId	initial_stress
+target		:{concr_param_id} a :initial_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'initial_stress'
+
+mappingId	initial_strain
+target		:{concr_param_id} a :initial_strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'initial_strain'
+
+mappingId	mechanic_stress
+target		:{concr_param_id} a :mechanic_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'mechanic_stress'
+
+mappingId	strain
+target		:{concr_param_id} a :strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'strain'
+
+mappingId	young_modulus_initial_slope
+target		:{mod_meas_id} a :young_modulus_initial_gradient . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'calc_young_modulus_initial_slope'
+
+mappingId	neo_hookean_initial_slope
+target		:{mod_meas_id} a :young_modulus_Neo_Hookean_initial_gradient . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'calc_neo_hookean_initial_slope'
+
+mappingId	young_modulus_minR
+target		:{mod_meas_id} a :young_modulus_minR . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'calc_young_modulus_minR'
+
+mappingId	young_modulus_Neo_Hookean_minR
+target		:{mod_meas_id} a :young_modulus_Neo_Hookean_minR . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'calc_young_modulus_Neo_Hookean_minR'
+
+mappingId	tensile_test
+target		:{mod_meas_id} a :tensile_test . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'tensile_test'
+
+mappingId	yeoh_minR
+target		:{mod_meas_id} a :yeoh_minR . 
+source		select mod_meas_id
+			from concr_parameter
+			where mod_meas_id_abstract = 'calc_yeoh_minR'
+
+mappingId	mechanical_compliance_at_constant_electric_field
+target		:{concr_param_id} a :mechanical_compliance_at_constant_electric_field . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'A00'
+
+mappingId	mechanical_compliance_at_constant_flux_density
+target		:{concr_param_id} a :mechanical_compliance_at_constant_flux_density . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'A01'
+
+mappingId	mechanical_stiffness_at_constant_electric_field
+target		:{concr_param_id} a :mechanical_stiffness_at_constant_electric_field . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'A10'
+
+mappingId	mechanical_stiffness_at_constant_flux_density
+target		:{concr_param_id} a :mechanical_stiffness_at_constant_flux_density . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'A11'
+
+mappingId	piezoelectric_charge_constant
+target		:{concr_param_id} a :piezoelectric_charge_constant . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'B00'
+
+mappingId	piezoelectric_coupling
+target		:{concr_param_id} a :piezoelectric_coupling . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'B11'
+
+mappingId	piezoelectric_strain_constant
+target		:{concr_param_id} a :piezoelectric_strain_constant . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'B10'
+
+mappingId	piezoelectric_stress_constant
+target		:{concr_param_id} a :piezoelectric_stress_constant . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'B01'
+
+mappingId	inverse_permittivity_at_constant_mechanic_strain
+target		:{concr_param_id} a :inverse_permittivity_at_constant_mechanic_strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'C11'
+
+mappingId	inverse_permittivity_constant_mechanic_stress
+target		:{concr_param_id} a :piezoelectric_coupling . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'B11'
+
+mappingId	permittivity_at_constant_mechanic_strain
+target		:{concr_param_id} a :permittivity_at_constant_mechanic_strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'C10'
+
+mappingId	permittivity_at_constant_mechanic_stress
+target		:{concr_param_id} a :permittivity_at_constant_mechanic_stress . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'C00'
+
+mappingId	martensite_content
+target		:{concr_param_id} a :martensite_content . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'martensite_content'
+
+mappingId	temperature
+target		:{concr_param_id} a :temperature . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'temperature'
+
+mappingId	martensite_start_temperature
+target		:{concr_param_id} a :martensite_start_temperature . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'martensite_start_temperature'
+
+mappingId	martensite_finish_temperature
+target		:{concr_param_id} a :martensite_finish_temperature . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'martensite_finish_temperature'
+
+mappingId	austenite_start_temperature
+target		:{concr_param_id} a :austenite_start_temperature . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'austenite_start_temperature'
+
+mappingId	austenite_finish_temperature
+target		:{concr_param_id} a :austenite_finish_temperature . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'austenite_finish_temperature'
+
+mappingId	wire_actuator
+target		:{concr_component_id} a :wire_actuator . 
+source		select concr_component_id
+			from concr_component
+			where component_id = 'wire_actuator'
+
+mappingId	stress-strain_curve_martensite
+target		:{concr_curve_id} a :stress-strain_curve_martensite . 
+source		select concr_curve_id
+			from concr_curve
+			where curve_id = 'stress-strain_curve_martensite'
+
+mappingId	E-modulus_austenite
+target		:{concr_param_id} a :E-modulus_austenite . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'E-modulus_austenite'
+
+mappingId	E-modulus_twinned_martensite
+target		:{concr_param_id} a :E-modulus_twinned_martensite . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'E-modulus_twinned_martensite'
+
+mappingId	E-modulus_de-twinned_martensite
+target		:{concr_param_id} a :E-modulus_de-twinned_martensite . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'E-modulus_de-twinned_martensite'
+
+mappingId	hardening_parameter
+target		:{concr_param_id} a :hardening_parameter . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'hardening_parameter'
+
+mappingId	plateau_start_strain
+target		:{concr_param_id} a :plateau_start_strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'plateau_start_strain'
+
+mappingId	plateau_finish_strain
+target		:{concr_param_id} a :plateau_finish_strain . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'plateau_finish_strain'
+
+mappingId	has_unit
+target		:{concr_param_id} :has_unit {param_unit}^^xsd:string . 
+source		Select concr_param_id, param_unit
+			from concr_parameter, param
+			where concr_parameter.param_id = param.param_id
+
+mappingId	has_input_parameter
+target		:{concr_model_id} :has_input_parameter :{concr_param_id} . 
+source		select
+			concr_meas_id as concr_model_id,
+			concr_param_id
+			from
+			concr_meas,
+			measinput,
+			concr_param
+			where
+			measinput.meas_id = concr_meas.meas_id
+			and measinput.param_id = concr_param.param_id
+			and concr_param.mod_meas_id = concr_meas_id
+			UNION
+			------------------------
+			Select
+			distinct c.mod_meas_id as concr_model_id,
+			CASE
+			WHEN X.meas_time = 0 THEN (
+			array_agg(
+			X.concr_param_id
+			order by
+			X.step,
+			X.concr_param_id
+			)
+			) [1]
+			ELSE CASE
+			WHEN X.meas_time = c.meas_time THEN (
+			array_agg(
+			X.concr_param_id
+			order by
+			X.step,
+			X.concr_param_id
+			)
+			) [1]
+			ELSE NULL
+			END
+			END AS concr_param_id
+			from
+			(
+			WITH RECURSIVE mat_ids AS(
+			SELECT
+			concr_param_id,
+			mod_meas_id,
+			param_id,
+			mat_sample_id,
+			meas_time,
+			value,
+			step
+			from
+			concr_parameter
+			UNION
+			Select
+			concr_param_id,
+			mod_meas_id,
+			param_id,
+			component_parts.concr_component_id,
+			meas_time,
+			value,
+			step
+			from
+			mat_ids,
+			component_parts
+			Where
+			mat_ids.mat_sample_id = component_parts.has_part
+			)
+			SELECT
+			concr_param_id,
+			param_id,
+			mat_sample_id,
+			meas_time,
+			step
+			FROM
+			mat_ids cc
+			) X,
+			concr_parameter c,
+			(
+			select
+			model.mod_id,
+			mod_type,
+			modelinput.param_id,
+			in_number
+			from
+			modelinput,
+			model
+			where
+			modelinput.mod_id = model.mod_id
+			and model.mod_type != 'matrixoperation'
+			) mi
+			where
+			c.mod_meas_id_abstract = mi.mod_id
+			and c.mat_sample_id = X.mat_sample_id
+			and mi.param_id = X.param_id
+			and c.meas_time = X.meas_time
+			GROUP BY
+			mod_meas_id,
+			X.param_id,
+			X.meas_time,
+			c.meas_time
+			UNION
+			Select
+			distinct c.mod_meas_id as concr_model_id,
+			(
+			array_agg(
+			X.concr_param_id
+			order by
+			X.step,
+			X.concr_param_id
+			)
+			) [1] AS concr_param_id
+			from
+			(
+			WITH RECURSIVE mat_ids AS(
+			SELECT
+			concr_param_id,
+			mod_meas_id,
+			param_id,
+			mat_sample_id,
+			meas_time,
+			value,
+			step
+			from
+			concr_parameter
+			UNION
+			Select
+			concr_param_id,
+			mod_meas_id,
+			param_id,
+			component_parts.concr_component_id,
+			meas_time,
+			value,
+			step
+			from
+			mat_ids,
+			component_parts
+			Where
+			mat_ids.mat_sample_id = component_parts.has_part
+			)
+			SELECT
+			concr_param_id,
+			param_id,
+			mat_sample_id,
+			meas_time,
+			step
+			FROM
+			mat_ids cc
+			) X,
+			concr_parameter c,
+			(
+			select
+			model.mod_id,
+			mod_type,
+			modelinput.param_id,
+			in_number
+			from
+			modelinput,
+			model
+			where
+			modelinput.mod_id = model.mod_id
+			and model.mod_type != 'matrixoperation'
+			) mi
+			where
+			c.mod_meas_id_abstract = mi.mod_id
+			and c.mat_sample_id = X.mat_sample_id
+			and mi.param_id = X.param_id
+			and X.meas_time = 0
+			GROUP BY
+			mod_meas_id,
+			X.param_id,
+			X.meas_time,
+			c.meas_time
+			UNION
+			--- Konstanten
+			Select
+			mod_meas_id as concr_model_id,
+			constants.param_id as concr_param_id
+			from
+			concr_parameter c,
+			modelinput,
+			constants
+			where
+			c.mod_meas_id_abstract = modelinput.mod_id
+			and constants.param_id = modelinput.param_id
+			UNION
+			select
+			mod_id as concr_model_id,
+			param_id as concr_param_id
+			from
+			modelinput
+			UNION
+			Select
+			distinct c.mod_meas_id as concr_model_id,
+			(
+			array_agg(
+			X.concr_param_id
+			order by
+			X.step,
+			X.concr_param_id
+			)
+			) [1]
+			from
+			concr_parameter X,
+			concr_parameter c,
+			modelinput,
+			model,
+			(
+			select
+			c1.param_id,
+			c1.param_matrix,
+			c1.index_id as index1,
+			c2.index_id as index2,
+			c1.value as value1,
+			c2.value as value2
+			from
+			param_piezo c1,
+			param_piezo c2
+			where
+			c1.param_id = c2.param_id
+			and c1.index_id < c2.index_id
+			) cmatrix1,
+			(
+			select
+			c1.param_id,
+			c1.param_matrix,
+			c1.index_id as index1,
+			c2.index_id as index2,
+			c1.value as value1,
+			c2.value as value2
+			from
+			param_piezo c1,
+			param_piezo c2
+			where
+			c1.param_id = c2.param_id
+			and c1.index_id < c2.index_id
+			) cmatrix2,
+			modeloutput_pek_bits
+			where
+			c.mod_meas_id_abstract = modelinput.mod_id
+			and c.mat_sample_id = X.mat_sample_id
+			and c.param_id = cmatrix1.param_id
+			and modelinput.param_id = cmatrix2.param_matrix
+			and cmatrix2.param_id = X.param_id
+			and model.mod_id = c.mod_meas_id_abstract
+			and cmatrix1.param_id = c.param_id
+			and X.param_id = cmatrix2.param_id
+			and modeloutput_pek_bits.mod_id = c.mod_meas_id_abstract
+			and cmatrix2.index2 = cmatrix1.index2
+			and cmatrix2.index1 = cmatrix1.index1
+			and (
+			modeloutput_pek_bits.bit != cmatrix1.index1
+			or (
+			cmatrix2.value2 = cmatrix1.value2
+			and cmatrix2.value1 = 1 - cmatrix1.value1
+			)
+			)
+			and (
+			modeloutput_pek_bits.bit != cmatrix1.index2
+			or (
+			cmatrix2.value1 = cmatrix1.value1
+			and cmatrix2.value2 = 1 - cmatrix1.value2
+			)
+			)
+			and c.meas_time = X.meas_time
+			GROUP BY
+			c.mod_meas_id
+
+mappingId	has_parameter
+target		:{mat_sample_id} :has_parameter :{concr_param_id} . 
+source		select mat_sample_id, concr_param_id
+			from concr_parameter
+
+mappingId	hysteresis_martensite_content
+target		:{concr_curve_id} a :hysteresis_martensite_content . 
+source		select concr_curve_id
+			from concr_curve
+			where curve_id = 'hysteresis_martensite_content'
+
+mappingId	has_name
+target		:{id} :has_name {name}^^xsd:string . 
+source		SELECT
+			concr_parameter.concr_param_id AS id,
+			param.param_name AS name
+			FROM
+			concr_parameter
+			JOIN param USING (param_id)
+			UNION
+			SELECT
+			concr_parameter.mod_meas_id AS id,
+			mod_name AS name
+			FROM
+			concr_parameter
+			JOIN model ON concr_parameter.mod_meas_id_abstract :: text = model.mod_id :: text
+			UNION
+			SELECT
+			concr_parameter.mod_meas_id AS id,
+			meas_name AS name
+			FROM
+			concr_parameter
+			JOIN measurement ON concr_parameter.mod_meas_id_abstract :: text = measurement.meas_id :: text
+			UNION
+			SELECT
+			material.mat_id AS id,
+			material.mat_name AS name
+			FROM
+			material
+			UNION
+			SELECT
+			concr_component.concr_component_id AS id,
+			component.component_name AS name
+			FROM
+			component,
+			concr_component
+			WHERE
+			component.component_id :: text = concr_component.component_id :: text
+			UNION
+			SELECT
+			sample.sample_id AS id,
+			sample.sample_name AS name
+			FROM
+			sample
+			UNION
+			select concr_curve_id as id,
+			curve_name as name from concr_curve JOIN characteristic_curve on (concr_curve.curve_id = characteristic_curve.curve_id)
+
+mappingId	material
+target		:{mat_id} a :material . 
+source		Select mat_id
+			from material
+
+mappingId	sample
+target		:{sample_id} a :sample . 
+source		Select sample_id
+			from sample
+
+mappingId	determined_with
+target		:{concr_param_id} :determined_with :{concr_model_id} . 
+source		Select concr_param_id, mod_meas_id as concr_model_id
+			from concr_parameter
+
+mappingId	has_description
+target		:{concr_meas_id} :has_description {description}^^xsd:string . 
+source		Select concr_meas_id, description
+			from concr_meas
+
+mappingId	has_row
+target		:{concr_param_id} :has_row {value}^^xsd:string . 
+source		Select c.concr_param_id, d.value
+			from concr_parameter c, (select * from concr_param_matrix UNION Select concr_param_id, index_id, value from concr_param_matrix_additional) d
+			where c.concr_param_id = d.concr_param_id
+			and d.index_id = 1
+
+mappingId	has_column
+target		:{concr_param_id} :has_column {value}^^xsd:string . 
+source		Select c.concr_param_id, d.value
+			from concr_parameter c, (select * from concr_param_matrix UNION Select concr_param_id, index_id, value from concr_param_matrix_additional) d
+			where c.concr_param_id = d.concr_param_id
+			and d.index_id = 2
+
+mappingId	DE-material
+target		:{mat_id} a :DE-material . 
+source		Select mat_id from material
+			where mat_type = 'DE'
+			UNION
+			Select sample_id from sample, material
+			where sample.mat_id = material.mat_id
+			and mat_type = 'DE'
+
+mappingId	PC-material
+target		:{mat_id} a :PC-material . 
+source		Select mat_id from material
+			where mat_type = 'PC'
+			UNION
+			Select sample_id from sample, material
+			where sample.mat_id = material.mat_id
+			and mat_type = 'PC'
+
+mappingId	MSMA-material
+target		:{mat_id} a :MSMA-material . 
+source		Select mat_id from material
+			where mat_type = 'MSMA'
+			UNION
+			Select sample_id from sample, material
+			where sample.mat_id = material.mat_id
+			and mat_type = 'MSMA'
+
+mappingId	SMA-material
+target		:{mat_id} a :SMA-material . 
+source		Select mat_id from material
+			where mat_type = 'SMA'
+			UNION
+			Select sample_id from sample, material
+			where sample.mat_id = material.mat_id
+			and mat_type = 'SMA'
+
+mappingId	stress-strain_curve_elastomer
+target		:{concr_curve_id} a :stress-strain_curve_elastomer . 
+source		select distinct concr_curve_id
+			from concr_curve, concr_curve_params
+			where concr_curve.curve_id = 'stress-strain_curve_elastomer'
+			and concr_curve.id_curve = concr_curve_params.id_curve
+			and mat_sample_id in (select mat_id from material where mat_type = 'DE' UNION Select sample_id from sample, material where sample.mat_id = material.mat_id and mat_type = 'DE')
+
+mappingId	has_input_characteristic_curve
+target		:{concr_model_id} :has_input_characteristic_curve :{concr_curve_id} . 
+source		Select
+			distinct mod_meas_id as concr_model_id,
+			concr_curve_id
+			FROM
+			concr_param_view c,
+			(
+			select
+			mod_id,
+			array_agg(
+			param_id
+			order by
+			in_number
+			) as input_param
+			from
+			modelinput
+			group by
+			mod_id
+			) m_input,
+			(
+			select
+			concr_curve_id,
+			id_curve,
+			array_agg(
+			param_id
+			order by
+			in_number
+			) as curve_param
+			from
+			concr_curve
+			group by
+			concr_curve_id,
+			id_curve
+			) m_curve,
+			(
+			select
+			distinct id_curve,
+			mat_sample_id
+			from
+			concr_curve_params
+			) ccparams,
+			model
+			where
+			m_curve.id_curve = ccparams.id_curve
+			and c.mat_sample_id = ccparams.mat_sample_id
+			and c.mod_id = model.mod_id
+			and model.mod_id = m_input.mod_id
+			and model.mod_type ilike '%agg%'
+			and m_input.input_param = m_curve.curve_param
+
+mappingId	corresponds_with
+target		:{concr_param_id1} :corresponds_with :{concr_param_id2} . 
+source		Select c.concr_param_id as concr_param_id1, d.concr_param_id as concr_param_id2
+			from concr_parameter c, concr_parameter d
+			where c.mat_sample_id = d.mat_sample_id
+			and c.meas_time = d.meas_time
+			and c.meas_time != 0
+			and c.param_id != d.param_id
+
+mappingId	has_symbol
+target		:{concr_param_id} :has_symbol {param_symbol}^^xsd:string . 
+source		Select concr_param_id, param_symbol
+			from concr_parameter, param
+			where concr_parameter.param_id = param.param_id
+
+mappingId	curve_magnetic_stress
+target		:{concr_curve_id} a :curve_magnetic_stress . 
+source		select concr_curve_id
+			from concr_curve
+			where curve_id = 'curve_magnetic_stress'
+
+mappingId	has_equation
+target		:{mod_meas_id} :has_equation {mod_equation}^^xsd:string . 
+source		Select mod_meas_id, mod_equation
+			from concr_parameter, model
+			where concr_parameter.mod_meas_id_abstract = model.mod_id
+
+mappingId	lattice_constant_a
+target		:{concr_param_id} a :lattice_constant_a . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'lattice_constant_a'
+
+mappingId	lattice_constant_c
+target		:{concr_param_id} a :lattice_constant_c . 
+source		Select concr_param_id
+			from concr_parameter
+			where param_id = 'lattice_constant_c'
+]]
+

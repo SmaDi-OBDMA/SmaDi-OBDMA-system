@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://d3js.org/d3.v4.js"></script>
+
+                <title>SmaDi Interface</title>
+<style>
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+.w3-theme-gradient {
+  color: #000 !important;
+  background:-webkit-linear-gradient(left,#FFF 25%,#2A4B7C 75%)}
+.w3-theme-gradient {
+  color: #000 !important;
+  background:-moz-linear-gradient(left,#FFF 25%,#2A4B7C 75%)}
+.w3-theme-gradient {
+  color: #000 !important;
+  background:-o-linear-gradient(left,#FFF 25%,#2A4B7C 75%)}
+.w3-theme-gradient {
+  color: #000 !important;
+  background:-ms-linear-gradient(left,#FFF 25%,#2A4B7C 75%)}
+.w3-theme-gradient {
+  color: #000 !important;
+  background: linear-gradient(left,#FFF 25%,#2A4B7C 75%)}
+</style>
+</head>
+
+<body onload="document.getElementById('content').innerHTML=pages[0];">
+
+<script type="application/javascript" src="ontologie_json.js"></script>
+<script type="application/javascript" src="ontoclon.js"></script>
+<script type="application/javascript" src="pages.js"></script>
+
+<script type="application/javascript">
+console.log("start");
+</script>
+
+<div class="w3-cell-row">
+<div class="w3-container w3-white w3-cell">
+<h1><a href="https://www.materialdigital.de/project/10"><img src="smadi-logo.jpg" style="max-height: 5rem;"
+ alt="SMADI"></a></h1>
+ </div>
+ <div class="w3-container w3-theme-gradient w3-cell">
+ &nbsp &nbsp 
+ </div>
+ <div class="w3-container w3-2019-galaxy-blue w3-cell" style="width:90%">
+ &nbsp 
+ <h1>OBDMA System</h1>
+ </div>
+ </div>
+
+<div class="w3-bar w3-border w3-light-grey">
+ <button class="w3-bar-item w3-button  w3-blue" id="menu0" onclick="location.href='./startpage.html';"><i class="fa fa-home"></i></button>
+  <button onclick="pageserv.load(1);" class="w3-bar-item w3-button" id="menu1">Parameter</button>
+  <button onclick="pageserv.load(2);" class="w3-bar-item w3-button"id="menu2">Characteristic Curve</button>
+</div>
+
+
+
+<div class="w3-container" id="content">
+
+</div>
+
+
+
+
+
+
+
+
+<div class="w3-panel">
+  <p>&nbsp</p>
+</div> 
+<footer class="w3-container w3-2019-galaxy-blue w3-bottom">
+  <p><a href="/">start page</a> &nbsp &nbsp &nbsp further information</p>
+</footer>
+
+</body>
+</html> 

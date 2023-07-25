@@ -1,0 +1,931 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="urn:absolute/smadiont#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="urn:absolute/smadiont#">
+    <Prefix name="" IRI="urn:absolute/smadiont#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="obda" IRI="https://w3id.org/obda/vocabulary#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="DE"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="DE-material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="E-modulus_austenite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="E-modulus_de-twinned_martensite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="E-modulus_twinned_martensite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="MSMA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="MSMA-material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="MSMA-stick"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PC-material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SMA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SMA-material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Yeoh_vector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Yeoh_vector_1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Yeoh_vector_2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Yeoh_vector_3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="austenite_finish_temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="austenite_start_temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="characteristic_curve"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="component_curves"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="component_level"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="continuum_level"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="curve_magnetic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dielectric_strength"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="elastic_parameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="electric_field"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="electric_permittivity_parameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="electrostatic_pressure_model"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="elements_of_levels"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="elements_of_materialtypes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="flux_density"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="hardening_parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="hysteresis_martensite_content"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="identification_parameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="initial_strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="initial_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="inverse_permittivity_at_constant_mechanic_strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="inverse_permittivity_at_constant_mechanic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lattice_constant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lattice_constant_a"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lattice_constant_c"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mag_energy_density"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_curve"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_curve_easy_axis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_curve_hard_axis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_field_strength"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_polarization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="magnetization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="martensite_content"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="martensite_finish_temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="martensite_start_temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="material_curves"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="material_parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="max_magnetic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="maximum_blocking_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="maximum_blocking_stress_hold"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="maximum_blocking_stress_load"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="maximum_strain_mag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="measurement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_compliance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_compliance_at_constant_electric_field"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_compliance_at_constant_flux_density"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_stiffness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_stiffness_at_constant_electric_field"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mechanical_stiffness_at_constant_flux_density"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="micro_level"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="model"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="permittivity_at_constant_mechanic_strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="permittivity_at_constant_mechanic_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="phase_transformation_temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="physical_constant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="physical_quantity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="piezoelectric_charge_constant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="piezoelectric_coupling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="piezoelectric_strain_constant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="piezoelectric_stress_constant"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="plateau_finish_strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="plateau_start_strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="relative_permeability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="relative_permittivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sample"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="state_dependent_quantity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="strain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="strain_parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stress-strain_curve_elastomer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stress-strain_curve_martensite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stress_parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="temperature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tensile_test"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="twinning_stress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vacuum_permeability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vacuum_permittivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="wire_actuator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="yeoh_minR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus_Neo_Hookean_initial_gradient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus_Neo_Hookean_minR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus_initial_gradient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus_minR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="young_modulus_neo_Hookean"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="corresponds_with"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="curve_param1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="curve_param2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="determined_with"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_boundary_condition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_curve"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_input"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_input_characteristic_curve"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_input_parameter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_output"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_parameter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="has_tuple"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_column"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_equation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_row"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_symbol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="has_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="DE"/>
+        <Class IRI="elements_of_materialtypes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="DE-material"/>
+        <Class IRI="DE"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="E-modulus_austenite"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="E-modulus_de-twinned_martensite"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="E-modulus_twinned_martensite"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="MSMA"/>
+        <Class IRI="elements_of_materialtypes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="MSMA-material"/>
+        <Class IRI="MSMA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="MSMA-stick"/>
+        <Class IRI="MSMA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="MSMA-stick"/>
+        <Class IRI="component_level"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PC"/>
+        <Class IRI="elements_of_materialtypes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PC-material"/>
+        <Class IRI="PC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SMA"/>
+        <Class IRI="elements_of_materialtypes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SMA-material"/>
+        <Class IRI="SMA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Yeoh_vector"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Yeoh_vector_1"/>
+        <Class IRI="Yeoh_vector"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Yeoh_vector_2"/>
+        <Class IRI="Yeoh_vector"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Yeoh_vector_3"/>
+        <Class IRI="Yeoh_vector"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="austenite_finish_temperature"/>
+        <Class IRI="phase_transformation_temperature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="austenite_start_temperature"/>
+        <Class IRI="phase_transformation_temperature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="component_curves"/>
+        <Class IRI="characteristic_curve"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="component_level"/>
+        <Class IRI="elements_of_levels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="continuum_level"/>
+        <Class IRI="elements_of_levels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="curve_magnetic_stress"/>
+        <Class IRI="material_curves"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dielectric_strength"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="elastic_parameters"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="electric_field"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="electric_permittivity_parameters"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="electrostatic_pressure_model"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flux_density"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="hardening_parameter"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="hysteresis_martensite_content"/>
+        <Class IRI="component_curves"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="identification_parameters"/>
+        <Class IRI="parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="initial_strain"/>
+        <Class IRI="identification_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="initial_stress"/>
+        <Class IRI="identification_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="inverse_permittivity_at_constant_mechanic_strain"/>
+        <Class IRI="electric_permittivity_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="inverse_permittivity_at_constant_mechanic_stress"/>
+        <Class IRI="electric_permittivity_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="lattice_constant"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="lattice_constant_a"/>
+        <Class IRI="lattice_constant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="lattice_constant_c"/>
+        <Class IRI="lattice_constant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mag_energy_density"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_curve"/>
+        <Class IRI="material_curves"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_curve_easy_axis"/>
+        <Class IRI="magnetic_curve"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_curve_hard_axis"/>
+        <Class IRI="magnetic_curve"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_field_strength"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_polarization"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetic_stress"/>
+        <Class IRI="stress_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="magnetization"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="martensite_content"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="martensite_finish_temperature"/>
+        <Class IRI="phase_transformation_temperature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="martensite_start_temperature"/>
+        <Class IRI="phase_transformation_temperature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="material"/>
+        <Class IRI="micro_level"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="material_curves"/>
+        <Class IRI="characteristic_curve"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="material_parameter"/>
+        <Class IRI="parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="max_magnetic_stress"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maximum_blocking_stress"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maximum_blocking_stress_hold"/>
+        <Class IRI="maximum_blocking_stress"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maximum_blocking_stress_load"/>
+        <Class IRI="maximum_blocking_stress"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maximum_strain_mag"/>
+        <Class IRI="strain_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanic_stress"/>
+        <Class IRI="stress_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_compliance"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_compliance_at_constant_electric_field"/>
+        <Class IRI="mechanical_compliance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_compliance_at_constant_flux_density"/>
+        <Class IRI="mechanical_compliance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_stiffness"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_stiffness_at_constant_electric_field"/>
+        <Class IRI="mechanical_stiffness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="mechanical_stiffness_at_constant_flux_density"/>
+        <Class IRI="mechanical_stiffness"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="micro_level"/>
+        <Class IRI="elements_of_levels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parameter"/>
+        <Class IRI="physical_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="permittivity_at_constant_mechanic_strain"/>
+        <Class IRI="electric_permittivity_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="permittivity_at_constant_mechanic_stress"/>
+        <Class IRI="electric_permittivity_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="phase_transformation_temperature"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="physical_constant"/>
+        <Class IRI="parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="piezoelectric_charge_constant"/>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="piezoelectric_coupling"/>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="piezoelectric_strain_constant"/>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="piezoelectric_stress_constant"/>
+        <Class IRI="piezoelectric_coupling_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="plateau_finish_strain"/>
+        <Class IRI="strain_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="plateau_start_strain"/>
+        <Class IRI="strain_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="relative_permeability"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="relative_permittivity"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sample"/>
+        <Class IRI="micro_level"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="state_dependent_quantity"/>
+        <Class IRI="physical_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="strain"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="strain_parameter"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stress-strain_curve_elastomer"/>
+        <Class IRI="material_curves"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stress-strain_curve_martensite"/>
+        <Class IRI="material_curves"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stress_parameter"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="temperature"/>
+        <Class IRI="state_dependent_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tensile_test"/>
+        <Class IRI="measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="twinning_stress"/>
+        <Class IRI="material_parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vacuum_permeability"/>
+        <Class IRI="physical_constant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vacuum_permittivity"/>
+        <Class IRI="physical_constant"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="wire_actuator"/>
+        <Class IRI="SMA"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="wire_actuator"/>
+        <Class IRI="component_level"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="yeoh_minR"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus_Neo_Hookean_initial_gradient"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus_Neo_Hookean_minR"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus_initial_gradient"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus_minR"/>
+        <Class IRI="model"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="young_modulus_neo_Hookean"/>
+        <Class IRI="elastic_parameters"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="DE"/>
+        <Class IRI="DE-material"/>
+        <Class IRI="MSMA"/>
+        <Class IRI="MSMA-material"/>
+        <Class IRI="PC"/>
+        <Class IRI="PC-material"/>
+        <Class IRI="SMA"/>
+        <Class IRI="SMA-material"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="DE"/>
+        <Class IRI="MSMA"/>
+        <Class IRI="PC"/>
+        <Class IRI="SMA"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Yeoh_vector"/>
+        <Class IRI="Yeoh_vector_1"/>
+        <Class IRI="Yeoh_vector_2"/>
+        <Class IRI="Yeoh_vector_3"/>
+        <Class IRI="young_modulus"/>
+        <Class IRI="young_modulus_neo_Hookean"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="component_curves"/>
+        <Class IRI="hysteresis_martensite_content"/>
+        <Class IRI="magnetic_curve"/>
+        <Class IRI="material_curves"/>
+        <Class IRI="stress-strain_curve_elastomer"/>
+        <Class IRI="stress-strain_curve_martensite"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="dielectric_strength"/>
+        <Class IRI="maximum_blocking_stress"/>
+        <Class IRI="maximum_blocking_stress_hold"/>
+        <Class IRI="maximum_blocking_stress_load"/>
+        <Class IRI="relative_permittivity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="lattice_constant_a"/>
+        <Class IRI="lattice_constant_c"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="magnetic_curve_easy_axis"/>
+        <Class IRI="magnetic_curve_hard_axis"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="material"/>
+        <Class IRI="sample"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="corresponds_with"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="curve_param1"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="curve_param2"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="determined_with"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_boundary_condition"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_curve"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_input"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_input_characteristic_curve"/>
+        <ObjectProperty IRI="has_input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_input_parameter"/>
+        <ObjectProperty IRI="has_input"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_output"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_parameter"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="has_tuple"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_column"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_description"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_equation"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_name"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_row"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_symbol"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_unit"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="has_value"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

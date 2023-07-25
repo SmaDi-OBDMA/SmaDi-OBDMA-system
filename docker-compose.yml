@@ -1,0 +1,39 @@
+services:
+  db:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: postgres
+    restart: "no"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: smadi
+    volumes:
+      - ./data/pgsql:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+
+  ontop:
+    image: ontop/ontop
+    environment:
+      ONTOP_ONTOLOGY_FILE: /opt/ontop/input/prototyp.owl
+      ONTOP_MAPPING_FILE: /opt/ontop/input/prototyp.obda
+      ONTOP_PROPERTIES_FILE: /opt/ontop/input/prototyp.properties
+      # ONTOP_PORTAL_FILE: /opt/ontop/input/prototyp-complete.portal.toml
+      ONTOP_CORS_ALLOWED_ORIGINS: "*"
+      ONTOP_DEV_MODE: "true"
+      ONTOP_LAZY_INIT: "true"
+    volumes:
+      - ./input:/opt/ontop/input
+      - ./jdbc:/opt/ontop/jdbc
+    ports:
+      - "8080:8080"
+
+  web:
+    image: httpd:2.4
+    container_name: iserver-app
+    ports:
+      - "8088:80"
+    volumes:
+      - './apache/conf/local-httpd.conf:/usr/local/apache2/conf/httpd.conf'
+      - './apache/interface:/usr/local/apache2/htdocs'
