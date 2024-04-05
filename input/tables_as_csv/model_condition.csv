@@ -1,0 +1,3 @@
+mod_id;param_id;value;in_number;operator
+calc_martensite_desc;hysteresis;2;-1;=
+calc_martensite_asc;hysteresis;1;-1;=

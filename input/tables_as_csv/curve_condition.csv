@@ -1,0 +1,5 @@
+curve_id;param_id;value;in_number;operator
+magnetic_curve_hard_axis;easy_hard_axis;1;-1;
+magnetic_curve_easy_axis;easy_hard_axis;0;-1;
+hysteresis_martensite_content;hysteresis;;-100;
+stress-strain_curve_martensite;martensite_content;;-100;

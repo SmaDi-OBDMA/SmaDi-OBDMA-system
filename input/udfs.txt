@@ -1,0 +1,1314 @@
+List of user defined functions
+
+--
+-- Name: calc_flux_density(double precision[])
+--
+
+CREATE FUNCTION public.calc_flux_density(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+declare 
+Begin
+	RETURN ARRAY[_params[1]*_params[2]*_params[3]];
+END$$;
+
+
+
+--
+-- Name: calc_mag_energy_density(double precision[])
+--
+
+CREATE FUNCTION public.calc_mag_energy_density(ar double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+import sympy as sy
+
+matrix = ar
+return_array = []
+
+for mrow in range(len(matrix)):
+    if mrow == 0:
+        return_array.append([matrix[mrow][0], matrix[mrow][0] ,0])
+    else:
+        if (matrix[mrow-1][3]==matrix[mrow][3]):
+            oldvalue = return_array[mrow-1][2]
+            diffH = matrix[mrow][1] - matrix[mrow-1][1]
+            diffJ = matrix[mrow][2] + matrix[mrow-1][2]
+            diff = diffH*diffJ/2
+           
+            return_array.append([matrix[mrow][0], matrix[mrow][0], oldvalue+diff])
+        else:
+            return_array.append([matrix[mrow][0], matrix[mrow][0], 0])
+
+return return_array
+$$;
+
+
+--
+-- Name: calc_mag_polarization(double precision[])
+--
+
+CREATE FUNCTION public.calc_mag_polarization(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+declare  
+Begin   
+	RETURN ARRAY[_params[1]*_params[2]];
+END$$;
+
+
+--
+-- Name: calc_magn_stress(double precision[])
+--
+
+CREATE FUNCTION public.calc_magn_stress(ar double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+import sympy as sy
+
+
+axis_one = ar[0]
+axis_two = ar[1]
+
+if (int(axis_one[2]) == 1 and int(axis_two[2]) == 0):
+    calc = (axis_two[1]-axis_one[1])/axis_one[3]
+elif (int(axis_one[2]) == 0 and int(axis_two[2]) == 1):
+    calc = (axis_one[1]-axis_two[1])/axis_one[3]
+else:
+    return 
+
+return [axis_one[0], calc]
+
+$$;
+
+
+--
+-- Name: calc_magnetization(double precision[])
+--
+
+CREATE FUNCTION public.calc_magnetization(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+declare  
+Begin
+    if _params[3]=0 then
+        return NULL;
+    end if;
+	RETURN ARRAY[_params[2]/_params[3]-_params[1]];
+END
+
+$$;
+
+
+--
+-- Name: calc_martensite_asc(double precision[])
+--
+
+CREATE FUNCTION public.calc_martensite_asc(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$                                                                     
+ import sympy as sy                                                                
+ import math                                                                       
+                                                                                   
+ tem = _params[0]
+ Mf = _params[1]
+ Ms = _params[2]
+
+ if  tem >= Ms:
+        return [0]
+ elif  tem <= Mf:
+        return [1]
+ else:
+        return [1/2 * math.cos(math.pi * (tem-Mf)/(Ms-Mf))+1/2]                                                                                                       
+ $$;
+
+
+--
+-- Name: calc_martensite_desc(double precision[])
+--
+
+CREATE FUNCTION public.calc_martensite_desc(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$                                                                     
+import math
+
+tem = _params[0]
+As = _params[1]
+Af = _params[2]
+
+if tem >= Af:
+         return [0]
+elif tem <= As:
+         return [1]
+else:
+         return [1/2 * math.cos(math.pi * (tem-As)/(Af-As))+1/2]
+$$;
+
+
+--
+-- Name: calc_max_block_pc(double precision[])
+--
+
+CREATE FUNCTION public.calc_max_block_pc(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                              
+ declare                                          
+ 	 d double precision = _params[1];
+ 	 sE double precision = _params[2];
+ 	 E_BFS double precision = _params[3];
+
+ Begin 
+       RETURN ARRAY[d/sE * E_BFS];
+ 
+ END                                             
+ $$;
+
+
+--
+-- Name: calc_max_block_stress_lh(double precision[])
+--
+
+CREATE FUNCTION public.calc_max_block_stress_lh(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$                                                                         
+ DECLARE                                                                               
+         max_magn_stress double precision = _params[1];                                
+         twin_stress double precision = _params[2];                                    
+ BEGIN                                                            
+         return ARRAY[max_magn_stress - twin_stress, max_magn_stress + twin_stress];   
+ END                                                                                   
+ $$;
+
+
+--
+-- Name: calc_max_strain_mag(double precision[])
+--
+
+CREATE FUNCTION public.calc_max_strain_mag(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+
+ begin                                                                                                                      
+     if _params[2]=0 then
+         return NULL;
+     end if;
+     if 1.0-_params[1]/_params[2]<0 then
+         return NULL;
+     end if;
+     return ARRAY[1.0-_params[1]/_params[2]];
+ end;                                                                                                                       
+ $$;
+
+--
+-- Name: calc_neo_hook_minr(double precision[])
+--
+
+CREATE FUNCTION public.calc_neo_hook_minr(ar double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+    
+import math
+import numpy as np
+from scipy import optimize
+from scipy import io
+# [meas_time, mechanic_stress, strain]
+
+
+_ar = np.array(ar)
+
+lambda1 = np.array(_ar[:,2]+1)
+sigma1 = np.array(_ar[:,1])
+
+
+# Neo-Hooke
+def NeoHooke_function(lam,Y):
+    # Berechnet die technische Spannung anhand des Neo-Hooke-Modells
+    sig = 1/lam*Y/3*(lam**2-1/(lam))
+    return sig
+
+
+# Definition des normierten Fehlers
+def RNorm_function(X1,X2):
+    R =  math.sqrt((X1 - X2)**2)/max(X1,0.01)
+    return R
+
+## Neo-Hooke
+def NeoHooke_uni_fit_function_minR(sig,lam,Y):
+    # gibt den mittleren normierten Fehler aus und wird zur Parameteridentifikation für den Elastizitätsmodul nach Neo-Hooke verwendet
+    
+    sig_model = NeoHooke_function(lam,Y)
+    dist=0
+    for i in range(0, len(lam)-1):
+        dist =  RNorm_function(sig[i],sig_model[i])+dist
+    
+    dist=dist/len(lam)
+    
+    return dist
+
+# Neo-Hooke-Modell
+Y_NH_Start = 1e6 # Startwert
+Y_NH_uni = optimize.fmin(lambda Y_NH:NeoHooke_uni_fit_function_minR(sigma1,lambda1,Y_NH), Y_NH_Start) # Y_NH_uni ist mein Ergbeniss des Fits
+R_YNH=NeoHooke_uni_fit_function_minR(sigma1,lambda1,Y_NH_uni) # R ist der normierte Fehler als Zusatzinformtaion (Metadaten) für eine Aussage der Datenqualität 
+
+return [Y_NH_uni[0]]
+$$;
+
+
+--
+-- Name: calc_neo_hookean_initial_slope(double precision[])
+--
+
+CREATE FUNCTION public.calc_neo_hookean_initial_slope(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                                                               
+  declare                                                                                    
+      sigma double precision = _params[1];                                                   
+      eps double precision = _params[2];                                                     
+                                                                                             
+  Begin                                                                                      
+          if ((1+eps)^2-1/(1+eps)) != 0 then                                                         
+              return ARRAY[3*sigma/((1+eps)^2-1/(1+eps))];                                           
+          end if;                                                                            
+  END                                                                                        
+  $$;
+
+
+--
+-- Name: calc_rel_perm(double precision[])
+--
+
+CREATE FUNCTION public.calc_rel_perm(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+
+declare  
+Begin
+  IF (_params[3]=0) OR (_params[2]=0) THEN
+      return NULL;
+  END IF;
+  RETURN ARRAY[1+_params[1]/(_params[2]*_params[3])];
+END
+
+$$;
+
+
+--
+-- Name: calc_yeoh_minr(double precision[])
+--
+
+CREATE FUNCTION public.calc_yeoh_minr(ar double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+    
+import math
+import numpy as np
+from scipy import optimize
+from scipy import io
+# [meas_time, mechanic_stress, strain]
+
+
+_ar = np.array(ar)
+
+lambda1 = np.array(_ar[:,2]+1)
+sigma1 = np.array(_ar[:,1])
+
+
+
+#Yeoh-Modell
+def YeohUni_function(lam,C):
+    # Berechnet die technische Spannung anhand des Yeoh-Modells
+    I=(2/lam)+lam**2
+    sig = 1/lam*(2*(lam**2)-2/(lam))*(C[0]+2*C[1]*(I-3)+3*C[2]*(I-3)**2)
+    
+    return sig
+
+
+# Definition des normierten Fehlers
+def RNorm_function(X1,X2):
+    R =  math.sqrt((X1 - X2)**2)/max(X1,0.01)
+    return R
+
+
+# Yeoh-Modell
+def Yeoh_uni_fit_function_minR(sig,lam,C):
+    # gibt den mittleren normierten Fehler aus und wird zur Parameteridentifikation für die Yeoh-Parameter verwendet
+    
+    sig_model = YeohUni_function(lam,C)
+    dist=0
+    for i in range(0, len(lam)-1):
+        dist =  RNorm_function(sig[i],sig_model[i])+dist
+    
+    dist=dist/len(lam)
+    
+    return dist
+
+# Yeoh-Modell
+C_Yeoh_Start = [0.3e6, 1e3, 1e3] # Startwert
+C_Yeoh_uni = optimize.fmin(lambda C_Yeoh:Yeoh_uni_fit_function_minR(sigma1,lambda1,C_Yeoh), C_Yeoh_Start) # C_Yeoh_uni ist mein Ergbeniss des Fits
+R_Yeoh=Yeoh_uni_fit_function_minR(sigma1,lambda1,C_Yeoh_uni) # R ist der normierte Fehler als Zusatzinformtaion (Metadaten) für eine Aussage der Datenqualität 
+
+return [C_Yeoh_uni[0],C_Yeoh_uni[1],C_Yeoh_uni[2]]
+$$;
+
+
+--
+-- Name: calc_young_modulus_minr(double precision[])
+--
+
+CREATE FUNCTION public.calc_young_modulus_minr(ar double precision[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+    
+import math
+import numpy as np
+from scipy import optimize
+from scipy import io
+# [meas_time, mechanic_stress, strain]
+
+
+_ar = np.array(ar)
+
+lambda1 = np.array(_ar[:,2]+1)
+sigma1 = np.array(_ar[:,1])
+
+
+# linear Hooke
+def Hooke_function(eps,Y):
+    # Berechnet die technische Spannung anhand des linearen Hookschen Modells
+    sig = Y*eps
+    return sig
+
+# Definition des normierten Fehlers
+def RNorm_function(X1,X2):
+    R =  math.sqrt((X1 - X2)**2)/max(X1,0.01)
+    return R
+
+# linear Hooke
+def NeoHooke_fit_function_minR(sig,lam,Y):
+    # gibt den mittleren normierten Fehler aus und wird zur Parameteridentifikation für den Elastizitätsmodul verwendet
+    
+    sig_model = Hooke_function(lam-1,Y)
+    dist=0
+    for i in range(0, len(lam)-1):
+        dist =  RNorm_function(sig[i],sig_model[i])+dist
+    
+    dist=dist/len(lam)
+    
+    return dist
+
+
+Y_Start = 1e6 # Startwert
+Y = optimize.fmin(lambda Y:NeoHooke_fit_function_minR(sigma1,lambda1,Y), Y_Start) # Y ist mein Ergbeniss des Fits
+R_Y=NeoHooke_fit_function_minR(sigma1,lambda1,Y) # R ist der normierte Fehler als Zusatzinformtaion (Metadaten) für eine Aussage der Datenqualität 
+
+return [Y[0]]
+$$;
+
+--
+-- Name: integral_function(character varying, double precision[])
+--
+
+CREATE FUNCTION public.integral_function(_function character varying, _params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql
+    AS $$
+declare  
+        _out double precision[];
+        _sql text := 'SELECT cast(%I(cast(%L as double precision[])) as double precision[]) as question';
+Begin   
+        
+        EXECUTE format(_sql, _function, _params ) INTO _out;
+        RETURN _out;
+END
+$$;
+
+--
+-- Name: interpol_function(character varying, public.interpol_type[])
+--
+
+CREATE FUNCTION public.interpol_function(_function character varying, _params public.interpol_type[]) RETURNS real
+    LANGUAGE plpgsql STABLE
+    AS $$
+declare  
+	y real;
+	x real;
+	_out real;
+	_sql text := 'SELECT cast(%I(cast(%L as interpol_type[])) as real) as question';
+Begin   
+	
+	EXECUTE format(_sql, _function, _params ) INTO _out;
+	RETURN _out;
+END
+$$;
+
+
+--
+-- Name: linear_interpol_initial_stress(public.interpol_type[])
+--
+
+CREATE FUNCTION public.linear_interpol_initial_stress(_params public.interpol_type[]) RETURNS real
+    LANGUAGE plpgsql
+    AS $$
+declare  
+	out real;
+	n int;
+	x_g real;
+	xy1_tmp interpol_type;
+	xy2_tmp interpol_type;
+	tmp interpol_type[];
+	xy1 real[];
+	xy2 real[];
+	y_g real;
+	row_content interpol_type;
+Begin 
+    
+	SELECT x from unnest(_params) where y is null into x_g;
+   
+
+	SELECT x,y from unnest(_params) where y is not null and x = (Select max(x) from unnest(_params) where x <= x_g)  into xy1_tmp; 
+    SELECT x,y from unnest(_params) where y is not null and x = (Select min(x) from unnest(_params) where x >= x_g)  into xy2_tmp; 
+    
+    
+	if xy1_tmp is null or xy2_tmp is null THEN
+		FOR row_content in
+			SELECT x,y from unnest(_params) where y is not null order by abs(x-x_g) asc limit 2
+		LOOP
+			tmp := array_append(tmp, cast(row_content as interpol_type));
+		END LOOP;
+		xy1_tmp = tmp[2];
+		xy2_tmp = tmp[3];
+	END IF;
+	
+	xy1 := ARRAY[xy1_tmp.x, xy1_tmp.y];
+	xy2 := ARRAY[xy2_tmp.x, xy2_tmp.y];
+	
+
+	if x_g=xy1[1] then
+		y_g = xy1[2];
+	elsif x_g=xy2[1] then
+		y_g = xy2[2];
+	else
+		y_g = (xy1[2]-xy2[2])/(xy1[1]-xy2[1])*(x_g-xy1[1])+xy1[2];
+	end if;
+	
+	RETURN y_g;
+END
+$$;
+
+
+--
+-- Name: matrix_func_1(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_1(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+
+import sympy as sy
+
+def matrix_einlesen(ar):
+    import numpy as np
+    import sympy as sy
+
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    import sympy as sy
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None
+
+matrix_A1, matrix_B1, matrix_C1 = matrix_einlesen(ar)
+
+x = sy.S('x')
+
+if matrix_A1[0,0]==x or matrix_A1[0,1]==x or matrix_A1[0,2]==x or matrix_A1[2,2]==x:
+	matrix_A = x*sy.ones(6,6)
+	matrix_A[4,4] = 1/matrix_A1[4,4]
+	matrix_A[3,3] = 1/matrix_A1[3,3]
+	return matrix_rausschreiben(matrix_A)
+
+if matrix_A1.det() == 0:
+	return []
+matrix_A = matrix_A1.inv()
+
+return matrix_rausschreiben(matrix_A)
+ $$;
+
+
+--
+-- Name: matrix_func_2(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_2(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+import sympy as sy                                        
+def matrix_einlesen(ar):
+    import numpy as np
+    import sympy as sy
+
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    import sympy as sy
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None                         
+
+matrix_A1, matrix_B1, matrix_C1 =matrix_einlesen(ar)               
+
+x = sy.S('x')
+
+if matrix_A1[0,0]==x or matrix_A1[0,1]==x or matrix_A1[0,2]==x or matrix_A1[2,2]==x:
+     matrix_B = x*sy.ones(3,6)
+     matrix_B[0,4] = matrix_B1[0,4]/matrix_A1[4,4]
+     return matrix_rausschreiben(matrix_B)
+
+                                                                        
+matrix_B = matrix_B1 * (matrix_A1.inv())                               
+                                                                      
+return matrix_rausschreiben(matrix_B)$$;
+
+
+
+--
+-- Name: matrix_func_3(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_3(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$
+import sympy as sy
+import numpy as np
+
+def matrix_einlesen(ar):
+    import numpy as np
+    import sympy as sy
+
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    import sympy as sy
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None
+
+matrix_A1, matrix_B1, matrix_C1 = matrix_einlesen(ar)
+var_e = int(ar[0][ar[0].index('e')+1])
+var_m = int(ar[0][ar[0].index('m')+1])
+
+x = sy.S('x')
+
+if matrix_A1[0,0]==x or matrix_A1[0,1]==x or matrix_A1[0,2]==x or matrix_A1[2,2]==x:
+    matrix_A = sy.zeros(6,6)
+    matrix_A[0:3,0:3] = x*sy.ones(3,3)
+    matrix_A[5,5] = x
+    matrix_A[4,4] = 1/matrix_A1[4,4]
+    matrix_A[3,3] = 1/matrix_A1[3,3]
+else:
+    matrix_A = matrix_A1.inv()
+
+matrix_C = matrix_C1 - calc_vorzeichen(var_e)*calc_vorzeichen(var_m)*matrix_B1*matrix_A*np.transpose(matrix_B1)
+
+return matrix_rausschreiben(matrix_C)$$;
+
+
+--
+-- Name: matrix_func_4(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_4(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$import sympy as sy
+import numpy as np
+
+def matrix_einlesen(ar):
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None
+
+matrix_A1, matrix_B1, matrix_C1 = matrix_einlesen(ar)
+var_e = int(ar[0][ar[0].index('e')+1])
+var_m = int(ar[0][ar[0].index('m')+1])
+x = sy.S('x')
+if matrix_C1.det() == 0 or matrix_C1.det() == x**3:
+    return []
+matrix_A = matrix_A1 - calc_vorzeichen(var_e)*calc_vorzeichen(var_m)*np.transpose(matrix_B1)*matrix_C1.inv()*matrix_B1
+
+return matrix_rausschreiben(matrix_A)$$;
+
+
+--
+-- Name: matrix_func_5(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_5(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$import sympy as sy
+    
+
+def matrix_einlesen(ar):
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None    
+
+matrix_A1, matrix_B1, matrix_C1 = matrix_einlesen(ar)
+x = sy.S('x')
+if matrix_C1.det() == 0 or matrix_C1.det() == x**3:
+    return []
+matrix_B =(matrix_C1.inv()) * matrix_B1 
+
+return matrix_rausschreiben(matrix_B)$$;
+
+
+
+--
+-- Name: matrix_func_6(character varying[])
+--
+
+CREATE FUNCTION public.matrix_func_6(ar character varying[]) RETURNS double precision[]
+    LANGUAGE plpython3u
+    AS $$import sympy as sy
+    
+
+def matrix_einlesen(ar):
+    var_e = int(ar[0][ar[0].index('e') + 1])
+    var_m = int(ar[0][ar[0].index('m') + 1])
+
+    A11 = None
+    A12 = None
+    x = sy.S('x')
+
+    matrix_A = sy.Matrix([[x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [x, x, x, 0., 0., 0.], [0., 0., 0., x, 0., 0.],
+                          [0., 0., 0., 0., x, 0.], [0., 0., 0., 0., 0., x]])
+    matrix_B = sy.Matrix([[0., 0., 0., 0., x, 0.], [0., 0., 0., x, 0., 0.], [x, x, x, 0., 0., 0.]])
+    matrix_C = sy.Matrix([[x, 0., 0.], [0., x, 0.], [0., 0., x]])
+
+    for i in range(0, len(ar)):
+        ar_row = ar[i]
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_A[0, 0] = float(ar_row[5])
+            matrix_A[1, 1] = float(ar_row[5])
+            A11 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '2':
+            matrix_A[0, 1] = float(ar_row[5])
+            matrix_A[1, 0] = float(ar_row[5])
+            A12 = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '1' and ar_row[4] == '3':
+            matrix_A[0, 2] = float(ar_row[5])
+            matrix_A[2, 0] = float(ar_row[5])
+            matrix_A[1, 2] = float(ar_row[5])
+            matrix_A[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_A[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'A' and ar_row[2] == '5' and ar_row[4] == '5':
+            matrix_A[4, 4] = float(ar_row[5])
+            matrix_A[3, 3] = float(ar_row[5])
+        if A11 is not None and A12 is not None:
+            matrix_A[5, 5] = (A11 - A12) / (2 ** calc_vorzeichen(var_m))
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '1':
+            matrix_B[2, 0] = float(ar_row[5])
+            matrix_B[2, 1] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_B[2, 2] = float(ar_row[5])
+        if ar_row[0] == 'B' and ar_row[2] == '1' and ar_row[4] == '5':
+            matrix_B[0, 4] = float(ar_row[5])
+            matrix_B[1, 3] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '1' and ar_row[4] == '1':
+            matrix_C[0, 0] = float(ar_row[5])
+            matrix_C[1, 1] = float(ar_row[5])
+        if ar_row[0] == 'C' and ar_row[2] == '3' and ar_row[4] == '3':
+            matrix_C[2, 2] = float(ar_row[5])
+
+    return matrix_A, matrix_B, matrix_C
+
+def matrix_rausschreiben(ar):
+    return_matrix = []
+    if (ar.shape == (6, 6)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[0, 1] != 0. and type(ar[0, 1]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 2, ar[0, 1]])
+        if (ar[0, 2] != 0. and type(ar[0, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 3, ar[0, 2]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[4, 4] != 0. and type(ar[4, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 5, 2, 5, ar[4, 4]])
+
+    if (ar.shape == (3, 6)):
+        if (ar[2, 0] != 0. and type(ar[2, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 1, ar[2, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+        if (ar[0, 4] != 0. and type(ar[0, 4]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 5, ar[0, 4]])
+
+    if (ar.shape == (3, 3)):
+        if (ar[0, 0] != 0. and type(ar[0, 0]) == sy.core.numbers.Float):
+            return_matrix.append([1, 1, 2, 1, ar[0, 0]])
+        if (ar[2, 2] != 0. and type(ar[2, 2]) == sy.core.numbers.Float):
+            return_matrix.append([1, 3, 2, 3, ar[2, 2]])
+
+    return return_matrix
+
+def calc_vorzeichen(i):
+    if i == 0:
+        return -1
+    elif i == 1:
+        return 1
+    else:
+        return None    
+
+matrix_A1, matrix_B1, matrix_C1 = matrix_einlesen(ar)
+x = sy.S('x')
+if matrix_C1.det() == 0 or matrix_C1.det() == x**3:
+    return []
+matrix_C = matrix_C1.inv()
+
+return matrix_rausschreiben(matrix_C)$$;
+
+--
+-- Name: matrix_function(character varying, character varying[]
+--
+
+CREATE FUNCTION public.matrix_function(_function character varying, _params character varying[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$
+declare  
+	_out double precision[];
+	_sql text := 'SELECT cast(%I(cast(%L as varchar[])) as double precision[]) as question';
+Begin   
+	
+	EXECUTE format(_sql, _function, _params ) INTO _out;
+	RETURN _out;
+END
+$$;
+
+--
+-- Name: mech_mod_v1(double precision[])
+--
+
+CREATE FUNCTION public.mech_mod_v1(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                              
+ declare                                          
+  eps double precision = _params[1];
+  E_A double precision = _params[2];
+  E_M double precision = _params[3];
+ xi double precision = _params[4];
+ Begin 
+       RETURN ARRAY[eps * (E_A - (E_A-E_M)*xi)];
+ 
+ END                                             
+ $$;
+
+--
+-- Name: mech_mod_v2(double precision[])
+--
+
+CREATE FUNCTION public.mech_mod_v2(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                              
+ declare                                          
+  eps double precision = _params[1];
+  E_A double precision = _params[2];
+  E_M double precision = _params[3];
+ xi double precision = _params[4];
+ eps_ps double precision = _params[5];
+ H double precision = _params[6];
+ Begin 
+       RETURN ARRAY[eps_ps * (E_A - (E_A-E_M)*xi)+ (eps-eps_ps)*H];
+ 
+ END                                             
+ $$;
+
+--
+-- Name: mech_mod_v3(double precision[]); 
+--
+
+CREATE FUNCTION public.mech_mod_v3(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                              
+ declare                                          
+  eps double precision = _params[1];
+  E_A double precision = _params[2];
+  E_M double precision = _params[3];
+ xi double precision = _params[4];
+ eps_ps double precision = _params[5];
+ H double precision = _params[6];
+ eps_pf double precision = _params[7];
+ E_D double precision = _params[8];  
+ Begin 
+       RETURN ARRAY[eps_ps * (E_A - (E_A-E_M)*xi)+ (eps-eps_ps)*H + (eps - eps_pf)*E_D];
+ 
+ END                                             
+ $$;
+
+--
+-- Name: mod_el_druck(double precision[]);
+--
+
+CREATE FUNCTION public.mod_el_druck(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql IMMUTABLE
+    AS $$                                                             
+  declare                                                                  
+   rel_perm double precision = _params[1];                                 
+   vac_perm double precision = _params[2];                            
+   el_field double precision = _params[3];                                  
+                                                                           
+  Begin                                                                    
+        RETURN ARRAY[rel_perm * vac_perm * pow(el_field,2)];                         
+                                                                           
+  end                                                                      
+  $$;
+
+
+--
+-- Name: mod_el_pres(double precision[]);
+--
+
+CREATE FUNCTION public.mod_el_pres(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql IMMUTABLE
+    AS $$                                                             
+  declare                                                                  
+   rel_perm double precision = _params[1];                                 
+   vac_perm double precision = _params[2];                            
+   el_field double precision = _params[3];                                  
+                                                                           
+  Begin                                                                    
+        RETURN ARRAY[rel_perm * vac_perm * pow(el_field,2)];                         
+                                                                           
+  end                                                                      
+  $$;
+
+--
+-- Name: ym_init_slope(double precision[]);
+--
+
+CREATE FUNCTION public.ym_init_slope(_params double precision[]) RETURNS double precision[]
+    LANGUAGE plpgsql STABLE
+    AS $$                                              
+ declare                                          
+  sigma real = _params[1];
+  epsilon real = _params[2];
+ Begin 
+ If epsilon = 0 THEN
+ return NULL;
+ else
+       RETURN array[sigma / epsilon];
+       End if;
+ END                                             
+ $$;
+

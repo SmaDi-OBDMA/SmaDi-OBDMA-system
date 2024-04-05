@@ -1,0 +1,7 @@
+concr_meas_id;meas_id;meas_date;description
+Ni2MnGa_sample1_meas_flux_over_field_1;meas_flux_over_field;2022-05-18;measurement of flux density over magnetic field, hard axis
+Ni2MnGa_sample1_meas_flux_over_field_2;meas_flux_over_field;2022-05-18;measurement of flux density over magnetic field, easy axis
+tens_1;tensile_test;2022-11-10;
+elas1_measured_at;measured_at;;measured at Fraunhofer IAP
+elas1_base_value;base_value;;base value for initial slope identification
+dummy-meas;dummy-data;;dummy data

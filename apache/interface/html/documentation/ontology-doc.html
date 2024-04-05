@@ -1,0 +1,3750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="resources/primer.css" media="screen" />    <link rel="stylesheet" href="resources/rec.css" media="screen" />    <link rel="stylesheet" href="resources/extra.css" media="screen" />    <link rel="stylesheet" href="resources/owl.css" media="screen" />    <title>SmaDi-Ontology</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"urn:absolute/smadiont#","image":"http://vowl.visualdataweb.org/webvowl/#iri=urn:absolute/smadiont#","name":"SmaDi-Ontology", "headline":"Document describing the ontology urn:absolute/smadiont#", "dateReleased":"Fri Apr 05 12:23:53 UTC 2024", "license":"http://creativecommons.org/licenses/by/2.0/"}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>SmaDi-Ontology</h1>
+
+
+<dl>
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="http://creativecommons.org/licenses/by/2.0/" target="_blank"><img src="https://img.shields.io/badge/License-http://creativecommons.org/licenses/by/2.0/-blue.svg" alt="http://creativecommons.org/licenses/by/2.0/" /></a>
+</dd><!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>---</dd>
+</dl>
+
+<a href="provenance/provenance-en.html" target="_blank">Provenance of this page</a><hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div><div id="toc"></div>  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">SmaDi-Ontology: Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#austenite_finish_temperature"
+         title="urn:absolute/smadiont#austenite_finish_temperature">Austenite finish temperature</a>
+   </li>
+   <li>
+      <a href="#austenite_start_temperature"
+         title="urn:absolute/smadiont#austenite_start_temperature">Austenite start temperature</a>
+   </li>
+   <li>
+      <a href="#component_curves" title="urn:absolute/smadiont#component_curves">
+         <span>component curves</span>
+      </a>
+   </li>
+   <li>
+      <a href="#component_level" title="urn:absolute/smadiont#component_level">
+         <span>component level</span>
+      </a>
+   </li>
+   <li>
+      <a href="#continuum_level" title="urn:absolute/smadiont#continuum_level">
+         <span>continuum level</span>
+      </a>
+   </li>
+   <li>
+      <a href="#curve_magnetic_stress" title="urn:absolute/smadiont#curve_magnetic_stress">
+         <span>curve magnetic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+   </li>
+   <li>
+      <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+   </li>
+   <li>
+      <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">
+         <span>dielectric strength</span>
+      </a>
+   </li>
+   <li>
+      <a href="#E-modulus_austenite" title="urn:absolute/smadiont#E-modulus_austenite">E-modulus austenite</a>
+   </li>
+   <li>
+      <a href="#E-modulus_de-twinned_martensite"
+         title="urn:absolute/smadiont#E-modulus_de-twinned_martensite">E-modulus de-twinned martensite</a>
+   </li>
+   <li>
+      <a href="#E-modulus_twinned_martensite"
+         title="urn:absolute/smadiont#E-modulus_twinned_martensite">E-modulus twinned martensite</a>
+   </li>
+   <li>
+      <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">
+         <span>elastic parameters</span>
+      </a>
+   </li>
+   <li>
+      <a href="#electric_field" title="urn:absolute/smadiont#electric_field">
+         <span>electric field</span>
+      </a>
+   </li>
+   <li>
+      <a href="#electric_permittivity_parameters"
+         title="urn:absolute/smadiont#electric_permittivity_parameters">
+         <span>electric permittivity parameters</span>
+      </a>
+   </li>
+   <li>
+      <a href="#electrostatic_pressure_model"
+         title="urn:absolute/smadiont#electrostatic_pressure_model">
+         <span>electrostatic pressure model</span>
+      </a>
+   </li>
+   <li>
+      <a href="#flux_density" title="urn:absolute/smadiont#flux_density">
+         <span>flux density</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hardening_parameter" title="urn:absolute/smadiont#hardening_parameter">
+         <span>hardening parameter</span>
+      </a>
+   </li>
+   <li>
+      <a href="#hysteresis_martensite_content"
+         title="urn:absolute/smadiont#hysteresis_martensite_content">
+         <span>hysteresis martensite content</span>
+      </a>
+   </li>
+   <li>
+      <a href="#identification_parameters" title="urn:absolute/smadiont#identification_parameters">
+         <span>identification parameters</span>
+      </a>
+   </li>
+   <li>
+      <a href="#initial_strain" title="urn:absolute/smadiont#initial_strain">
+         <span>initial strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#initial_stress" title="urn:absolute/smadiont#initial_stress">
+         <span>initial stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#inverse_permittivity_at_constant_mechanic_strain"
+         title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain">
+         <span>inverse permittivity at constant mechanic strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#inverse_permittivity_at_constant_mechanic_stress"
+         title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress">
+         <span>inverse permittivity at constant mechanic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#lattice_constant" title="urn:absolute/smadiont#lattice_constant">
+         <span>lattice constant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#lattice_constant_a" title="urn:absolute/smadiont#lattice_constant_a">
+         <span>lattice constant a</span>
+      </a>
+   </li>
+   <li>
+      <a href="#lattice_constant_c" title="urn:absolute/smadiont#lattice_constant_c">
+         <span>lattice constant c</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mag_energy_density" title="urn:absolute/smadiont#mag_energy_density">
+         <span>mag energy density</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">
+         <span>magnetic curve</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_curve_easy_axis" title="urn:absolute/smadiont#magnetic_curve_easy_axis">
+         <span>magnetic curve easy axis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_curve_hard_axis" title="urn:absolute/smadiont#magnetic_curve_hard_axis">
+         <span>magnetic curve hard axis</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_field_strength" title="urn:absolute/smadiont#magnetic_field_strength">
+         <span>magnetic field strength</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_polarization" title="urn:absolute/smadiont#magnetic_polarization">
+         <span>magnetic polarization</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetic_stress" title="urn:absolute/smadiont#magnetic_stress">
+         <span>magnetic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#magnetization" title="urn:absolute/smadiont#magnetization">
+         <span>magnetization</span>
+      </a>
+   </li>
+   <li>
+      <a href="#martensite_content" title="urn:absolute/smadiont#martensite_content">
+         <span>martensite content</span>
+      </a>
+   </li>
+   <li>
+      <a href="#martensite_finish_temperature"
+         title="urn:absolute/smadiont#martensite_finish_temperature">
+         <span>martensite finish temperature</span>
+      </a>
+   </li>
+   <li>
+      <a href="#martensite_start_temperature"
+         title="urn:absolute/smadiont#martensite_start_temperature">
+         <span>martensite start temperature</span>
+      </a>
+   </li>
+   <li>
+      <a href="#material" title="urn:absolute/smadiont#material">
+         <span>material</span>
+      </a>
+   </li>
+   <li>
+      <a href="#material_curves" title="urn:absolute/smadiont#material_curves">
+         <span>material curves</span>
+      </a>
+   </li>
+   <li>
+      <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">
+         <span>material parameter</span>
+      </a>
+   </li>
+   <li>
+      <a href="#max_magnetic_stress" title="urn:absolute/smadiont#max_magnetic_stress">
+         <span>max magnetic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">
+         <span>maximum blocking stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#maximum_blocking_stress_hold"
+         title="urn:absolute/smadiont#maximum_blocking_stress_hold">
+         <span>maximum blocking stress hold</span>
+      </a>
+   </li>
+   <li>
+      <a href="#maximum_blocking_stress_load"
+         title="urn:absolute/smadiont#maximum_blocking_stress_load">
+         <span>maximum blocking stress load</span>
+      </a>
+   </li>
+   <li>
+      <a href="#maximum_strain_mag" title="urn:absolute/smadiont#maximum_strain_mag">
+         <span>maximum strain mag</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanic_stress" title="urn:absolute/smadiont#mechanic_stress">
+         <span>mechanic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_compliance" title="urn:absolute/smadiont#mechanical_compliance">
+         <span>mechanical compliance</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_compliance_at_constant_electric_field"
+         title="urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field">
+         <span>mechanical compliance at constant electric field</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_compliance_at_constant_flux_density"
+         title="urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density">
+         <span>mechanical compliance at constant flux density</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_stiffness" title="urn:absolute/smadiont#mechanical_stiffness">
+         <span>mechanical stiffness</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_stiffness_at_constant_electric_field"
+         title="urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field">
+         <span>mechanical stiffness at constant electric field</span>
+      </a>
+   </li>
+   <li>
+      <a href="#mechanical_stiffness_at_constant_flux_density"
+         title="urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density">
+         <span>mechanical stiffness at constant flux density</span>
+      </a>
+   </li>
+   <li>
+      <a href="#micro_level" title="urn:absolute/smadiont#micro_level">
+         <span>micro level</span>
+      </a>
+   </li>
+   <li>
+      <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+   </li>
+   <li>
+      <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+   </li>
+   <li>
+      <a href="#MSMA-stick" title="urn:absolute/smadiont#MSMA-stick">MSMA-stick</a>
+   </li>
+   <li>
+      <a href="#PC" title="urn:absolute/smadiont#PC">
+         <span>p c</span>
+      </a>
+   </li>
+   <li>
+      <a href="#PC-material" title="urn:absolute/smadiont#PC-material">
+         <span>p c material</span>
+      </a>
+   </li>
+   <li>
+      <a href="#parameter" title="urn:absolute/smadiont#parameter">
+         <span>parameter</span>
+      </a>
+   </li>
+   <li>
+      <a href="#permittivity_at_constant_mechanic_strain"
+         title="urn:absolute/smadiont#permittivity_at_constant_mechanic_strain">
+         <span>permittivity at constant mechanic strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#permittivity_at_constant_mechanic_stress"
+         title="urn:absolute/smadiont#permittivity_at_constant_mechanic_stress">
+         <span>permittivity at constant mechanic stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#phase_transformation_temperature"
+         title="urn:absolute/smadiont#phase_transformation_temperature">
+         <span>phase transformation temperature</span>
+      </a>
+   </li>
+   <li>
+      <a href="#physical_constant" title="urn:absolute/smadiont#physical_constant">
+         <span>physical constant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#piezoelectric_charge_constant"
+         title="urn:absolute/smadiont#piezoelectric_charge_constant">
+         <span>piezoelectric charge constant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#piezoelectric_coupling" title="urn:absolute/smadiont#piezoelectric_coupling">
+         <span>piezoelectric coupling</span>
+      </a>
+   </li>
+   <li>
+      <a href="#piezoelectric_coupling_parameters"
+         title="urn:absolute/smadiont#piezoelectric_coupling_parameters">
+         <span>piezoelectric coupling parameters</span>
+      </a>
+   </li>
+   <li>
+      <a href="#piezoelectric_strain_constant"
+         title="urn:absolute/smadiont#piezoelectric_strain_constant">
+         <span>piezoelectric strain constant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#piezoelectric_stress_constant"
+         title="urn:absolute/smadiont#piezoelectric_stress_constant">
+         <span>piezoelectric stress constant</span>
+      </a>
+   </li>
+   <li>
+      <a href="#plateau_finish_strain" title="urn:absolute/smadiont#plateau_finish_strain">
+         <span>plateau finish strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#plateau_start_strain" title="urn:absolute/smadiont#plateau_start_strain">
+         <span>plateau start strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#relative_permeability" title="urn:absolute/smadiont#relative_permeability">
+         <span>relative permeability</span>
+      </a>
+   </li>
+   <li>
+      <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">
+         <span>relative permittivity</span>
+      </a>
+   </li>
+   <li>
+      <a href="#SMA" title="urn:absolute/smadiont#SMA">
+         <span>s m a</span>
+      </a>
+   </li>
+   <li>
+      <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">
+         <span>s m a material</span>
+      </a>
+   </li>
+   <li>
+      <a href="#sample" title="urn:absolute/smadiont#sample">
+         <span>sample</span>
+      </a>
+   </li>
+   <li>
+      <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">
+         <span>state dependent quantity</span>
+      </a>
+   </li>
+   <li>
+      <a href="#strain" title="urn:absolute/smadiont#strain">
+         <span>strain</span>
+      </a>
+   </li>
+   <li>
+      <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">
+         <span>strain parameter</span>
+      </a>
+   </li>
+   <li>
+      <a href="#stress_parameter" title="urn:absolute/smadiont#stress_parameter">
+         <span>stress parameter</span>
+      </a>
+   </li>
+   <li>
+      <a href="#stress-strain_curve_elastomer"
+         title="urn:absolute/smadiont#stress-strain_curve_elastomer">
+         <span>stress strain curve elastomer</span>
+      </a>
+   </li>
+   <li>
+      <a href="#stress-strain_curve_martensite"
+         title="urn:absolute/smadiont#stress-strain_curve_martensite">
+         <span>stress strain curve martensite</span>
+      </a>
+   </li>
+   <li>
+      <a href="#temperature" title="urn:absolute/smadiont#temperature">
+         <span>temperature</span>
+      </a>
+   </li>
+   <li>
+      <a href="#tensile_test" title="urn:absolute/smadiont#tensile_test">
+         <span>tensile test</span>
+      </a>
+   </li>
+   <li>
+      <a href="#twinning_stress" title="urn:absolute/smadiont#twinning_stress">
+         <span>twinning stress</span>
+      </a>
+   </li>
+   <li>
+      <a href="#vacuum_permeability" title="urn:absolute/smadiont#vacuum_permeability">
+         <span>vacuum permeability</span>
+      </a>
+   </li>
+   <li>
+      <a href="#vacuum_permittivity" title="urn:absolute/smadiont#vacuum_permittivity">
+         <span>vacuum permittivity</span>
+      </a>
+   </li>
+   <li>
+      <a href="#wire_actuator" title="urn:absolute/smadiont#wire_actuator">
+         <span>wire actuator</span>
+      </a>
+   </li>
+   <li>
+      <a href="#yeoh_minR" title="urn:absolute/smadiont#yeoh_minR">
+         <span>yeoh min r</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">
+         <span>yeoh vector</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">
+         <span>yeoh vector 1</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">
+         <span>yeoh vector 2</span>
+      </a>
+   </li>
+   <li>
+      <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">
+         <span>yeoh vector 3</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">
+         <span>young modulus</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus_initial_gradient"
+         title="urn:absolute/smadiont#young_modulus_initial_gradient">
+         <span>young modulus initial gradient</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus_minR" title="urn:absolute/smadiont#young_modulus_minR">
+         <span>young modulus min r</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">
+         <span>young modulus neo hookean</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus_Neo_Hookean_initial_gradient"
+         title="urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient">
+         <span>young modulus neo hookean initial gradient</span>
+      </a>
+   </li>
+   <li>
+      <a href="#young_modulus_Neo_Hookean_minR"
+         title="urn:absolute/smadiont#young_modulus_Neo_Hookean_minR">
+         <span>young modulus neo hookean min r</span>
+      </a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#corresponds_with" title="urn:absolute/smadiont#corresponds_with">corresponds with</a>
+   </li>
+   <li>
+      <a href="#curve_param1" title="urn:absolute/smadiont#curve_param1">curve parameter 1</a>
+   </li>
+   <li>
+      <a href="#curve_param2" title="urn:absolute/smadiont#curve_param2">curve parameter 2</a>
+   </li>
+   <li>
+      <a href="#determined_with" title="urn:absolute/smadiont#determined_with">determined with</a>
+   </li>
+   <li>
+      <a href="#has_boundary_condition" title="urn:absolute/smadiont#has_boundary_condition">has boundary condition</a>
+   </li>
+   <li>
+      <a href="#has_curve" title="urn:absolute/smadiont#has_curve">has curve</a>
+   </li>
+   <li>
+      <a href="#has_input" title="urn:absolute/smadiont#has_input">has input</a>
+   </li>
+   <li>
+      <a href="#has_input_characteristic_curve"
+         title="urn:absolute/smadiont#has_input_characteristic_curve">has input characteristic curve</a>
+   </li>
+   <li>
+      <a href="#has_input_parameter" title="urn:absolute/smadiont#has_input_parameter">has input parameter</a>
+   </li>
+   <li>
+      <a href="#has_output" title="urn:absolute/smadiont#has_output">has output</a>
+   </li>
+   <li>
+      <a href="#has_parameter" title="urn:absolute/smadiont#has_parameter">has parameter</a>
+   </li>
+   <li>
+      <a href="#has_tuple" title="urn:absolute/smadiont#has_tuple">has tuple</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#has_column" title="urn:absolute/smadiont#has_column">has column</a>
+   </li>
+   <li>
+      <a href="#has_description" title="urn:absolute/smadiont#has_description">has description</a>
+   </li>
+   <li>
+      <a href="#has_equation" title="urn:absolute/smadiont#has_equation">has equation</a>
+   </li>
+   <li>
+      <a href="#has_name" title="urn:absolute/smadiont#has_name">has name</a>
+   </li>
+   <li>
+      <a href="#has_row" title="urn:absolute/smadiont#has_row">has row</a>
+   </li>
+   <li>
+      <a href="#has_symbol" title="urn:absolute/smadiont#has_symbol">has symbol</a>
+   </li>
+   <li>
+      <a href="#has_unit" title="urn:absolute/smadiont#has_unit">has unit</a>
+   </li>
+   <li>
+      <a href="#has_value" title="urn:absolute/smadiont#has_value">has value</a>
+   </li>
+</ul>
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">SmaDi-Ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">Ontology for the SmaDi-OBDMA-System</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for SmaDi-Ontology classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by SmaDi-Ontology.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="classes">
+   <h3 id="classes-headline" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#austenite_finish_temperature"
+            title="urn:absolute/smadiont#austenite_finish_temperature">Austenite finish temperature</a>
+      </li>
+      <li>
+         <a href="#austenite_start_temperature"
+            title="urn:absolute/smadiont#austenite_start_temperature">Austenite start temperature</a>
+      </li>
+      <li>
+         <a href="#component_curves" title="urn:absolute/smadiont#component_curves">
+            <span>component curves</span>
+         </a>
+      </li>
+      <li>
+         <a href="#component_level" title="urn:absolute/smadiont#component_level">
+            <span>component level</span>
+         </a>
+      </li>
+      <li>
+         <a href="#continuum_level" title="urn:absolute/smadiont#continuum_level">
+            <span>continuum level</span>
+         </a>
+      </li>
+      <li>
+         <a href="#curve_magnetic_stress" title="urn:absolute/smadiont#curve_magnetic_stress">
+            <span>curve magnetic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+      </li>
+      <li>
+         <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+      </li>
+      <li>
+         <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">
+            <span>dielectric strength</span>
+         </a>
+      </li>
+      <li>
+         <a href="#E-modulus_austenite" title="urn:absolute/smadiont#E-modulus_austenite">E-modulus austenite</a>
+      </li>
+      <li>
+         <a href="#E-modulus_de-twinned_martensite"
+            title="urn:absolute/smadiont#E-modulus_de-twinned_martensite">E-modulus de-twinned martensite</a>
+      </li>
+      <li>
+         <a href="#E-modulus_twinned_martensite"
+            title="urn:absolute/smadiont#E-modulus_twinned_martensite">E-modulus twinned martensite</a>
+      </li>
+      <li>
+         <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">
+            <span>elastic parameters</span>
+         </a>
+      </li>
+      <li>
+         <a href="#electric_field" title="urn:absolute/smadiont#electric_field">
+            <span>electric field</span>
+         </a>
+      </li>
+      <li>
+         <a href="#electric_permittivity_parameters"
+            title="urn:absolute/smadiont#electric_permittivity_parameters">
+            <span>electric permittivity parameters</span>
+         </a>
+      </li>
+      <li>
+         <a href="#electrostatic_pressure_model"
+            title="urn:absolute/smadiont#electrostatic_pressure_model">
+            <span>electrostatic pressure model</span>
+         </a>
+      </li>
+      <li>
+         <a href="#flux_density" title="urn:absolute/smadiont#flux_density">
+            <span>flux density</span>
+         </a>
+      </li>
+      <li>
+         <a href="#hardening_parameter" title="urn:absolute/smadiont#hardening_parameter">
+            <span>hardening parameter</span>
+         </a>
+      </li>
+      <li>
+         <a href="#hysteresis_martensite_content"
+            title="urn:absolute/smadiont#hysteresis_martensite_content">
+            <span>hysteresis martensite content</span>
+         </a>
+      </li>
+      <li>
+         <a href="#identification_parameters" title="urn:absolute/smadiont#identification_parameters">
+            <span>identification parameters</span>
+         </a>
+      </li>
+      <li>
+         <a href="#initial_strain" title="urn:absolute/smadiont#initial_strain">
+            <span>initial strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#initial_stress" title="urn:absolute/smadiont#initial_stress">
+            <span>initial stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#inverse_permittivity_at_constant_mechanic_strain"
+            title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain">
+            <span>inverse permittivity at constant mechanic strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#inverse_permittivity_at_constant_mechanic_stress"
+            title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress">
+            <span>inverse permittivity at constant mechanic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#lattice_constant" title="urn:absolute/smadiont#lattice_constant">
+            <span>lattice constant</span>
+         </a>
+      </li>
+      <li>
+         <a href="#lattice_constant_a" title="urn:absolute/smadiont#lattice_constant_a">
+            <span>lattice constant a</span>
+         </a>
+      </li>
+      <li>
+         <a href="#lattice_constant_c" title="urn:absolute/smadiont#lattice_constant_c">
+            <span>lattice constant c</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mag_energy_density" title="urn:absolute/smadiont#mag_energy_density">
+            <span>mag energy density</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">
+            <span>magnetic curve</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_curve_easy_axis" title="urn:absolute/smadiont#magnetic_curve_easy_axis">
+            <span>magnetic curve easy axis</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_curve_hard_axis" title="urn:absolute/smadiont#magnetic_curve_hard_axis">
+            <span>magnetic curve hard axis</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_field_strength" title="urn:absolute/smadiont#magnetic_field_strength">
+            <span>magnetic field strength</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_polarization" title="urn:absolute/smadiont#magnetic_polarization">
+            <span>magnetic polarization</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetic_stress" title="urn:absolute/smadiont#magnetic_stress">
+            <span>magnetic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#magnetization" title="urn:absolute/smadiont#magnetization">
+            <span>magnetization</span>
+         </a>
+      </li>
+      <li>
+         <a href="#martensite_content" title="urn:absolute/smadiont#martensite_content">
+            <span>martensite content</span>
+         </a>
+      </li>
+      <li>
+         <a href="#martensite_finish_temperature"
+            title="urn:absolute/smadiont#martensite_finish_temperature">
+            <span>martensite finish temperature</span>
+         </a>
+      </li>
+      <li>
+         <a href="#martensite_start_temperature"
+            title="urn:absolute/smadiont#martensite_start_temperature">
+            <span>martensite start temperature</span>
+         </a>
+      </li>
+      <li>
+         <a href="#material" title="urn:absolute/smadiont#material">
+            <span>material</span>
+         </a>
+      </li>
+      <li>
+         <a href="#material_curves" title="urn:absolute/smadiont#material_curves">
+            <span>material curves</span>
+         </a>
+      </li>
+      <li>
+         <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">
+            <span>material parameter</span>
+         </a>
+      </li>
+      <li>
+         <a href="#max_magnetic_stress" title="urn:absolute/smadiont#max_magnetic_stress">
+            <span>max magnetic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">
+            <span>maximum blocking stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#maximum_blocking_stress_hold"
+            title="urn:absolute/smadiont#maximum_blocking_stress_hold">
+            <span>maximum blocking stress hold</span>
+         </a>
+      </li>
+      <li>
+         <a href="#maximum_blocking_stress_load"
+            title="urn:absolute/smadiont#maximum_blocking_stress_load">
+            <span>maximum blocking stress load</span>
+         </a>
+      </li>
+      <li>
+         <a href="#maximum_strain_mag" title="urn:absolute/smadiont#maximum_strain_mag">
+            <span>maximum strain mag</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanic_stress" title="urn:absolute/smadiont#mechanic_stress">
+            <span>mechanic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_compliance" title="urn:absolute/smadiont#mechanical_compliance">
+            <span>mechanical compliance</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_compliance_at_constant_electric_field"
+            title="urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field">
+            <span>mechanical compliance at constant electric field</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_compliance_at_constant_flux_density"
+            title="urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density">
+            <span>mechanical compliance at constant flux density</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_stiffness" title="urn:absolute/smadiont#mechanical_stiffness">
+            <span>mechanical stiffness</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_stiffness_at_constant_electric_field"
+            title="urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field">
+            <span>mechanical stiffness at constant electric field</span>
+         </a>
+      </li>
+      <li>
+         <a href="#mechanical_stiffness_at_constant_flux_density"
+            title="urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density">
+            <span>mechanical stiffness at constant flux density</span>
+         </a>
+      </li>
+      <li>
+         <a href="#micro_level" title="urn:absolute/smadiont#micro_level">
+            <span>micro level</span>
+         </a>
+      </li>
+      <li>
+         <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+      </li>
+      <li>
+         <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+      </li>
+      <li>
+         <a href="#MSMA-stick" title="urn:absolute/smadiont#MSMA-stick">MSMA-stick</a>
+      </li>
+      <li>
+         <a href="#PC" title="urn:absolute/smadiont#PC">
+            <span>p c</span>
+         </a>
+      </li>
+      <li>
+         <a href="#PC-material" title="urn:absolute/smadiont#PC-material">
+            <span>p c material</span>
+         </a>
+      </li>
+      <li>
+         <a href="#parameter" title="urn:absolute/smadiont#parameter">
+            <span>parameter</span>
+         </a>
+      </li>
+      <li>
+         <a href="#permittivity_at_constant_mechanic_strain"
+            title="urn:absolute/smadiont#permittivity_at_constant_mechanic_strain">
+            <span>permittivity at constant mechanic strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#permittivity_at_constant_mechanic_stress"
+            title="urn:absolute/smadiont#permittivity_at_constant_mechanic_stress">
+            <span>permittivity at constant mechanic stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#phase_transformation_temperature"
+            title="urn:absolute/smadiont#phase_transformation_temperature">
+            <span>phase transformation temperature</span>
+         </a>
+      </li>
+      <li>
+         <a href="#physical_constant" title="urn:absolute/smadiont#physical_constant">
+            <span>physical constant</span>
+         </a>
+      </li>
+      <li>
+         <a href="#piezoelectric_charge_constant"
+            title="urn:absolute/smadiont#piezoelectric_charge_constant">
+            <span>piezoelectric charge constant</span>
+         </a>
+      </li>
+      <li>
+         <a href="#piezoelectric_coupling" title="urn:absolute/smadiont#piezoelectric_coupling">
+            <span>piezoelectric coupling</span>
+         </a>
+      </li>
+      <li>
+         <a href="#piezoelectric_coupling_parameters"
+            title="urn:absolute/smadiont#piezoelectric_coupling_parameters">
+            <span>piezoelectric coupling parameters</span>
+         </a>
+      </li>
+      <li>
+         <a href="#piezoelectric_strain_constant"
+            title="urn:absolute/smadiont#piezoelectric_strain_constant">
+            <span>piezoelectric strain constant</span>
+         </a>
+      </li>
+      <li>
+         <a href="#piezoelectric_stress_constant"
+            title="urn:absolute/smadiont#piezoelectric_stress_constant">
+            <span>piezoelectric stress constant</span>
+         </a>
+      </li>
+      <li>
+         <a href="#plateau_finish_strain" title="urn:absolute/smadiont#plateau_finish_strain">
+            <span>plateau finish strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#plateau_start_strain" title="urn:absolute/smadiont#plateau_start_strain">
+            <span>plateau start strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#relative_permeability" title="urn:absolute/smadiont#relative_permeability">
+            <span>relative permeability</span>
+         </a>
+      </li>
+      <li>
+         <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">
+            <span>relative permittivity</span>
+         </a>
+      </li>
+      <li>
+         <a href="#SMA" title="urn:absolute/smadiont#SMA">
+            <span>s m a</span>
+         </a>
+      </li>
+      <li>
+         <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">
+            <span>s m a material</span>
+         </a>
+      </li>
+      <li>
+         <a href="#sample" title="urn:absolute/smadiont#sample">
+            <span>sample</span>
+         </a>
+      </li>
+      <li>
+         <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">
+            <span>state dependent quantity</span>
+         </a>
+      </li>
+      <li>
+         <a href="#strain" title="urn:absolute/smadiont#strain">
+            <span>strain</span>
+         </a>
+      </li>
+      <li>
+         <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">
+            <span>strain parameter</span>
+         </a>
+      </li>
+      <li>
+         <a href="#stress_parameter" title="urn:absolute/smadiont#stress_parameter">
+            <span>stress parameter</span>
+         </a>
+      </li>
+      <li>
+         <a href="#stress-strain_curve_elastomer"
+            title="urn:absolute/smadiont#stress-strain_curve_elastomer">
+            <span>stress strain curve elastomer</span>
+         </a>
+      </li>
+      <li>
+         <a href="#stress-strain_curve_martensite"
+            title="urn:absolute/smadiont#stress-strain_curve_martensite">
+            <span>stress strain curve martensite</span>
+         </a>
+      </li>
+      <li>
+         <a href="#temperature" title="urn:absolute/smadiont#temperature">
+            <span>temperature</span>
+         </a>
+      </li>
+      <li>
+         <a href="#tensile_test" title="urn:absolute/smadiont#tensile_test">
+            <span>tensile test</span>
+         </a>
+      </li>
+      <li>
+         <a href="#twinning_stress" title="urn:absolute/smadiont#twinning_stress">
+            <span>twinning stress</span>
+         </a>
+      </li>
+      <li>
+         <a href="#vacuum_permeability" title="urn:absolute/smadiont#vacuum_permeability">
+            <span>vacuum permeability</span>
+         </a>
+      </li>
+      <li>
+         <a href="#vacuum_permittivity" title="urn:absolute/smadiont#vacuum_permittivity">
+            <span>vacuum permittivity</span>
+         </a>
+      </li>
+      <li>
+         <a href="#wire_actuator" title="urn:absolute/smadiont#wire_actuator">
+            <span>wire actuator</span>
+         </a>
+      </li>
+      <li>
+         <a href="#yeoh_minR" title="urn:absolute/smadiont#yeoh_minR">
+            <span>yeoh min r</span>
+         </a>
+      </li>
+      <li>
+         <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">
+            <span>yeoh vector</span>
+         </a>
+      </li>
+      <li>
+         <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">
+            <span>yeoh vector 1</span>
+         </a>
+      </li>
+      <li>
+         <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">
+            <span>yeoh vector 2</span>
+         </a>
+      </li>
+      <li>
+         <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">
+            <span>yeoh vector 3</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">
+            <span>young modulus</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus_initial_gradient"
+            title="urn:absolute/smadiont#young_modulus_initial_gradient">
+            <span>young modulus initial gradient</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus_minR" title="urn:absolute/smadiont#young_modulus_minR">
+            <span>young modulus min r</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">
+            <span>young modulus neo hookean</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus_Neo_Hookean_initial_gradient"
+            title="urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient">
+            <span>young modulus neo hookean initial gradient</span>
+         </a>
+      </li>
+      <li>
+         <a href="#young_modulus_Neo_Hookean_minR"
+            title="urn:absolute/smadiont#young_modulus_Neo_Hookean_minR">
+            <span>young modulus neo hookean min r</span>
+         </a>
+      </li>
+   </ul>
+   <div class="entity" id="austenite_finish_temperature">
+      <h3>Austenite finish temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#austenite_finish_temperature</p>
+      <div class="comment">
+         <span class="markdown">Indicates the temperature at which the transformation from martensite to austenite is completed</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#phase_transformation_temperature"
+               title="urn:absolute/smadiont#phase_transformation_temperature">phase transformation temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="austenite_start_temperature">
+      <h3>Austenite start temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#austenite_start_temperature</p>
+      <div class="comment">
+         <span class="markdown">Indicates the temperature at which the transformation from martensite to austenite has started</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#phase_transformation_temperature"
+               title="urn:absolute/smadiont#phase_transformation_temperature">phase transformation temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="component_curves">
+      <h3>component curves<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#component_curves</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#characteristic_curve"
+               target="_blank"
+               title="urn:absolute/smadiont#characteristic_curve">characteristic curve</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="component_level">
+      <h3>component level<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#component_level</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_levels"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_levels">elements of levels</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#MSMA-stick" title="urn:absolute/smadiont#MSMA-stick">MSMA-stick</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#wire_actuator" title="urn:absolute/smadiont#wire_actuator">wire actuator</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="continuum_level">
+      <h3>continuum level<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#continuum_level</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_levels"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_levels">elements of levels</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="curve_magnetic_stress">
+      <h3>curve magnetic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#curve_magnetic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="DE">
+      <h3>DE<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#DE</p>
+      <div class="comment">
+         <span class="markdown">Dielectric elastomer transducers consist of thin elastomer films coated with flexible electrodes. Application of an electric field results in electrostatic pressure, which causes deformation.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_materialtypes"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_materialtypes">elements of materialtypes</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="DE-material">
+      <h3>DE-material<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#DE-material</p>
+      <div class="comment">
+         <span class="markdown">Material having dielectrical properties</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="dielectric_strength">
+      <h3>dielectric strength<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#dielectric_strength</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_hold"
+               title="urn:absolute/smadiont#maximum_blocking_stress_hold">maximum blocking stress hold</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_load"
+               title="urn:absolute/smadiont#maximum_blocking_stress_load">maximum blocking stress load</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">relative permittivity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="E-modulus_austenite">
+      <h3>E-modulus austenite<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#E-modulus_austenite</p>
+      <div class="comment">
+         <span class="markdown">Young modulus for austenite</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="E-modulus_de-twinned_martensite">
+      <h3>E-modulus de-twinned martensite<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#E-modulus_de-twinned_martensite</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="E-modulus_twinned_martensite">
+      <h3>E-modulus twinned martensite<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#E-modulus_twinned_martensite</p>
+      <div class="comment">
+         <span class="markdown">Specifies the young modulus for martensite in the fully twinned state</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="elastic_parameters">
+      <h3>elastic parameters<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#elastic_parameters</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#E-modulus_austenite" title="urn:absolute/smadiont#E-modulus_austenite">E-modulus austenite</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#E-modulus_de-twinned_martensite"
+               title="urn:absolute/smadiont#E-modulus_de-twinned_martensite">E-modulus de-twinned martensite</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#E-modulus_twinned_martensite"
+               title="urn:absolute/smadiont#E-modulus_twinned_martensite">E-modulus twinned martensite</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="electric_field">
+      <h3>electric field<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#electric_field</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="electric_permittivity_parameters">
+      <h3>electric permittivity parameters<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#electric_permittivity_parameters</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#inverse_permittivity_at_constant_mechanic_strain"
+               title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain">inverse permittivity at constant mechanic strain</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#inverse_permittivity_at_constant_mechanic_stress"
+               title="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress">inverse permittivity at constant mechanic stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#permittivity_at_constant_mechanic_strain"
+               title="urn:absolute/smadiont#permittivity_at_constant_mechanic_strain">permittivity at constant mechanic strain</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#permittivity_at_constant_mechanic_stress"
+               title="urn:absolute/smadiont#permittivity_at_constant_mechanic_stress">permittivity at constant mechanic stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="electrostatic_pressure_model">
+      <h3>electrostatic pressure model<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#electrostatic_pressure_model</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="flux_density">
+      <h3>flux density<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#flux_density</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="hardening_parameter">
+      <h3>hardening parameter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#hardening_parameter</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="hysteresis_martensite_content">
+      <h3>hysteresis martensite content<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#hysteresis_martensite_content</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="identification_parameters">
+      <h3>identification parameters<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#identification_parameters</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#parameter" title="urn:absolute/smadiont#parameter">parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#initial_strain" title="urn:absolute/smadiont#initial_strain">initial strain</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#initial_stress" title="urn:absolute/smadiont#initial_stress">initial stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="initial_strain">
+      <h3>initial strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#initial_strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#identification_parameters" title="urn:absolute/smadiont#identification_parameters">identification parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="initial_stress">
+      <h3>initial stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#initial_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#identification_parameters" title="urn:absolute/smadiont#identification_parameters">identification parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="inverse_permittivity_at_constant_mechanic_strain">
+      <h3>inverse permittivity at constant mechanic strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#electric_permittivity_parameters"
+               title="urn:absolute/smadiont#electric_permittivity_parameters">electric permittivity parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="inverse_permittivity_at_constant_mechanic_stress">
+      <h3>inverse permittivity at constant mechanic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#electric_permittivity_parameters"
+               title="urn:absolute/smadiont#electric_permittivity_parameters">electric permittivity parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="lattice_constant">
+      <h3>lattice constant<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#lattice_constant</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#lattice_constant_a" title="urn:absolute/smadiont#lattice_constant_a">lattice constant a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#lattice_constant_c" title="urn:absolute/smadiont#lattice_constant_c">lattice constant c</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="lattice_constant_a">
+      <h3>lattice constant a<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#lattice_constant_a</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#lattice_constant" title="urn:absolute/smadiont#lattice_constant">lattice constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#lattice_constant_c" title="urn:absolute/smadiont#lattice_constant_c">lattice constant c</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="lattice_constant_c">
+      <h3>lattice constant c<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#lattice_constant_c</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#lattice_constant" title="urn:absolute/smadiont#lattice_constant">lattice constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#lattice_constant_a" title="urn:absolute/smadiont#lattice_constant_a">lattice constant a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mag_energy_density">
+      <h3>mag energy density<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mag_energy_density</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_curve">
+      <h3>magnetic curve<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_curve</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#magnetic_curve_easy_axis" title="urn:absolute/smadiont#magnetic_curve_easy_axis">magnetic curve easy axis</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve_hard_axis" title="urn:absolute/smadiont#magnetic_curve_hard_axis">magnetic curve hard axis</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_curve_easy_axis">
+      <h3>magnetic curve easy axis<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_curve_easy_axis</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#magnetic_curve_hard_axis" title="urn:absolute/smadiont#magnetic_curve_hard_axis">magnetic curve hard axis</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_curve_hard_axis">
+      <h3>magnetic curve hard axis<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_curve_hard_axis</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#magnetic_curve_easy_axis" title="urn:absolute/smadiont#magnetic_curve_easy_axis">magnetic curve easy axis</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_field_strength">
+      <h3>magnetic field strength<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_field_strength</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_polarization">
+      <h3>magnetic polarization<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_polarization</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetic_stress">
+      <h3>magnetic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#stress_parameter" title="urn:absolute/smadiont#stress_parameter">stress parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="magnetization">
+      <h3>magnetization<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#magnetization</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="martensite_content">
+      <h3>martensite content<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#martensite_content</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="martensite_finish_temperature">
+      <h3>martensite finish temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#martensite_finish_temperature</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#phase_transformation_temperature"
+               title="urn:absolute/smadiont#phase_transformation_temperature">phase transformation temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="martensite_start_temperature">
+      <h3>martensite start temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#martensite_start_temperature</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#phase_transformation_temperature"
+               title="urn:absolute/smadiont#phase_transformation_temperature">phase transformation temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="material">
+      <h3>material<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#material</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#micro_level" title="urn:absolute/smadiont#micro_level">micro level</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#sample" title="urn:absolute/smadiont#sample">sample</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="material_curves">
+      <h3>material curves<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#material_curves</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#characteristic_curve"
+               target="_blank"
+               title="urn:absolute/smadiont#characteristic_curve">characteristic curve</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#curve_magnetic_stress" title="urn:absolute/smadiont#curve_magnetic_stress">curve magnetic stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="material_parameter">
+      <h3>material parameter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#material_parameter</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#parameter" title="urn:absolute/smadiont#parameter">parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">dielectric strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#electric_permittivity_parameters"
+               title="urn:absolute/smadiont#electric_permittivity_parameters">electric permittivity parameters</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#hardening_parameter" title="urn:absolute/smadiont#hardening_parameter">hardening parameter</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#lattice_constant" title="urn:absolute/smadiont#lattice_constant">lattice constant</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#max_magnetic_stress" title="urn:absolute/smadiont#max_magnetic_stress">max magnetic stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mechanical_compliance" title="urn:absolute/smadiont#mechanical_compliance">mechanical compliance</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mechanical_stiffness" title="urn:absolute/smadiont#mechanical_stiffness">mechanical stiffness</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#phase_transformation_temperature"
+               title="urn:absolute/smadiont#phase_transformation_temperature">phase transformation temperature</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#piezoelectric_coupling_parameters"
+               title="urn:absolute/smadiont#piezoelectric_coupling_parameters">piezoelectric coupling parameters</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">relative permittivity</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">strain parameter</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#twinning_stress" title="urn:absolute/smadiont#twinning_stress">twinning stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="max_magnetic_stress">
+      <h3>max magnetic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#max_magnetic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="maximum_blocking_stress">
+      <h3>maximum blocking stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#maximum_blocking_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#maximum_blocking_stress_hold"
+               title="urn:absolute/smadiont#maximum_blocking_stress_hold">maximum blocking stress hold</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_load"
+               title="urn:absolute/smadiont#maximum_blocking_stress_load">maximum blocking stress load</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">dielectric strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_hold"
+               title="urn:absolute/smadiont#maximum_blocking_stress_hold">maximum blocking stress hold</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_load"
+               title="urn:absolute/smadiont#maximum_blocking_stress_load">maximum blocking stress load</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">relative permittivity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="maximum_blocking_stress_hold">
+      <h3>maximum blocking stress hold<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#maximum_blocking_stress_hold</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">dielectric strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_load"
+               title="urn:absolute/smadiont#maximum_blocking_stress_load">maximum blocking stress load</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">relative permittivity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="maximum_blocking_stress_load">
+      <h3>maximum blocking stress load<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#maximum_blocking_stress_load</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">dielectric strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_hold"
+               title="urn:absolute/smadiont#maximum_blocking_stress_hold">maximum blocking stress hold</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permittivity" title="urn:absolute/smadiont#relative_permittivity">relative permittivity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="maximum_strain_mag">
+      <h3>maximum strain mag<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#maximum_strain_mag</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">strain parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanic_stress">
+      <h3>mechanic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#stress_parameter" title="urn:absolute/smadiont#stress_parameter">stress parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_compliance">
+      <h3>mechanical compliance<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_compliance</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#mechanical_compliance_at_constant_electric_field"
+               title="urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field">mechanical compliance at constant electric field</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mechanical_compliance_at_constant_flux_density"
+               title="urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density">mechanical compliance at constant flux density</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_compliance_at_constant_electric_field">
+      <h3>mechanical compliance at constant electric field<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#mechanical_compliance" title="urn:absolute/smadiont#mechanical_compliance">mechanical compliance</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_compliance_at_constant_flux_density">
+      <h3>mechanical compliance at constant flux density<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#mechanical_compliance" title="urn:absolute/smadiont#mechanical_compliance">mechanical compliance</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_stiffness">
+      <h3>mechanical stiffness<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_stiffness</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#mechanical_stiffness_at_constant_electric_field"
+               title="urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field">mechanical stiffness at constant electric field</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mechanical_stiffness_at_constant_flux_density"
+               title="urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density">mechanical stiffness at constant flux density</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_stiffness_at_constant_electric_field">
+      <h3>mechanical stiffness at constant electric field<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#mechanical_stiffness" title="urn:absolute/smadiont#mechanical_stiffness">mechanical stiffness</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="mechanical_stiffness_at_constant_flux_density">
+      <h3>mechanical stiffness at constant flux density<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#mechanical_stiffness" title="urn:absolute/smadiont#mechanical_stiffness">mechanical stiffness</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="micro_level">
+      <h3>micro level<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#micro_level</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_levels"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_levels">elements of levels</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#material" title="urn:absolute/smadiont#material">material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#sample" title="urn:absolute/smadiont#sample">sample</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="MSMA">
+      <h3>MSMA<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#MSMA</p>
+      <div class="comment">
+         <span class="markdown">MSMA are shape memory alloys having next to the themic shape memory effect also a magnetic shape memory effect</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_materialtypes"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_materialtypes">elements of materialtypes</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-stick" title="urn:absolute/smadiont#MSMA-stick">MSMA-stick</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="MSMA-material">
+      <h3>MSMA-material<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#MSMA-material</p>
+      <div class="comment">
+         <span class="markdown">Material having the magnetic shape memory effect</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="MSMA-stick">
+      <h3>MSMA-stick<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#MSMA-stick</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#component_level" title="urn:absolute/smadiont#component_level">component level</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PC">
+      <h3>p c<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#PC</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_materialtypes"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_materialtypes">elements of materialtypes</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PC-material">
+      <h3>p c material<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#PC-material</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="parameter">
+      <h3>parameter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#parameter</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#physical_quantity"
+               target="_blank"
+               title="urn:absolute/smadiont#physical_quantity">physical quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#identification_parameters" title="urn:absolute/smadiont#identification_parameters">identification parameters</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#physical_constant" title="urn:absolute/smadiont#physical_constant">physical constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="permittivity_at_constant_mechanic_strain">
+      <h3>permittivity at constant mechanic strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#permittivity_at_constant_mechanic_strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#electric_permittivity_parameters"
+               title="urn:absolute/smadiont#electric_permittivity_parameters">electric permittivity parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="permittivity_at_constant_mechanic_stress">
+      <h3>permittivity at constant mechanic stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#permittivity_at_constant_mechanic_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#electric_permittivity_parameters"
+               title="urn:absolute/smadiont#electric_permittivity_parameters">electric permittivity parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="phase_transformation_temperature">
+      <h3>phase transformation temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#phase_transformation_temperature</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#austenite_finish_temperature"
+               title="urn:absolute/smadiont#austenite_finish_temperature">Austenite finish temperature</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#austenite_start_temperature"
+               title="urn:absolute/smadiont#austenite_start_temperature">Austenite start temperature</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#martensite_finish_temperature"
+               title="urn:absolute/smadiont#martensite_finish_temperature">martensite finish temperature</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#martensite_start_temperature"
+               title="urn:absolute/smadiont#martensite_start_temperature">martensite start temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="physical_constant">
+      <h3>physical constant<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#physical_constant</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#parameter" title="urn:absolute/smadiont#parameter">parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#vacuum_permeability" title="urn:absolute/smadiont#vacuum_permeability">vacuum permeability</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#vacuum_permittivity" title="urn:absolute/smadiont#vacuum_permittivity">vacuum permittivity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="piezoelectric_charge_constant">
+      <h3>piezoelectric charge constant<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#piezoelectric_charge_constant</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#piezoelectric_coupling_parameters"
+               title="urn:absolute/smadiont#piezoelectric_coupling_parameters">piezoelectric coupling parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="piezoelectric_coupling">
+      <h3>piezoelectric coupling<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#piezoelectric_coupling</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#piezoelectric_coupling_parameters"
+               title="urn:absolute/smadiont#piezoelectric_coupling_parameters">piezoelectric coupling parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="piezoelectric_coupling_parameters">
+      <h3>piezoelectric coupling parameters<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#piezoelectric_coupling_parameters</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#piezoelectric_charge_constant"
+               title="urn:absolute/smadiont#piezoelectric_charge_constant">piezoelectric charge constant</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#piezoelectric_coupling" title="urn:absolute/smadiont#piezoelectric_coupling">piezoelectric coupling</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#piezoelectric_strain_constant"
+               title="urn:absolute/smadiont#piezoelectric_strain_constant">piezoelectric strain constant</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#piezoelectric_stress_constant"
+               title="urn:absolute/smadiont#piezoelectric_stress_constant">piezoelectric stress constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="piezoelectric_strain_constant">
+      <h3>piezoelectric strain constant<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#piezoelectric_strain_constant</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#piezoelectric_coupling_parameters"
+               title="urn:absolute/smadiont#piezoelectric_coupling_parameters">piezoelectric coupling parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="piezoelectric_stress_constant">
+      <h3>piezoelectric stress constant<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#piezoelectric_stress_constant</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#piezoelectric_coupling_parameters"
+               title="urn:absolute/smadiont#piezoelectric_coupling_parameters">piezoelectric coupling parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="plateau_finish_strain">
+      <h3>plateau finish strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#plateau_finish_strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">strain parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="plateau_start_strain">
+      <h3>plateau start strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#plateau_start_strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#strain_parameter" title="urn:absolute/smadiont#strain_parameter">strain parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="relative_permeability">
+      <h3>relative permeability<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#relative_permeability</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="relative_permittivity">
+      <h3>relative permittivity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#relative_permittivity</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#dielectric_strength" title="urn:absolute/smadiont#dielectric_strength">dielectric strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress" title="urn:absolute/smadiont#maximum_blocking_stress">maximum blocking stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_hold"
+               title="urn:absolute/smadiont#maximum_blocking_stress_hold">maximum blocking stress hold</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#maximum_blocking_stress_load"
+               title="urn:absolute/smadiont#maximum_blocking_stress_load">maximum blocking stress load</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="SMA">
+      <h3>s m a<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#SMA</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#elements_of_materialtypes"
+               target="_blank"
+               title="urn:absolute/smadiont#elements_of_materialtypes">elements of materialtypes</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#wire_actuator" title="urn:absolute/smadiont#wire_actuator">wire actuator</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA-material" title="urn:absolute/smadiont#SMA-material">s m a material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="SMA-material">
+      <h3>s m a material<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#SMA-material</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#DE" title="urn:absolute/smadiont#DE">DE</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#DE-material" title="urn:absolute/smadiont#DE-material">DE-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA" title="urn:absolute/smadiont#MSMA">MSMA</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#MSMA-material" title="urn:absolute/smadiont#MSMA-material">MSMA-material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC" title="urn:absolute/smadiont#PC">p c</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PC-material" title="urn:absolute/smadiont#PC-material">p c material</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="sample">
+      <h3>sample<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#sample</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#micro_level" title="urn:absolute/smadiont#micro_level">micro level</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#material" title="urn:absolute/smadiont#material">material</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="state_dependent_quantity">
+      <h3>state dependent quantity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#state_dependent_quantity</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#physical_quantity"
+               target="_blank"
+               title="urn:absolute/smadiont#physical_quantity">physical quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#electric_field" title="urn:absolute/smadiont#electric_field">electric field</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#flux_density" title="urn:absolute/smadiont#flux_density">flux density</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mag_energy_density" title="urn:absolute/smadiont#mag_energy_density">mag energy density</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_field_strength" title="urn:absolute/smadiont#magnetic_field_strength">magnetic field strength</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_polarization" title="urn:absolute/smadiont#magnetic_polarization">magnetic polarization</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetization" title="urn:absolute/smadiont#magnetization">magnetization</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#martensite_content" title="urn:absolute/smadiont#martensite_content">martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#relative_permeability" title="urn:absolute/smadiont#relative_permeability">relative permeability</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#strain" title="urn:absolute/smadiont#strain">strain</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress_parameter" title="urn:absolute/smadiont#stress_parameter">stress parameter</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#temperature" title="urn:absolute/smadiont#temperature">temperature</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="strain">
+      <h3>strain<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#strain</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="strain_parameter">
+      <h3>strain parameter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#strain_parameter</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#maximum_strain_mag" title="urn:absolute/smadiont#maximum_strain_mag">maximum strain mag</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#plateau_finish_strain" title="urn:absolute/smadiont#plateau_finish_strain">plateau finish strain</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#plateau_start_strain" title="urn:absolute/smadiont#plateau_start_strain">plateau start strain</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="stress_parameter">
+      <h3>stress parameter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#stress_parameter</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#magnetic_stress" title="urn:absolute/smadiont#magnetic_stress">magnetic stress</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#mechanic_stress" title="urn:absolute/smadiont#mechanic_stress">mechanic stress</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="stress-strain_curve_elastomer">
+      <h3>stress strain curve elastomer<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#stress-strain_curve_elastomer</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_martensite"
+               title="urn:absolute/smadiont#stress-strain_curve_martensite">stress strain curve martensite</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="stress-strain_curve_martensite">
+      <h3>stress strain curve martensite<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#stress-strain_curve_martensite</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#component_curves" title="urn:absolute/smadiont#component_curves">component curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#hysteresis_martensite_content"
+               title="urn:absolute/smadiont#hysteresis_martensite_content">hysteresis martensite content</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#magnetic_curve" title="urn:absolute/smadiont#magnetic_curve">magnetic curve</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#material_curves" title="urn:absolute/smadiont#material_curves">material curves</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#stress-strain_curve_elastomer"
+               title="urn:absolute/smadiont#stress-strain_curve_elastomer">stress strain curve elastomer</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="temperature">
+      <h3>temperature<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#temperature</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#state_dependent_quantity" title="urn:absolute/smadiont#state_dependent_quantity">state dependent quantity</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="tensile_test">
+      <h3>tensile test<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#tensile_test</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#measurement"
+               target="_blank"
+               title="urn:absolute/smadiont#measurement">measurement</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="twinning_stress">
+      <h3>twinning stress<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#twinning_stress</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#material_parameter" title="urn:absolute/smadiont#material_parameter">material parameter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="vacuum_permeability">
+      <h3>vacuum permeability<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#vacuum_permeability</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#physical_constant" title="urn:absolute/smadiont#physical_constant">physical constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="vacuum_permittivity">
+      <h3>vacuum permittivity<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#vacuum_permittivity</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#physical_constant" title="urn:absolute/smadiont#physical_constant">physical constant</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="wire_actuator">
+      <h3>wire actuator<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#wire_actuator</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#component_level" title="urn:absolute/smadiont#component_level">component level</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SMA" title="urn:absolute/smadiont#SMA">s m a</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="yeoh_minR">
+      <h3>yeoh min r<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#yeoh_minR</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Yeoh_vector">
+      <h3>yeoh vector<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#Yeoh_vector</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Yeoh_vector_1">
+      <h3>yeoh vector 1<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#Yeoh_vector_1</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Yeoh_vector_2">
+      <h3>yeoh vector 2<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#Yeoh_vector_2</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Yeoh_vector_3">
+      <h3>yeoh vector 3<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#Yeoh_vector_3</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus">
+      <h3>young modulus<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus_neo_Hookean" title="urn:absolute/smadiont#young_modulus_neo_Hookean">young modulus neo hookean</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus_initial_gradient">
+      <h3>young modulus initial gradient<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus_initial_gradient</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus_minR">
+      <h3>young modulus min r<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus_minR</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus_neo_Hookean">
+      <h3>young modulus neo hookean<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus_neo_Hookean</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#elastic_parameters" title="urn:absolute/smadiont#elastic_parameters">elastic parameters</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>is disjoint with</dt>
+         <dd>
+            <a href="#Yeoh_vector" title="urn:absolute/smadiont#Yeoh_vector">yeoh vector</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_1" title="urn:absolute/smadiont#Yeoh_vector_1">yeoh vector 1</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_2" title="urn:absolute/smadiont#Yeoh_vector_2">yeoh vector 2</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Yeoh_vector_3" title="urn:absolute/smadiont#Yeoh_vector_3">yeoh vector 3</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#young_modulus" title="urn:absolute/smadiont#young_modulus">young modulus</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus_Neo_Hookean_initial_gradient">
+      <h3>young modulus neo hookean initial gradient<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="young_modulus_Neo_Hookean_minR">
+      <h3>young modulus neo hookean min r<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#young_modulus_Neo_Hookean_minR</p>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="urn:absolute/smadiont#model"
+               target="_blank"
+               title="urn:absolute/smadiont#model">model</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#corresponds_with" title="urn:absolute/smadiont#corresponds_with">corresponds with</a>
+      </li>
+      <li>
+         <a href="#curve_param1" title="urn:absolute/smadiont#curve_param1">curve parameter 1</a>
+      </li>
+      <li>
+         <a href="#curve_param2" title="urn:absolute/smadiont#curve_param2">curve parameter 2</a>
+      </li>
+      <li>
+         <a href="#determined_with" title="urn:absolute/smadiont#determined_with">determined with</a>
+      </li>
+      <li>
+         <a href="#has_boundary_condition" title="urn:absolute/smadiont#has_boundary_condition">has boundary condition</a>
+      </li>
+      <li>
+         <a href="#has_curve" title="urn:absolute/smadiont#has_curve">has curve</a>
+      </li>
+      <li>
+         <a href="#has_input" title="urn:absolute/smadiont#has_input">has input</a>
+      </li>
+      <li>
+         <a href="#has_input_characteristic_curve"
+            title="urn:absolute/smadiont#has_input_characteristic_curve">has input characteristic curve</a>
+      </li>
+      <li>
+         <a href="#has_input_parameter" title="urn:absolute/smadiont#has_input_parameter">has input parameter</a>
+      </li>
+      <li>
+         <a href="#has_output" title="urn:absolute/smadiont#has_output">has output</a>
+      </li>
+      <li>
+         <a href="#has_parameter" title="urn:absolute/smadiont#has_parameter">has parameter</a>
+      </li>
+      <li>
+         <a href="#has_tuple" title="urn:absolute/smadiont#has_tuple">has tuple</a>
+      </li>
+   </ul>
+   <div class="entity" id="corresponds_with">
+      <h3>corresponds with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#corresponds_with</p>
+      <div class="comment">
+         <span class="markdown">depcits the dependance of one physical quantity to another</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="curve_param1">
+      <h3>curve parameter 1<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#curve_param1</p>
+      <div class="comment">
+         <span class="markdown">depicts the first parameter of a tuple of a characteristic curve</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="curve_param2">
+      <h3>curve parameter 2<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#curve_param2</p>
+      <div class="comment">
+         <span class="markdown">depicts the second parameter of a tuple of a characteristic curve</span>
+      </div>
+   </div>
+   <div class="entity" id="determined_with">
+      <h3>determined with<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#determined_with</p>
+      <div class="comment">
+         <span class="markdown">The data was determined with the help of linear interpolation</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_boundary_condition">
+      <h3>has boundary condition<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_boundary_condition</p>
+      <div class="comment">
+         <span class="markdown">depicts the boundary conditions of a calculation or a measurement</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_curve">
+      <h3>has curve<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_curve</p>
+      <div class="comment">
+         <span class="markdown">depicts whether an object has an associated characteristic curve</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_input">
+      <h3>has input<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_input</p>
+      <div class="comment">
+         <span class="markdown">depicts the input to a model</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+            <dt>has sub-properties</dt>
+            <dd>
+               <a href="#has_input_characteristic_curve"
+                  title="urn:absolute/smadiont#has_input_characteristic_curve">has input characteristic curve</a>
+               <sup class="type-op" title="object property">op</sup>, <a href="#has_input_parameter" title="urn:absolute/smadiont#has_input_parameter">has input parameter</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_input_characteristic_curve">
+      <h3>has input characteristic curve<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_input_characteristic_curve</p>
+      <div class="comment">
+         <span class="markdown">describes the input of a model if it is not based on single values but on a characteristic curve</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#has_input" title="urn:absolute/smadiont#has_input">has input</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_input_parameter">
+      <h3>has input parameter<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_input_parameter</p>
+      <div class="comment">
+         <span class="markdown">depicts the input of a model if it consists of single values (not curves)</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="#has_input" title="urn:absolute/smadiont#has_input">has input</a>
+               <sup class="type-op" title="object property">op</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_output">
+      <h3>has output<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_output</p>
+      <div class="comment">
+         <span class="markdown">depicts the origin of a physical quantity, e.g., the model or measurement, it is based on</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_parameter">
+      <h3>has parameter<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_parameter</p>
+      <div class="comment">
+         <span class="markdown">depicts the parameters of an object</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_tuple">
+      <h3>has tuple<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_tuple</p>
+      <div class="comment">
+         <span class="markdown">depicts the tuples, thus data points of a characteristic curve</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topObjectProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topObjectProperty">top object property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     id="dataproperties">
+   <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#has_column" title="urn:absolute/smadiont#has_column">has column</a>
+      </li>
+      <li>
+         <a href="#has_description" title="urn:absolute/smadiont#has_description">has description</a>
+      </li>
+      <li>
+         <a href="#has_equation" title="urn:absolute/smadiont#has_equation">has equation</a>
+      </li>
+      <li>
+         <a href="#has_name" title="urn:absolute/smadiont#has_name">has name</a>
+      </li>
+      <li>
+         <a href="#has_row" title="urn:absolute/smadiont#has_row">has row</a>
+      </li>
+      <li>
+         <a href="#has_symbol" title="urn:absolute/smadiont#has_symbol">has symbol</a>
+      </li>
+      <li>
+         <a href="#has_unit" title="urn:absolute/smadiont#has_unit">has unit</a>
+      </li>
+      <li>
+         <a href="#has_value" title="urn:absolute/smadiont#has_value">has value</a>
+      </li>
+   </ul>
+   <div class="entity" id="has_column">
+      <h3>has column<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_column</p>
+      <div class="comment">
+         <span class="markdown">if a physical quantity is situated in a matrix, this depicts the column number</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_description">
+      <h3>has description<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_description</p>
+      <div class="comment">
+         <span class="markdown">depicts the description of an object (e.g., meta data)</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_equation">
+      <h3>has equation<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_equation</p>
+      <div class="comment">
+         <span class="markdown">depicts the equation of a model</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_name">
+      <h3>has name<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_name</p>
+      <div class="comment">
+         <span class="markdown">depicts the name of an object</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_row">
+      <h3>has row<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_row</p>
+      <div class="comment">
+         <span class="markdown">if a physical quantity is situated in a matrix, this depicts the row number</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_symbol">
+      <h3>has symbol<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_symbol</p>
+      <div class="comment">
+         <span class="markdown">depicts the symbol of a physical quantity</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_unit">
+      <h3>has unit<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_unit</p>
+      <div class="comment">
+         <span class="markdown">depicts the unit of a physical quantity</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="has_value">
+      <h3>has value<sup class="type-dp" title="data property">dp</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> urn:absolute/smadiont#has_value</p>
+      <div class="comment">
+         <span class="markdown">depicts the value of a physical quantity</span>
+      </div>
+      <div class="description">
+         <dl>
+            <dt>has super-properties</dt>
+            <dd>
+               <a href="http://www.w3.org/2002/07/owl#topDataProperty"
+                  target="_blank"
+                  title="http://www.w3.org/2002/07/owl#topDataProperty">top data property</a>
+            </dd>
+         </dl>
+      </div>
+   </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+</div>
+</div>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

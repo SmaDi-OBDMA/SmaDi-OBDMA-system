@@ -10,7 +10,10 @@ The system contains the ontology, a SPARQL-endpoint for stating individual queri
 ## Installation
 
 The system is based on docker, therefore a docker installation is needed (https://www.docker.com/products/docker-desktop/) .
-After starting docker, the programm can be executed by clicking on run.bat (Windows)  or executing run.sh (Mac OS) (via Terminal by executing "./run.sh").
+
+The files can be downloaded either using git or otherwise clicking on the button "code" in the upper right corner and clicking on "Downlod ZIP". This zip-folder then needs to be unzipped and docker needs to be started.
+
+After starting docker, go into the folder and execute the programm by clicking on run.bat (Windows)  or executing run.sh (Mac OS) (via Terminal by executing "./run.sh").
 
 (Starting up the system could take several minutes)
 
@@ -26,6 +29,18 @@ To run docker without administrator rights, the user have to be added to the doc
 - click "add", then type the name of the account in the field "enter the object names to be used". After, click "check name" and "OK"
 
 - restart your computer.
+
+
+## The functionality of the OBDMA-System
+
+The OBDMA-system can be tested via writing SPARQL-queries directly (e.g. by using the templates provided below) or via using the provided interface.
+The terms needed for writing SPARQL-queries are given by clicking on the box "ontology".
+There, on the one hand a visual overview of the ontology and its structure is given, on the other hand, a documentation of the classes of the ontology is given.
+
+If their is interest in the internal functionality of the OBDMA-system, it is possible to look at the folder "input".
+There, the underlying database is given as SQL-file (and for convinience also some of the tables as csv-files and the UDFs additionally in "udfs.txt") and the mapping rules are given in the .obda-file.
+
+For extending or changing the underlying system, it is necessary to use, e.g. the user-interface of [Ontop](https://ontop-vkg.org/).
 
 
 ## SPARQL-templates corresponding to the presented use cases
@@ -182,3 +197,4 @@ optional{?param :determined_with ?m.
                 :has_unit ?input_unit .}}
 }
 ```
+

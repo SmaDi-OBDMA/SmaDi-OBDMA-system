@@ -180,7 +180,7 @@ const sparql={
                 :has_name ?curve .}`,
     paramabfq:`
     SELECT ?material_class ?specimen  ?parameter  ?value ?unit ?derivation 
-    ?input ?input_value ?input_unit ?description
+    ?input ?input_value ?input_unit ?metadata
 WHERE { ?param  a  :$isa ; 	
             :has_name ?parameter ;
             :has_value ?value ;
@@ -200,7 +200,7 @@ WHERE { ?param  a  :$isa ;
                   ?e   :has_name ?input.
          optional{?e   :has_value ?input_value ;
                        :has_unit ?input_unit .}}
-         optional{?m :has_description ?description .}}
+         optional{?m :has_description ?metadata .}}
 }`,
     kennlinieq:`
 SELECT ?a ?p1 ?w1 ?e1 ?p2  ?w2 ?e2 ?p3 ?w3 ?e3 ?specimen ?condition ?condition_unit ?condition_value

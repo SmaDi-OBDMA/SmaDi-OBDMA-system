@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
--- Dumped by pg_dump version 14.8 (Ubuntu 14.8-0ubuntu0.22.04.1)
+-- Dumped from database version 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpython3u WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpython3u; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION plpython3u; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpython3u IS 'PL/Python3U untrusted procedural language';
@@ -38,7 +38,7 @@ CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION dblink; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION dblink; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION dblink IS 'connect to other postgresQL databases from within a database';
@@ -52,14 +52,14 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
 
 
 --
--- Name: aggregat_type_creating_intern; Type: TYPE; Schema: public; Owner: -
+-- Name: aggregat_type_creating_intern; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.aggregat_type_creating_intern AS (
@@ -72,8 +72,10 @@ CREATE TYPE public.aggregat_type_creating_intern AS (
 );
 
 
+ALTER TYPE public.aggregat_type_creating_intern OWNER TO mena;
+
 --
--- Name: interpol_type; Type: TYPE; Schema: public; Owner: -
+-- Name: interpol_type; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.interpol_type AS (
@@ -82,8 +84,10 @@ CREATE TYPE public.interpol_type AS (
 );
 
 
+ALTER TYPE public.interpol_type OWNER TO mena;
+
 --
--- Name: matrix_filter_agg_type; Type: TYPE; Schema: public; Owner: -
+-- Name: matrix_filter_agg_type; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.matrix_filter_agg_type AS (
@@ -92,8 +96,10 @@ CREATE TYPE public.matrix_filter_agg_type AS (
 );
 
 
+ALTER TYPE public.matrix_filter_agg_type OWNER TO mena;
+
 --
--- Name: operator_types; Type: TYPE; Schema: public; Owner: -
+-- Name: operator_types; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.operator_types AS ENUM (
@@ -106,8 +112,10 @@ CREATE TYPE public.operator_types AS ENUM (
 );
 
 
+ALTER TYPE public.operator_types OWNER TO mena;
+
 --
--- Name: param_meas_time_type_creating_intern; Type: TYPE; Schema: public; Owner: -
+-- Name: param_meas_time_type_creating_intern; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.param_meas_time_type_creating_intern AS (
@@ -121,8 +129,10 @@ CREATE TYPE public.param_meas_time_type_creating_intern AS (
 );
 
 
+ALTER TYPE public.param_meas_time_type_creating_intern OWNER TO mena;
+
 --
--- Name: param_values_type_input; Type: TYPE; Schema: public; Owner: -
+-- Name: param_values_type_input; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.param_values_type_input AS (
@@ -135,8 +145,10 @@ CREATE TYPE public.param_values_type_input AS (
 );
 
 
+ALTER TYPE public.param_values_type_input OWNER TO mena;
+
 --
--- Name: param_values_type_output; Type: TYPE; Schema: public; Owner: -
+-- Name: param_values_type_output; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.param_values_type_output AS (
@@ -150,8 +162,10 @@ CREATE TYPE public.param_values_type_output AS (
 );
 
 
+ALTER TYPE public.param_values_type_output OWNER TO mena;
+
 --
--- Name: param_values_type_output_matrix; Type: TYPE; Schema: public; Owner: -
+-- Name: param_values_type_output_matrix; Type: TYPE; Schema: public; Owner: mena
 --
 
 CREATE TYPE public.param_values_type_output_matrix AS (
@@ -165,8 +179,10 @@ CREATE TYPE public.param_values_type_output_matrix AS (
 );
 
 
+ALTER TYPE public.param_values_type_output_matrix OWNER TO mena;
+
 --
--- Name: aggregat_simple(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: aggregat_simple(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.aggregat_simple(_function character varying, _params double precision[]) RETURNS double precision
@@ -183,8 +199,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.aggregat_simple(_function character varying, _params double precision[]) OWNER TO mena;
+
 --
--- Name: array_contained(character varying[], character varying[], integer); Type: FUNCTION; Schema: public; Owner: -
+-- Name: array_contained(character varying[], character varying[], integer); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.array_contained(array1 character varying[], array2 character varying[], number_same_el integer) RETURNS boolean
@@ -207,8 +225,10 @@ CREATE FUNCTION public.array_contained(array1 character varying[], array2 charac
  $$;
 
 
+ALTER FUNCTION public.array_contained(array1 character varying[], array2 character varying[], number_same_el integer) OWNER TO mena;
+
 --
--- Name: calc_flux_density(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_flux_density(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_flux_density(_params double precision[]) RETURNS double precision[]
@@ -220,8 +240,10 @@ Begin
 END$$;
 
 
+ALTER FUNCTION public.calc_flux_density(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_mag_energy_density(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_mag_energy_density(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_mag_energy_density(ar double precision[]) RETURNS double precision[]
@@ -250,8 +272,10 @@ return return_array
 $$;
 
 
+ALTER FUNCTION public.calc_mag_energy_density(ar double precision[]) OWNER TO mena;
+
 --
--- Name: calc_mag_polarization(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_mag_polarization(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_mag_polarization(_params double precision[]) RETURNS double precision[]
@@ -263,8 +287,10 @@ Begin
 END$$;
 
 
+ALTER FUNCTION public.calc_mag_polarization(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_magn_stress(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_magn_stress(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_magn_stress(ar double precision[]) RETURNS double precision[]
@@ -288,8 +314,10 @@ return [axis_one[0], calc]
 $$;
 
 
+ALTER FUNCTION public.calc_magn_stress(ar double precision[]) OWNER TO mena;
+
 --
--- Name: calc_magnetization(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_magnetization(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_magnetization(_params double precision[]) RETURNS double precision[]
@@ -306,8 +334,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.calc_magnetization(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_martensite_asc(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_martensite_asc(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_martensite_asc(_params double precision[]) RETURNS double precision[]
@@ -329,8 +359,10 @@ CREATE FUNCTION public.calc_martensite_asc(_params double precision[]) RETURNS d
  $$;
 
 
+ALTER FUNCTION public.calc_martensite_asc(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_martensite_desc(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_martensite_desc(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_martensite_desc(_params double precision[]) RETURNS double precision[]
@@ -351,8 +383,10 @@ else:
 $$;
 
 
+ALTER FUNCTION public.calc_martensite_desc(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_max_block_pc(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_max_block_pc(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_max_block_pc(_params double precision[]) RETURNS double precision[]
@@ -370,8 +404,10 @@ CREATE FUNCTION public.calc_max_block_pc(_params double precision[]) RETURNS dou
  $$;
 
 
+ALTER FUNCTION public.calc_max_block_pc(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_max_block_stress_lh(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_max_block_stress_lh(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_max_block_stress_lh(_params double precision[]) RETURNS double precision[]
@@ -386,8 +422,10 @@ CREATE FUNCTION public.calc_max_block_stress_lh(_params double precision[]) RETU
  $$;
 
 
+ALTER FUNCTION public.calc_max_block_stress_lh(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_max_strain_mag(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_max_strain_mag(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_max_strain_mag(_params double precision[]) RETURNS double precision[]
@@ -406,8 +444,10 @@ CREATE FUNCTION public.calc_max_strain_mag(_params double precision[]) RETURNS d
  $$;
 
 
+ALTER FUNCTION public.calc_max_strain_mag(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_neo_hook_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_neo_hook_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_neo_hook_minr(ar double precision[]) RETURNS double precision[]
@@ -461,8 +501,10 @@ return [Y_NH_uni[0]]
 $$;
 
 
+ALTER FUNCTION public.calc_neo_hook_minr(ar double precision[]) OWNER TO mena;
+
 --
--- Name: calc_neo_hookean_initial_slope(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_neo_hookean_initial_slope(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_neo_hookean_initial_slope(_params double precision[]) RETURNS double precision[]
@@ -480,8 +522,10 @@ CREATE FUNCTION public.calc_neo_hookean_initial_slope(_params double precision[]
   $$;
 
 
+ALTER FUNCTION public.calc_neo_hookean_initial_slope(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_rel_perm(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_rel_perm(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_rel_perm(_params double precision[]) RETURNS double precision[]
@@ -499,8 +543,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.calc_rel_perm(_params double precision[]) OWNER TO mena;
+
 --
--- Name: calc_yeoh_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_yeoh_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_yeoh_minr(ar double precision[]) RETURNS double precision[]
@@ -558,8 +604,10 @@ return [C_Yeoh_uni[0],C_Yeoh_uni[1],C_Yeoh_uni[2]]
 $$;
 
 
+ALTER FUNCTION public.calc_yeoh_minr(ar double precision[]) OWNER TO mena;
+
 --
--- Name: calc_young_modulus_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: calc_young_modulus_minr(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.calc_young_modulus_minr(ar double precision[]) RETURNS double precision[]
@@ -612,8 +660,10 @@ return [Y[0]]
 $$;
 
 
+ALTER FUNCTION public.calc_young_modulus_minr(ar double precision[]) OWNER TO mena;
+
 --
--- Name: concr_param_function(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+-- Name: concr_param_function(integer, integer, integer); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.concr_param_function(start_step integer, end_step integer, _callversion integer) RETURNS TABLE(concr_param_id character varying, mod_meas_id character varying, param_id character varying, mat_sample_id character varying, meas_time integer, value double precision, mod_id character varying, step integer)
@@ -1499,8 +1549,10 @@ FROM
 END $$;
 
 
+ALTER FUNCTION public.concr_param_function(start_step integer, end_step integer, _callversion integer) OWNER TO mena;
+
 --
--- Name: creating_result_set(public.param_values_type_input[], integer); Type: FUNCTION; Schema: public; Owner: -
+-- Name: creating_result_set(public.param_values_type_input[], integer); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.creating_result_set(_params public.param_values_type_input[], _callversion integer) RETURNS SETOF public.param_values_type_output
@@ -1773,8 +1825,10 @@ BEGIN
 $$;
 
 
+ALTER FUNCTION public.creating_result_set(_params public.param_values_type_input[], _callversion integer) OWNER TO mena;
+
 --
--- Name: function_concr_curve_params(); Type: FUNCTION; Schema: public; Owner: -
+-- Name: function_concr_curve_params(); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.function_concr_curve_params() RETURNS TABLE(id_tuple text, id_curve text, curve_id character varying, mat_sample_id character varying, meas_time integer)
@@ -1812,8 +1866,10 @@ SELECT curve_params.id_curve||'_'||curve_params.curve_id||'_'||curve_params.mat_
 $$;
 
 
+ALTER FUNCTION public.function_concr_curve_params() OWNER TO mena;
+
 --
--- Name: function_concr_curve_params_temp(); Type: FUNCTION; Schema: public; Owner: -
+-- Name: function_concr_curve_params_temp(); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.function_concr_curve_params_temp() RETURNS TABLE(concr_tuple_id text, id_tuple text, concr_curve_id text, concr_param_id1 text, concr_param_id2 text)
@@ -1832,8 +1888,10 @@ CREATE FUNCTION public.function_concr_curve_params_temp() RETURNS TABLE(concr_tu
 $$;
 
 
+ALTER FUNCTION public.function_concr_curve_params_temp() OWNER TO mena;
+
 --
--- Name: get_matrix_output_param_id(character varying[], character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
+-- Name: get_matrix_output_param_id(character varying[], character varying, character varying); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.get_matrix_output_param_id(_matrix_indices character varying[], _bit character varying, output_param_id character varying) RETURNS character varying
@@ -1863,8 +1921,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.get_matrix_output_param_id(_matrix_indices character varying[], _bit character varying, output_param_id character varying) OWNER TO mena;
+
 --
--- Name: integral_function(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: integral_function(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.integral_function(_function character varying, _params double precision[]) RETURNS double precision[]
@@ -1881,8 +1941,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.integral_function(_function character varying, _params double precision[]) OWNER TO mena;
+
 --
--- Name: interpol_function(character varying, public.interpol_type[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: interpol_function(character varying, public.interpol_type[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.interpol_function(_function character varying, _params public.interpol_type[]) RETURNS real
@@ -1901,8 +1963,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.interpol_function(_function character varying, _params public.interpol_type[]) OWNER TO mena;
+
 --
--- Name: is_distinct(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: is_distinct(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.is_distinct(_params double precision[]) RETURNS boolean
@@ -1918,8 +1982,10 @@ END;
 $$;
 
 
+ALTER FUNCTION public.is_distinct(_params double precision[]) OWNER TO mena;
+
 --
--- Name: is_length_1(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: is_length_1(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.is_length_1(_init character varying[]) RETURNS boolean
@@ -1932,8 +1998,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.is_length_1(_init character varying[]) OWNER TO mena;
+
 --
--- Name: linear_interpol_initial_stress(public.interpol_type[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: linear_interpol_initial_stress(public.interpol_type[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.linear_interpol_initial_stress(_params public.interpol_type[]) RETURNS real
@@ -1986,8 +2054,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.linear_interpol_initial_stress(_params public.interpol_type[]) OWNER TO mena;
+
 --
--- Name: matrix_filter(public.matrix_filter_agg_type[], public.matrix_filter_agg_type); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_filter(public.matrix_filter_agg_type[], public.matrix_filter_agg_type); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_filter(oldrec public.matrix_filter_agg_type[], newrec public.matrix_filter_agg_type) RETURNS public.matrix_filter_agg_type[]
@@ -2012,8 +2082,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.matrix_filter(oldrec public.matrix_filter_agg_type[], newrec public.matrix_filter_agg_type) OWNER TO mena;
+
 --
--- Name: matrix_filter_end(public.matrix_filter_agg_type[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_filter_end(public.matrix_filter_agg_type[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_filter_end(oldrec public.matrix_filter_agg_type[]) RETURNS integer
@@ -2028,8 +2100,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.matrix_filter_end(oldrec public.matrix_filter_agg_type[]) OWNER TO mena;
+
 --
--- Name: matrix_func_1(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_1(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_1(ar character varying[]) RETURNS double precision[]
@@ -2149,8 +2223,10 @@ return matrix_rausschreiben(matrix_A)
  $$;
 
 
+ALTER FUNCTION public.matrix_func_1(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_func_2(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_2(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_2(ar character varying[]) RETURNS double precision[]
@@ -2265,8 +2341,10 @@ matrix_B = matrix_B1 * (matrix_A1.inv())
 return matrix_rausschreiben(matrix_B)$$;
 
 
+ALTER FUNCTION public.matrix_func_2(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_func_3(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_3(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_3(ar character varying[]) RETURNS double precision[]
@@ -2388,8 +2466,10 @@ matrix_C = matrix_C1 - calc_vorzeichen(var_e)*calc_vorzeichen(var_m)*matrix_B1*m
 return matrix_rausschreiben(matrix_C)$$;
 
 
+ALTER FUNCTION public.matrix_func_3(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_func_4(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_4(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_4(ar character varying[]) RETURNS double precision[]
@@ -2497,8 +2577,10 @@ matrix_A = matrix_A1 - calc_vorzeichen(var_e)*calc_vorzeichen(var_m)*np.transpos
 return matrix_rausschreiben(matrix_A)$$;
 
 
+ALTER FUNCTION public.matrix_func_4(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_func_5(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_5(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_5(ar character varying[]) RETURNS double precision[]
@@ -2604,8 +2686,10 @@ matrix_B =(matrix_C1.inv()) * matrix_B1
 return matrix_rausschreiben(matrix_B)$$;
 
 
+ALTER FUNCTION public.matrix_func_5(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_func_6(character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_func_6(character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_func_6(ar character varying[]) RETURNS double precision[]
@@ -2711,8 +2795,10 @@ matrix_C = matrix_C1.inv()
 return matrix_rausschreiben(matrix_C)$$;
 
 
+ALTER FUNCTION public.matrix_func_6(ar character varying[]) OWNER TO mena;
+
 --
--- Name: matrix_function(character varying, character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: matrix_function(character varying, character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.matrix_function(_function character varying, _params character varying[]) RETURNS double precision[]
@@ -2729,8 +2815,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.matrix_function(_function character varying, _params character varying[]) OWNER TO mena;
+
 --
--- Name: mech_mod_v1(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: mech_mod_v1(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.mech_mod_v1(_params double precision[]) RETURNS double precision[]
@@ -2748,8 +2836,10 @@ CREATE FUNCTION public.mech_mod_v1(_params double precision[]) RETURNS double pr
  $$;
 
 
+ALTER FUNCTION public.mech_mod_v1(_params double precision[]) OWNER TO mena;
+
 --
--- Name: mech_mod_v2(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: mech_mod_v2(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.mech_mod_v2(_params double precision[]) RETURNS double precision[]
@@ -2769,8 +2859,10 @@ CREATE FUNCTION public.mech_mod_v2(_params double precision[]) RETURNS double pr
  $$;
 
 
+ALTER FUNCTION public.mech_mod_v2(_params double precision[]) OWNER TO mena;
+
 --
--- Name: mech_mod_v3(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: mech_mod_v3(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.mech_mod_v3(_params double precision[]) RETURNS double precision[]
@@ -2792,8 +2884,10 @@ CREATE FUNCTION public.mech_mod_v3(_params double precision[]) RETURNS double pr
  $$;
 
 
+ALTER FUNCTION public.mech_mod_v3(_params double precision[]) OWNER TO mena;
+
 --
--- Name: mod_el_druck(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: mod_el_druck(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.mod_el_druck(_params double precision[]) RETURNS double precision[]
@@ -2811,8 +2905,10 @@ CREATE FUNCTION public.mod_el_druck(_params double precision[]) RETURNS double p
   $$;
 
 
+ALTER FUNCTION public.mod_el_druck(_params double precision[]) OWNER TO mena;
+
 --
--- Name: mod_el_pres(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: mod_el_pres(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.mod_el_pres(_params double precision[]) RETURNS double precision[]
@@ -2830,8 +2926,10 @@ CREATE FUNCTION public.mod_el_pres(_params double precision[]) RETURNS double pr
   $$;
 
 
+ALTER FUNCTION public.mod_el_pres(_params double precision[]) OWNER TO mena;
+
 --
--- Name: round9(double precision); Type: FUNCTION; Schema: public; Owner: -
+-- Name: round9(double precision); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.round9(input double precision) RETURNS double precision
@@ -2857,8 +2955,10 @@ CREATE FUNCTION public.round9(input double precision) RETURNS double precision
  $$;
 
 
+ALTER FUNCTION public.round9(input double precision) OWNER TO mena;
+
 --
--- Name: simple_function(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: simple_function(character varying, double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.simple_function(_function character varying, _params double precision[]) RETURNS double precision[]
@@ -2875,8 +2975,10 @@ CREATE FUNCTION public.simple_function(_function character varying, _params doub
   $$;
 
 
+ALTER FUNCTION public.simple_function(_function character varying, _params double precision[]) OWNER TO mena;
+
 --
--- Name: size_1_or_2nd_diff(character varying[], character varying[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: size_1_or_2nd_diff(character varying[], character varying[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.size_1_or_2nd_diff(_init character varying[], _ar character varying[]) RETURNS character varying[]
@@ -2895,8 +2997,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.size_1_or_2nd_diff(_init character varying[], _ar character varying[]) OWNER TO mena;
+
 --
--- Name: test_compare_condition(double precision[], public.operator_types[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: test_compare_condition(double precision[], public.operator_types[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.test_compare_condition(_params double precision[], _operators public.operator_types[]) RETURNS boolean
@@ -2925,8 +3029,10 @@ End;
 $$;
 
 
+ALTER FUNCTION public.test_compare_condition(_params double precision[], _operators public.operator_types[]) OWNER TO mena;
+
 --
--- Name: test_condition(double precision, double precision, public.operator_types); Type: FUNCTION; Schema: public; Owner: -
+-- Name: test_condition(double precision, double precision, public.operator_types); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.test_condition(_value double precision, _condition double precision, _operator public.operator_types) RETURNS boolean
@@ -2943,8 +3049,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.test_condition(_value double precision, _condition double precision, _operator public.operator_types) OWNER TO mena;
+
 --
--- Name: unnest_nd_1d(anyarray); Type: FUNCTION; Schema: public; Owner: -
+-- Name: unnest_nd_1d(anyarray); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.unnest_nd_1d(a anyarray, OUT a_1d anyarray) RETURNS SETOF anyarray
@@ -2958,8 +3066,10 @@ END
 $$;
 
 
+ALTER FUNCTION public.unnest_nd_1d(a anyarray, OUT a_1d anyarray) OWNER TO mena;
+
 --
--- Name: ym_init_slope(double precision[]); Type: FUNCTION; Schema: public; Owner: -
+-- Name: ym_init_slope(double precision[]); Type: FUNCTION; Schema: public; Owner: mena
 --
 
 CREATE FUNCTION public.ym_init_slope(_params double precision[]) RETURNS double precision[]
@@ -2978,8 +3088,10 @@ CREATE FUNCTION public.ym_init_slope(_params double precision[]) RETURNS double 
  $$;
 
 
+ALTER FUNCTION public.ym_init_slope(_params double precision[]) OWNER TO mena;
+
 --
--- Name: matrix_filter_agg(public.matrix_filter_agg_type); Type: AGGREGATE; Schema: public; Owner: -
+-- Name: matrix_filter_agg(public.matrix_filter_agg_type); Type: AGGREGATE; Schema: public; Owner: mena
 --
 
 CREATE AGGREGATE public.matrix_filter_agg(mat public.matrix_filter_agg_type) (
@@ -2990,8 +3102,10 @@ CREATE AGGREGATE public.matrix_filter_agg(mat public.matrix_filter_agg_type) (
 );
 
 
+ALTER AGGREGATE public.matrix_filter_agg(mat public.matrix_filter_agg_type) OWNER TO mena;
+
 --
--- Name: size_1_or_2nd_diff(character varying[]); Type: AGGREGATE; Schema: public; Owner: -
+-- Name: size_1_or_2nd_diff(character varying[]); Type: AGGREGATE; Schema: public; Owner: mena
 --
 
 CREATE AGGREGATE public.size_1_or_2nd_diff(params character varying[]) (
@@ -3002,12 +3116,14 @@ CREATE AGGREGATE public.size_1_or_2nd_diff(params character varying[]) (
 );
 
 
+ALTER AGGREGATE public.size_1_or_2nd_diff(params character varying[]) OWNER TO mena;
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: characteristic_curve; Type: TABLE; Schema: public; Owner: -
+-- Name: characteristic_curve; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.characteristic_curve (
@@ -3017,8 +3133,10 @@ CREATE TABLE public.characteristic_curve (
 );
 
 
+ALTER TABLE public.characteristic_curve OWNER TO mena;
+
 --
--- Name: component; Type: TABLE; Schema: public; Owner: -
+-- Name: component; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.component (
@@ -3027,8 +3145,10 @@ CREATE TABLE public.component (
 );
 
 
+ALTER TABLE public.component OWNER TO mena;
+
 --
--- Name: component_parts; Type: TABLE; Schema: public; Owner: -
+-- Name: component_parts; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.component_parts (
@@ -3037,8 +3157,10 @@ CREATE TABLE public.component_parts (
 );
 
 
+ALTER TABLE public.component_parts OWNER TO mena;
+
 --
--- Name: concr_component; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_component; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_component (
@@ -3048,8 +3170,10 @@ CREATE TABLE public.concr_component (
 );
 
 
+ALTER TABLE public.concr_component OWNER TO mena;
+
 --
--- Name: concr_curve_params; Type: VIEW; Schema: public; Owner: -
+-- Name: concr_curve_params; Type: VIEW; Schema: public; Owner: mena
 --
 
 CREATE VIEW public.concr_curve_params AS
@@ -3060,8 +3184,10 @@ CREATE VIEW public.concr_curve_params AS
     (public.function_concr_curve_params()).meas_time AS meas_time;
 
 
+ALTER TABLE public.concr_curve_params OWNER TO mena;
+
 --
--- Name: curve_params; Type: TABLE; Schema: public; Owner: -
+-- Name: curve_params; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.curve_params (
@@ -3070,8 +3196,10 @@ CREATE TABLE public.curve_params (
 );
 
 
+ALTER TABLE public.curve_params OWNER TO mena;
+
 --
--- Name: concr_curve; Type: VIEW; Schema: public; Owner: -
+-- Name: concr_curve; Type: VIEW; Schema: public; Owner: mena
 --
 
 CREATE VIEW public.concr_curve AS
@@ -3107,8 +3235,10 @@ CREATE VIEW public.concr_curve AS
   WHERE ((concr_curve_params.curve_id)::text = (curve_params.curve_id)::text);
 
 
+ALTER TABLE public.concr_curve OWNER TO mena;
+
 --
--- Name: concr_curve_params_temp; Type: VIEW; Schema: public; Owner: -
+-- Name: concr_curve_params_temp; Type: VIEW; Schema: public; Owner: mena
 --
 
 CREATE VIEW public.concr_curve_params_temp AS
@@ -3119,8 +3249,10 @@ CREATE VIEW public.concr_curve_params_temp AS
     (public.function_concr_curve_params_temp()).concr_param_id2 AS concr_param_id2;
 
 
+ALTER TABLE public.concr_curve_params_temp OWNER TO mena;
+
 --
--- Name: concr_meas; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_meas; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_meas (
@@ -3131,8 +3263,10 @@ CREATE TABLE public.concr_meas (
 );
 
 
+ALTER TABLE public.concr_meas OWNER TO mena;
+
 --
--- Name: concr_model; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_model; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_model (
@@ -3142,8 +3276,10 @@ CREATE TABLE public.concr_model (
 );
 
 
+ALTER TABLE public.concr_model OWNER TO mena;
+
 --
--- Name: concr_param; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_param; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_param (
@@ -3156,8 +3292,10 @@ CREATE TABLE public.concr_param (
 );
 
 
+ALTER TABLE public.concr_param OWNER TO mena;
+
 --
--- Name: concr_param_matrix; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_param_matrix; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_param_matrix (
@@ -3167,8 +3305,10 @@ CREATE TABLE public.concr_param_matrix (
 );
 
 
+ALTER TABLE public.concr_param_matrix OWNER TO mena;
+
 --
--- Name: concr_param_matrix_additional; Type: TABLE; Schema: public; Owner: -
+-- Name: concr_param_matrix_additional; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.concr_param_matrix_additional (
@@ -3179,8 +3319,10 @@ CREATE TABLE public.concr_param_matrix_additional (
 );
 
 
+ALTER TABLE public.concr_param_matrix_additional OWNER TO mena;
+
 --
--- Name: concr_param_view; Type: VIEW; Schema: public; Owner: -
+-- Name: concr_param_view; Type: VIEW; Schema: public; Owner: mena
 --
 
 CREATE VIEW public.concr_param_view AS
@@ -3194,8 +3336,10 @@ CREATE VIEW public.concr_param_view AS
     (public.concr_param_function(0, 20, 0)).step AS step;
 
 
+ALTER TABLE public.concr_param_view OWNER TO mena;
+
 --
--- Name: constants; Type: TABLE; Schema: public; Owner: -
+-- Name: constants; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.constants (
@@ -3204,8 +3348,10 @@ CREATE TABLE public.constants (
 );
 
 
+ALTER TABLE public.constants OWNER TO mena;
+
 --
--- Name: concr_parameter; Type: MATERIALIZED VIEW; Schema: public; Owner: -
+-- Name: concr_parameter; Type: MATERIALIZED VIEW; Schema: public; Owner: mena
 --
 
 CREATE MATERIALIZED VIEW public.concr_parameter AS
@@ -3249,8 +3395,10 @@ UNION
   WITH NO DATA;
 
 
+ALTER TABLE public.concr_parameter OWNER TO mena;
+
 --
--- Name: curve_condition; Type: TABLE; Schema: public; Owner: -
+-- Name: curve_condition; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.curve_condition (
@@ -3262,20 +3410,10 @@ CREATE TABLE public.curve_condition (
 );
 
 
---
--- Name: external_source; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.external_source (
-    source_id character varying NOT NULL,
-    source_name character varying,
-    source_type character varying,
-    source_description character varying
-);
-
+ALTER TABLE public.curve_condition OWNER TO mena;
 
 --
--- Name: material; Type: TABLE; Schema: public; Owner: -
+-- Name: material; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.material (
@@ -3285,8 +3423,10 @@ CREATE TABLE public.material (
 );
 
 
+ALTER TABLE public.material OWNER TO mena;
+
 --
--- Name: material_condition; Type: TABLE; Schema: public; Owner: -
+-- Name: material_condition; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.material_condition (
@@ -3296,8 +3436,10 @@ CREATE TABLE public.material_condition (
 );
 
 
+ALTER TABLE public.material_condition OWNER TO mena;
+
 --
--- Name: material_types; Type: TABLE; Schema: public; Owner: -
+-- Name: material_types; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.material_types (
@@ -3305,8 +3447,10 @@ CREATE TABLE public.material_types (
 );
 
 
+ALTER TABLE public.material_types OWNER TO mena;
+
 --
--- Name: measinput; Type: TABLE; Schema: public; Owner: -
+-- Name: measinput; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.measinput (
@@ -3315,8 +3459,10 @@ CREATE TABLE public.measinput (
 );
 
 
+ALTER TABLE public.measinput OWNER TO mena;
+
 --
--- Name: measoutput; Type: TABLE; Schema: public; Owner: -
+-- Name: measoutput; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.measoutput (
@@ -3325,8 +3471,10 @@ CREATE TABLE public.measoutput (
 );
 
 
+ALTER TABLE public.measoutput OWNER TO mena;
+
 --
--- Name: measurement; Type: TABLE; Schema: public; Owner: -
+-- Name: measurement; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.measurement (
@@ -3335,8 +3483,10 @@ CREATE TABLE public.measurement (
 );
 
 
+ALTER TABLE public.measurement OWNER TO mena;
+
 --
--- Name: model; Type: TABLE; Schema: public; Owner: -
+-- Name: model; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.model (
@@ -3348,8 +3498,10 @@ CREATE TABLE public.model (
 );
 
 
+ALTER TABLE public.model OWNER TO mena;
+
 --
--- Name: model_condition; Type: TABLE; Schema: public; Owner: -
+-- Name: model_condition; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.model_condition (
@@ -3361,8 +3513,10 @@ CREATE TABLE public.model_condition (
 );
 
 
+ALTER TABLE public.model_condition OWNER TO mena;
+
 --
--- Name: model_condition_compare; Type: TABLE; Schema: public; Owner: -
+-- Name: model_condition_compare; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.model_condition_compare (
@@ -3374,8 +3528,10 @@ CREATE TABLE public.model_condition_compare (
 );
 
 
+ALTER TABLE public.model_condition_compare OWNER TO mena;
+
 --
--- Name: model_condition_interpol; Type: TABLE; Schema: public; Owner: -
+-- Name: model_condition_interpol; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.model_condition_interpol (
@@ -3386,8 +3542,10 @@ CREATE TABLE public.model_condition_interpol (
 );
 
 
+ALTER TABLE public.model_condition_interpol OWNER TO mena;
+
 --
--- Name: modelinput; Type: TABLE; Schema: public; Owner: -
+-- Name: modelinput; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.modelinput (
@@ -3397,8 +3555,10 @@ CREATE TABLE public.modelinput (
 );
 
 
+ALTER TABLE public.modelinput OWNER TO mena;
+
 --
--- Name: modelinput_matrix; Type: TABLE; Schema: public; Owner: -
+-- Name: modelinput_matrix; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.modelinput_matrix (
@@ -3409,8 +3569,10 @@ CREATE TABLE public.modelinput_matrix (
 );
 
 
+ALTER TABLE public.modelinput_matrix OWNER TO mena;
+
 --
--- Name: modeloutput; Type: TABLE; Schema: public; Owner: -
+-- Name: modeloutput; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.modeloutput (
@@ -3420,8 +3582,10 @@ CREATE TABLE public.modeloutput (
 );
 
 
+ALTER TABLE public.modeloutput OWNER TO mena;
+
 --
--- Name: modeloutput_pek_bits; Type: TABLE; Schema: public; Owner: -
+-- Name: modeloutput_pek_bits; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.modeloutput_pek_bits (
@@ -3430,8 +3594,10 @@ CREATE TABLE public.modeloutput_pek_bits (
 );
 
 
+ALTER TABLE public.modeloutput_pek_bits OWNER TO mena;
+
 --
--- Name: modeltype; Type: TABLE; Schema: public; Owner: -
+-- Name: modeltype; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.modeltype (
@@ -3439,8 +3605,10 @@ CREATE TABLE public.modeltype (
 );
 
 
+ALTER TABLE public.modeltype OWNER TO mena;
+
 --
--- Name: param; Type: TABLE; Schema: public; Owner: -
+-- Name: param; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.param (
@@ -3451,8 +3619,10 @@ CREATE TABLE public.param (
 );
 
 
+ALTER TABLE public.param OWNER TO mena;
+
 --
--- Name: param_piezo; Type: TABLE; Schema: public; Owner: -
+-- Name: param_piezo; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.param_piezo (
@@ -3463,8 +3633,10 @@ CREATE TABLE public.param_piezo (
 );
 
 
+ALTER TABLE public.param_piezo OWNER TO mena;
+
 --
--- Name: param_semantic; Type: TABLE; Schema: public; Owner: -
+-- Name: param_semantic; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.param_semantic (
@@ -3474,18 +3646,10 @@ CREATE TABLE public.param_semantic (
 );
 
 
---
--- Name: producer; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.producer (
-    object_id character varying NOT NULL,
-    producer_id character varying NOT NULL
-);
-
+ALTER TABLE public.param_semantic OWNER TO mena;
 
 --
--- Name: sample; Type: TABLE; Schema: public; Owner: -
+-- Name: sample; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.sample (
@@ -3496,8 +3660,10 @@ CREATE TABLE public.sample (
 );
 
 
+ALTER TABLE public.sample OWNER TO mena;
+
 --
--- Name: temp_step_view; Type: TABLE; Schema: public; Owner: -
+-- Name: temp_step_view; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.temp_step_view (
@@ -3511,8 +3677,10 @@ CREATE TABLE public.temp_step_view (
 );
 
 
+ALTER TABLE public.temp_step_view OWNER TO mena;
+
 --
--- Name: temp_view; Type: TABLE; Schema: public; Owner: -
+-- Name: temp_view; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.temp_view (
@@ -3527,8 +3695,10 @@ CREATE TABLE public.temp_view (
 );
 
 
+ALTER TABLE public.temp_view OWNER TO mena;
+
 --
--- Name: temp_view_results; Type: TABLE; Schema: public; Owner: -
+-- Name: temp_view_results; Type: TABLE; Schema: public; Owner: mena
 --
 
 CREATE TABLE public.temp_view_results (
@@ -3543,8 +3713,10 @@ CREATE TABLE public.temp_view_results (
 );
 
 
+ALTER TABLE public.temp_view_results OWNER TO mena;
+
 --
--- Data for Name: characteristic_curve; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: characteristic_curve; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.characteristic_curve (curve_id, curve_name, curve_descripton) FROM stdin;
@@ -3558,7 +3730,7 @@ curve_magnetic_stress	curve of magnetic stress	\N
 
 
 --
--- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.component (component_id, component_name) FROM stdin;
@@ -3568,7 +3740,7 @@ stress-strain-stick	MSMA-stick
 
 
 --
--- Data for Name: component_parts; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: component_parts; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.component_parts (concr_component_id, has_part) FROM stdin;
@@ -3577,7 +3749,7 @@ stick_Ni2MnGa_sample_1	Ni2MnGa_sample_1
 
 
 --
--- Data for Name: concr_component; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_component; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_component (concr_component_id, component_id, concr_component_name) FROM stdin;
@@ -3588,7 +3760,7 @@ wire_actuator_NiTi#6	wire_actuator	wire_actuator_NiTi#6
 
 
 --
--- Data for Name: concr_meas; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_meas; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_meas (concr_meas_id, meas_id, meas_date, description) FROM stdin;
@@ -3597,24 +3769,24 @@ Ni2MnGa_sample1_meas_flux_over_field_2	meas_flux_over_field	2022-05-18	measureme
 tens_1	tensile_test	2022-11-10	\N
 elas1_measured_at	measured_at	\N	measured at Fraunhofer IAP
 elas1_base_value	base_value	\N	base value for initial slope identification
+dummy-meas	dummy-data	\N	dummy data
 \.
 
 
 --
--- Data for Name: concr_model; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_model; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_model (concr_model_id, mod_id, description) FROM stdin;
-concr_calc_max_blocking_stress_PC	calc_max_blocking_stress_PC	\N
+concr_calc_max_blocking_stress_PC	calc_max_blocking_stress_PC	calculation of maxmimum blocking stress
 \.
 
 
 --
--- Data for Name: concr_param; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_param; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_param (concr_param_id, mod_meas_id, param_id, mat_sample_id, meas_time, value) FROM stdin;
-twinning_stress_stick_Ni2MnGa_sample_1	\N	twinning_stress	stick_Ni2MnGa_sample_1	0	300000
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_1	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	1	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_2	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	2	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_3	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	3	1
@@ -3660,7 +3832,6 @@ easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_42	Ni2MnGa_sample1_meas_fl
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_43	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	43	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_44	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	44	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_45	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	45	1
-M420_1_1	\N	A00	M420	0	1.54e-11
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_46	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	46	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_47	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	47	1
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_48	Ni2MnGa_sample1_meas_flux_over_field_1	easy_hard_axis	Ni2MnGa_sample_1	48	1
@@ -3708,7 +3879,6 @@ easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_127	Ni2MnGa_sample1_meas_f
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_128	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	128	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_129	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	129	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_130	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	130	0
-M420_1_2	\N	A00	M420	0	1.87e-11
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_131	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	131	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_132	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	132	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_133	Ni2MnGa_sample1_meas_flux_over_field_2	easy_hard_axis	Ni2MnGa_sample_1	133	0
@@ -3798,7 +3968,6 @@ magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_45	Ni2MnGa_sample
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_55	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	55	540000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_56	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	56	550000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_57	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	57	560000
-M420_1_3	\N	A00	M420	0	-6.5e-12
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_58	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	58	570000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_59	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	59	580000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_60	Ni2MnGa_sample1_meas_flux_over_field_1	magnetic_field_strength	Ni2MnGa_sample_1	60	590000
@@ -3842,7 +4011,6 @@ magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_135	Ni2MnGa_sampl
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_136	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	136	350000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_137	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	137	360000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_138	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	138	370000
-M420_1_4	\N	A00	M420	0	-5.7e-12
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_139	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	139	380000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_140	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	140	390000
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_141	Ni2MnGa_sample1_meas_flux_over_field_2	magnetic_field_strength	Ni2MnGa_sample_1	141	400000
@@ -4043,10 +4211,9 @@ mechanic_stress_sample1_elastomer1_tens_1_47	tens_1	mechanic_stress	sample1_elas
 mechanic_stress_sample1_elastomer1_tens_1_48	tens_1	mechanic_stress	sample1_elastomer1	48	231300
 mechanic_stress_sample1_elastomer1_tens_1_49	tens_1	mechanic_stress	sample1_elastomer1	49	235300
 mechanic_stress_sample1_elastomer1_tens_1_50	tens_1	mechanic_stress	sample1_elastomer1	50	241300
-temperature_wire_actuator_1_123	\N	temperature	wire_actuator_1	123	75
-temperature_wire_actuator_1_122	\N	temperature	wire_actuator_1	122	73.5
 mechanic_stress_sample1_elastomer1_tens_1_53	tens_1	mechanic_stress	sample1_elastomer1	53	250300
 mechanic_stress_sample1_elastomer1_tens_1_54	tens_1	mechanic_stress	sample1_elastomer1	54	254300
+temperature_wire_actuator_1_123	dummy-meas	temperature	wire_actuator_1	123	75
 mechanic_stress_sample1_elastomer1_tens_1_55	tens_1	mechanic_stress	sample1_elastomer1	55	257300
 mechanic_stress_sample1_elastomer1_tens_1_56	tens_1	mechanic_stress	sample1_elastomer1	56	262300
 mechanic_stress_sample1_elastomer1_tens_1_57	tens_1	mechanic_stress	sample1_elastomer1	57	265300
@@ -4106,7 +4273,6 @@ mechanic_stress_sample1_elastomer1_tens_1_110	tens_1	mechanic_stress	sample1_ela
 mechanic_stress_sample1_elastomer1_tens_1_111	tens_1	mechanic_stress	sample1_elastomer1	111	430300
 mechanic_stress_sample1_elastomer1_tens_1_112	tens_1	mechanic_stress	sample1_elastomer1	112	433300
 mechanic_stress_sample1_elastomer1_tens_1_113	tens_1	mechanic_stress	sample1_elastomer1	113	435300
-temperature_wire_actuator_1_121	\N	temperature	wire_actuator_1	121	72
 mechanic_stress_sample1_elastomer1_tens_1_114	tens_1	mechanic_stress	sample1_elastomer1	114	438300
 mechanic_stress_sample1_elastomer1_tens_1_115	tens_1	mechanic_stress	sample1_elastomer1	115	441300
 mechanic_stress_sample1_elastomer1_tens_1_116	tens_1	mechanic_stress	sample1_elastomer1	116	443300
@@ -4168,7 +4334,6 @@ mechanic_stress_sample1_elastomer1_tens_1_171	tens_1	mechanic_stress	sample1_ela
 mechanic_stress_sample1_elastomer1_tens_1_172	tens_1	mechanic_stress	sample1_elastomer1	172	589300
 mechanic_stress_sample1_elastomer1_tens_1_173	tens_1	mechanic_stress	sample1_elastomer1	173	591300
 mechanic_stress_sample1_elastomer1_tens_1_174	tens_1	mechanic_stress	sample1_elastomer1	174	594300
-temperature_wire_actuator_1_120	\N	temperature	wire_actuator_1	120	71
 mechanic_stress_sample1_elastomer1_tens_1_175	tens_1	mechanic_stress	sample1_elastomer1	175	596300
 mechanic_stress_sample1_elastomer1_tens_1_176	tens_1	mechanic_stress	sample1_elastomer1	176	598300
 mechanic_stress_sample1_elastomer1_tens_1_177	tens_1	mechanic_stress	sample1_elastomer1	177	602300
@@ -4230,7 +4395,6 @@ mechanic_stress_sample1_elastomer1_tens_1_232	tens_1	mechanic_stress	sample1_ela
 mechanic_stress_sample1_elastomer1_tens_1_233	tens_1	mechanic_stress	sample1_elastomer1	233	750300
 mechanic_stress_sample1_elastomer1_tens_1_234	tens_1	mechanic_stress	sample1_elastomer1	234	753300
 mechanic_stress_sample1_elastomer1_tens_1_235	tens_1	mechanic_stress	sample1_elastomer1	235	756300
-temperature_wire_actuator_1_119	\N	temperature	wire_actuator_1	119	70
 mechanic_stress_sample1_elastomer1_tens_1_236	tens_1	mechanic_stress	sample1_elastomer1	236	759800
 mechanic_stress_sample1_elastomer1_tens_1_237	tens_1	mechanic_stress	sample1_elastomer1	237	763300
 mechanic_stress_sample1_elastomer1_tens_1_238	tens_1	mechanic_stress	sample1_elastomer1	238	765800
@@ -4292,7 +4456,6 @@ mechanic_stress_sample1_elastomer1_tens_1_293	tens_1	mechanic_stress	sample1_ela
 mechanic_stress_sample1_elastomer1_tens_1_294	tens_1	mechanic_stress	sample1_elastomer1	294	936300
 mechanic_stress_sample1_elastomer1_tens_1_295	tens_1	mechanic_stress	sample1_elastomer1	295	939300
 mechanic_stress_sample1_elastomer1_tens_1_296	tens_1	mechanic_stress	sample1_elastomer1	296	942300
-temperature_wire_actuator_1_118	\N	temperature	wire_actuator_1	118	65
 mechanic_stress_sample1_elastomer1_tens_1_297	tens_1	mechanic_stress	sample1_elastomer1	297	945300
 mechanic_stress_sample1_elastomer1_tens_1_298	tens_1	mechanic_stress	sample1_elastomer1	298	948800
 mechanic_stress_sample1_elastomer1_tens_1_299	tens_1	mechanic_stress	sample1_elastomer1	299	952300
@@ -4354,7 +4517,6 @@ mechanic_stress_sample1_elastomer1_tens_1_354	tens_1	mechanic_stress	sample1_ela
 mechanic_stress_sample1_elastomer1_tens_1_355	tens_1	mechanic_stress	sample1_elastomer1	355	1138300
 mechanic_stress_sample1_elastomer1_tens_1_356	tens_1	mechanic_stress	sample1_elastomer1	356	1143300
 mechanic_stress_sample1_elastomer1_tens_1_357	tens_1	mechanic_stress	sample1_elastomer1	357	1148300
-temperature_wire_actuator_1_117	\N	temperature	wire_actuator_1	117	60
 mechanic_stress_sample1_elastomer1_tens_1_358	tens_1	mechanic_stress	sample1_elastomer1	358	1153300
 mechanic_stress_sample1_elastomer1_tens_1_359	tens_1	mechanic_stress	sample1_elastomer1	359	1158300
 mechanic_stress_sample1_elastomer1_tens_1_360	tens_1	mechanic_stress	sample1_elastomer1	360	1158300
@@ -4419,7 +4581,6 @@ strain_sample1_elastomer1_tens_1_16	tens_1	strain	sample1_elastomer1	16	0.075
 strain_sample1_elastomer1_tens_1_17	tens_1	strain	sample1_elastomer1	17	0.08
 strain_sample1_elastomer1_tens_1_18	tens_1	strain	sample1_elastomer1	18	0.085
 strain_sample1_elastomer1_tens_1_19	tens_1	strain	sample1_elastomer1	19	0.09
-temperature_wire_actuator_1_116	\N	temperature	wire_actuator_1	116	53
 strain_sample1_elastomer1_tens_1_20	tens_1	strain	sample1_elastomer1	20	0.095
 strain_sample1_elastomer1_tens_1_21	tens_1	strain	sample1_elastomer1	21	0.1
 strain_sample1_elastomer1_tens_1_22	tens_1	strain	sample1_elastomer1	22	0.105
@@ -4801,161 +4962,173 @@ strain_sample1_elastomer1_tens_1_398	tens_1	strain	sample1_elastomer1	398	1.985
 strain_sample1_elastomer1_tens_1_399	tens_1	strain	sample1_elastomer1	399	1.99
 strain_sample1_elastomer1_tens_1_400	tens_1	strain	sample1_elastomer1	400	1.995
 strain_sample1_elastomer1_tens_1_401	tens_1	strain	sample1_elastomer1	401	2
-temperature_wire_actuator_1_115	\N	temperature	wire_actuator_1	115	52
-temperature_wire_actuator_1_111	\N	temperature	wire_actuator_1	111	45
-temperature_wire_actuator_1_114	\N	temperature	wire_actuator_1	114	51
-temperature_wire_actuator_1_113	\N	temperature	wire_actuator_1	113	50
-temperature_wire_actuator_1_112	\N	temperature	wire_actuator_1	112	48
-temperature_wire_actuator_1_131	\N	temperature	wire_actuator_1	131	45
-temperature_wire_actuator_1_140	\N	temperature	wire_actuator_1	140	71
-temperature_wire_actuator_1_141	\N	temperature	wire_actuator_1	141	72
-temperature_wire_actuator_1_142	\N	temperature	wire_actuator_1	142	73.5
-temperature_wire_actuator_1_143	\N	temperature	wire_actuator_1	143	75
-temperature_wire_actuator_1_132	\N	temperature	wire_actuator_1	132	48
-temperature_wire_actuator_1_133	\N	temperature	wire_actuator_1	133	50
-temperature_wire_actuator_1_134	\N	temperature	wire_actuator_1	134	51
-temperature_wire_actuator_1_135	\N	temperature	wire_actuator_1	135	52
-temperature_wire_actuator_1_136	\N	temperature	wire_actuator_1	136	53
-temperature_wire_actuator_1_137	\N	temperature	wire_actuator_1	137	60
-temperature_wire_actuator_1_138	\N	temperature	wire_actuator_1	138	65
-temperature_wire_actuator_1_139	\N	temperature	wire_actuator_1	139	70
-hysteresis_wire_actuator_1_123	\N	hysteresis	wire_actuator_1	123	2
-hysteresis_wire_actuator_1_122	\N	hysteresis	wire_actuator_1	122	2
-hysteresis_wire_actuator_1_121	\N	hysteresis	wire_actuator_1	121	2
-hysteresis_wire_actuator_1_120	\N	hysteresis	wire_actuator_1	120	2
-hysteresis_wire_actuator_1_119	\N	hysteresis	wire_actuator_1	119	2
-hysteresis_wire_actuator_1_118	\N	hysteresis	wire_actuator_1	118	2
-hysteresis_wire_actuator_1_117	\N	hysteresis	wire_actuator_1	117	2
-hysteresis_wire_actuator_1_116	\N	hysteresis	wire_actuator_1	116	2
-hysteresis_wire_actuator_1_115	\N	hysteresis	wire_actuator_1	115	2
-hysteresis_wire_actuator_1_111	\N	hysteresis	wire_actuator_1	111	2
-hysteresis_wire_actuator_1_114	\N	hysteresis	wire_actuator_1	114	2
-hysteresis_wire_actuator_1_113	\N	hysteresis	wire_actuator_1	113	2
-hysteresis_wire_actuator_1_112	\N	hysteresis	wire_actuator_1	112	2
-hysteresis_wire_actuator_1_131	\N	hysteresis	wire_actuator_1	131	1
-hysteresis_wire_actuator_1_140	\N	hysteresis	wire_actuator_1	140	1
-hysteresis_wire_actuator_1_141	\N	hysteresis	wire_actuator_1	141	1
-hysteresis_wire_actuator_1_142	\N	hysteresis	wire_actuator_1	142	1
-hysteresis_wire_actuator_1_143	\N	hysteresis	wire_actuator_1	143	1
-hysteresis_wire_actuator_1_132	\N	hysteresis	wire_actuator_1	132	1
-hysteresis_wire_actuator_1_133	\N	hysteresis	wire_actuator_1	133	1
-hysteresis_wire_actuator_1_134	\N	hysteresis	wire_actuator_1	134	1
-hysteresis_wire_actuator_1_135	\N	hysteresis	wire_actuator_1	135	1
-hysteresis_wire_actuator_1_136	\N	hysteresis	wire_actuator_1	136	1
-hysteresis_wire_actuator_1_137	\N	hysteresis	wire_actuator_1	137	1
-hysteresis_wire_actuator_1_138	\N	hysteresis	wire_actuator_1	138	1
-hysteresis_wire_actuator_1_139	\N	hysteresis	wire_actuator_1	139	1
-austenite_start_temperature_wire_actuator_1_0	\N	austenite_start_temperature	wire_actuator_1	0	69.4
-austenite_finish_temperature_wire_actuator_1_0	\N	austenite_finish_temperature	wire_actuator_1	0	73.9
-martensite_finish_temperature_wire_actuator_1_0	\N	martensite_finish_temperature	wire_actuator_1	0	47.2
-martensite_start_temperature_wire_actuator_1_0	\N	martensite_start_temperature	wire_actuator_1	0	52.4
-strain_wire_actuator_NiTi#6_110	\N	strain	wire_actuator_NiTi#6	110	0
-strain_wire_actuator_NiTi#6_111	\N	strain	wire_actuator_NiTi#6	111	0.005
-strain_wire_actuator_NiTi#6_112	\N	strain	wire_actuator_NiTi#6	112	0.01
-strain_wire_actuator_NiTi#6_113	\N	strain	wire_actuator_NiTi#6	113	0.015
-strain_wire_actuator_NiTi#6_114	\N	strain	wire_actuator_NiTi#6	114	0.02
-strain_wire_actuator_NiTi#6_115	\N	strain	wire_actuator_NiTi#6	115	0.025
-strain_wire_actuator_NiTi#6_116	\N	strain	wire_actuator_NiTi#6	116	0.03
-strain_wire_actuator_NiTi#6_117	\N	strain	wire_actuator_NiTi#6	117	0.035
-strain_wire_actuator_NiTi#6_118	\N	strain	wire_actuator_NiTi#6	118	0.04
-strain_wire_actuator_NiTi#6_119	\N	strain	wire_actuator_NiTi#6	119	0.045
-strain_wire_actuator_NiTi#6_120	\N	strain	wire_actuator_NiTi#6	120	0.05
-strain_wire_actuator_NiTi#6_121	\N	strain	wire_actuator_NiTi#6	121	0.055
-strain_wire_actuator_NiTi#6_122	\N	strain	wire_actuator_NiTi#6	122	0.06
-strain_wire_actuator_NiTi#6_210	\N	strain	wire_actuator_NiTi#6	210	0
-strain_wire_actuator_NiTi#6_211	\N	strain	wire_actuator_NiTi#6	211	0.005
-strain_wire_actuator_NiTi#6_212	\N	strain	wire_actuator_NiTi#6	212	0.01
-strain_wire_actuator_NiTi#6_213	\N	strain	wire_actuator_NiTi#6	213	0.015
-strain_wire_actuator_NiTi#6_214	\N	strain	wire_actuator_NiTi#6	214	0.02
-strain_wire_actuator_NiTi#6_215	\N	strain	wire_actuator_NiTi#6	215	0.025
-strain_wire_actuator_NiTi#6_216	\N	strain	wire_actuator_NiTi#6	216	0.03
-strain_wire_actuator_NiTi#6_217	\N	strain	wire_actuator_NiTi#6	217	0.035
-strain_wire_actuator_NiTi#6_218	\N	strain	wire_actuator_NiTi#6	218	0.04
-strain_wire_actuator_NiTi#6_219	\N	strain	wire_actuator_NiTi#6	219	0.045
-strain_wire_actuator_NiTi#6_220	\N	strain	wire_actuator_NiTi#6	220	0.05
-strain_wire_actuator_NiTi#6_221	\N	strain	wire_actuator_NiTi#6	221	0.055
-strain_wire_actuator_NiTi#6_222	\N	strain	wire_actuator_NiTi#6	222	0.06
-strain_wire_actuator_NiTi#6_310	\N	strain	wire_actuator_NiTi#6	310	0
-strain_wire_actuator_NiTi#6_311	\N	strain	wire_actuator_NiTi#6	311	0.005
-strain_wire_actuator_NiTi#6_312	\N	strain	wire_actuator_NiTi#6	312	0.01
-strain_wire_actuator_NiTi#6_313	\N	strain	wire_actuator_NiTi#6	313	0.015
-strain_wire_actuator_NiTi#6_314	\N	strain	wire_actuator_NiTi#6	314	0.02
-strain_wire_actuator_NiTi#6_315	\N	strain	wire_actuator_NiTi#6	315	0.025
-strain_wire_actuator_NiTi#6_316	\N	strain	wire_actuator_NiTi#6	316	0.03
-strain_wire_actuator_NiTi#6_317	\N	strain	wire_actuator_NiTi#6	317	0.035
-strain_wire_actuator_NiTi#6_318	\N	strain	wire_actuator_NiTi#6	318	0.04
-strain_wire_actuator_NiTi#6_319	\N	strain	wire_actuator_NiTi#6	319	0.045
-strain_wire_actuator_NiTi#6_320	\N	strain	wire_actuator_NiTi#6	320	0.05
-strain_wire_actuator_NiTi#6_321	\N	strain	wire_actuator_NiTi#6	321	0.055
-strain_wire_actuator_NiTi#6_322	\N	strain	wire_actuator_NiTi#6	322	0.06
-martensite_content_wire_actuator_NiTi#6_110	\N	martensite_content	wire_actuator_NiTi#6	110	0
-martensite_content_wire_actuator_NiTi#6_111	\N	martensite_content	wire_actuator_NiTi#6	111	0
-martensite_content_wire_actuator_NiTi#6_112	\N	martensite_content	wire_actuator_NiTi#6	112	0
-martensite_content_wire_actuator_NiTi#6_113	\N	martensite_content	wire_actuator_NiTi#6	113	0
-martensite_content_wire_actuator_NiTi#6_114	\N	martensite_content	wire_actuator_NiTi#6	114	0
-martensite_content_wire_actuator_NiTi#6_115	\N	martensite_content	wire_actuator_NiTi#6	115	0
-martensite_content_wire_actuator_NiTi#6_116	\N	martensite_content	wire_actuator_NiTi#6	116	0
-martensite_content_wire_actuator_NiTi#6_117	\N	martensite_content	wire_actuator_NiTi#6	117	0
-martensite_content_wire_actuator_NiTi#6_118	\N	martensite_content	wire_actuator_NiTi#6	118	0
-martensite_content_wire_actuator_NiTi#6_119	\N	martensite_content	wire_actuator_NiTi#6	119	0
-martensite_content_wire_actuator_NiTi#6_120	\N	martensite_content	wire_actuator_NiTi#6	120	0
-martensite_content_wire_actuator_NiTi#6_121	\N	martensite_content	wire_actuator_NiTi#6	121	0
-martensite_content_wire_actuator_NiTi#6_122	\N	martensite_content	wire_actuator_NiTi#6	122	0
-martensite_content_wire_actuator_NiTi#6_210	\N	martensite_content	wire_actuator_NiTi#6	210	0.5
-martensite_content_wire_actuator_NiTi#6_211	\N	martensite_content	wire_actuator_NiTi#6	211	0.5
-martensite_content_wire_actuator_NiTi#6_212	\N	martensite_content	wire_actuator_NiTi#6	212	0.5
-martensite_content_wire_actuator_NiTi#6_213	\N	martensite_content	wire_actuator_NiTi#6	213	0.5
-martensite_content_wire_actuator_NiTi#6_214	\N	martensite_content	wire_actuator_NiTi#6	214	0.5
-martensite_content_wire_actuator_NiTi#6_215	\N	martensite_content	wire_actuator_NiTi#6	215	0.5
-martensite_content_wire_actuator_NiTi#6_216	\N	martensite_content	wire_actuator_NiTi#6	216	0.5
-martensite_content_wire_actuator_NiTi#6_217	\N	martensite_content	wire_actuator_NiTi#6	217	0.5
-martensite_content_wire_actuator_NiTi#6_218	\N	martensite_content	wire_actuator_NiTi#6	218	0.5
-martensite_content_wire_actuator_NiTi#6_219	\N	martensite_content	wire_actuator_NiTi#6	219	0.5
-martensite_content_wire_actuator_NiTi#6_220	\N	martensite_content	wire_actuator_NiTi#6	220	0.5
-martensite_content_wire_actuator_NiTi#6_221	\N	martensite_content	wire_actuator_NiTi#6	221	0.5
-martensite_content_wire_actuator_NiTi#6_222	\N	martensite_content	wire_actuator_NiTi#6	222	0.5
-martensite_content_wire_actuator_NiTi#6_310	\N	martensite_content	wire_actuator_NiTi#6	310	1
-martensite_content_wire_actuator_NiTi#6_311	\N	martensite_content	wire_actuator_NiTi#6	311	1
-martensite_content_wire_actuator_NiTi#6_312	\N	martensite_content	wire_actuator_NiTi#6	312	1
-martensite_content_wire_actuator_NiTi#6_313	\N	martensite_content	wire_actuator_NiTi#6	313	1
-martensite_content_wire_actuator_NiTi#6_314	\N	martensite_content	wire_actuator_NiTi#6	314	1
-martensite_content_wire_actuator_NiTi#6_315	\N	martensite_content	wire_actuator_NiTi#6	315	1
-martensite_content_wire_actuator_NiTi#6_316	\N	martensite_content	wire_actuator_NiTi#6	316	1
-martensite_content_wire_actuator_NiTi#6_317	\N	martensite_content	wire_actuator_NiTi#6	317	1
-martensite_content_wire_actuator_NiTi#6_318	\N	martensite_content	wire_actuator_NiTi#6	318	1
-martensite_content_wire_actuator_NiTi#6_319	\N	martensite_content	wire_actuator_NiTi#6	319	1
-martensite_content_wire_actuator_NiTi#6_320	\N	martensite_content	wire_actuator_NiTi#6	320	1
-martensite_content_wire_actuator_NiTi#6_321	\N	martensite_content	wire_actuator_NiTi#6	321	1
-martensite_content_wire_actuator_NiTi#6_322	\N	martensite_content	wire_actuator_NiTi#6	322	1
-martensite_content_wire_actuator_NiTi#6_500	\N	martensite_content	wire_actuator_NiTi#6	500	1
-E-modulus_twinned_martensite_wire_actuator_NiTi#6_0	\N	E-modulus_twinned_martensite	wire_actuator_NiTi#6	0	22800000000
-hardening_parameter_wire_actuator_NiTi#6_0	\N	hardening_parameter	wire_actuator_NiTi#6	0	150000000
-plateau_finish_strain_wire_actuator_NiTi#6_0	\N	plateau_finish_strain	wire_actuator_NiTi#6	0	0.0581
-plateau_start_strain_wire_actuator_NiTi#6_0	\N	plateau_start_strain	wire_actuator_NiTi#6	0	0.0088
-E-modulus_de-twinned_martensite_wire_actuator_NiTi#6_0	\N	E-modulus_de-twinned_martensite	wire_actuator_NiTi#6	0	24830000000
-E-modulus_austenite_wire_actuator_NiTi#6_0	\N	E-modulus_austenite	wire_actuator_NiTi#6	0	53510000000
-max_blocking_stress_NiTi	\N	maximal_blocking_stress	NiTi	0	500000000
-M420_1_5	\N	A00	M420	0	4.5e-11
-M420_1_6	\N	B00	M420	0	-1.6e-10
-M420_1_7	\N	B00	M420	0	3.55e-10
-M420_1_8	\N	B00	M420	0	5.25e-10
-M420_2_1	\N	B01	M420	0	-0.011
-M420_2_2	\N	B01	M420	0	0.025
-M420_2_3	\N	B01	M420	0	0.037
 max_block_stress_M420	concr_calc_max_blocking_stress_PC	maximal_blocking_stress	M420	0	1907689.37
-dielectric_strength_M420	\N	dielectric_strength	M420	0	2000
 dielectric_strength_el_1	elas1_measured_at	dielectric_strength	elastomer_1	0	99000000
 relative_permittivity_el_1	elas1_measured_at	relative_permittivity	elastomer_1	0	3.2
 initial_strain_elastomer_1	elas1_base_value	initial_strain	sample1_elastomer1	0	0.05
-lattice_constant_a_Ni2MnGa_sample_1	\N	lattice_constant_a	Ni2MnGa_sample_1	0	0.59
-lattice_constant_c_Ni2MnGa_sample_1	\N	lattice_constant_c	Ni2MnGa_sample_1	0	0.55
-M420_1_9	\N	C00	M420	0	1.4166399999999998e-08
-M420_1_10	\N	C00	M420	0	1.4166399999999998e-08
+twinning_stress_stick_Ni2MnGa_sample_1	dummy-meas	twinning_stress	stick_Ni2MnGa_sample_1	0	300000
+M420_1_1	dummy-meas	A00	M420	0	1.54e-11
+M420_1_2	dummy-meas	A00	M420	0	1.87e-11
+M420_1_3	dummy-meas	A00	M420	0	-6.5e-12
+M420_1_4	dummy-meas	A00	M420	0	-5.7e-12
+temperature_wire_actuator_1_122	dummy-meas	temperature	wire_actuator_1	122	73.5
+temperature_wire_actuator_1_121	dummy-meas	temperature	wire_actuator_1	121	72
+temperature_wire_actuator_1_120	dummy-meas	temperature	wire_actuator_1	120	71
+temperature_wire_actuator_1_119	dummy-meas	temperature	wire_actuator_1	119	70
+temperature_wire_actuator_1_118	dummy-meas	temperature	wire_actuator_1	118	65
+temperature_wire_actuator_1_117	dummy-meas	temperature	wire_actuator_1	117	60
+temperature_wire_actuator_1_116	dummy-meas	temperature	wire_actuator_1	116	53
+temperature_wire_actuator_1_115	dummy-meas	temperature	wire_actuator_1	115	52
+temperature_wire_actuator_1_111	dummy-meas	temperature	wire_actuator_1	111	45
+temperature_wire_actuator_1_114	dummy-meas	temperature	wire_actuator_1	114	51
+temperature_wire_actuator_1_113	dummy-meas	temperature	wire_actuator_1	113	50
+temperature_wire_actuator_1_112	dummy-meas	temperature	wire_actuator_1	112	48
+temperature_wire_actuator_1_131	dummy-meas	temperature	wire_actuator_1	131	45
+temperature_wire_actuator_1_140	dummy-meas	temperature	wire_actuator_1	140	71
+temperature_wire_actuator_1_141	dummy-meas	temperature	wire_actuator_1	141	72
+temperature_wire_actuator_1_142	dummy-meas	temperature	wire_actuator_1	142	73.5
+temperature_wire_actuator_1_143	dummy-meas	temperature	wire_actuator_1	143	75
+temperature_wire_actuator_1_132	dummy-meas	temperature	wire_actuator_1	132	48
+temperature_wire_actuator_1_133	dummy-meas	temperature	wire_actuator_1	133	50
+temperature_wire_actuator_1_134	dummy-meas	temperature	wire_actuator_1	134	51
+temperature_wire_actuator_1_135	dummy-meas	temperature	wire_actuator_1	135	52
+temperature_wire_actuator_1_136	dummy-meas	temperature	wire_actuator_1	136	53
+temperature_wire_actuator_1_137	dummy-meas	temperature	wire_actuator_1	137	60
+temperature_wire_actuator_1_138	dummy-meas	temperature	wire_actuator_1	138	65
+temperature_wire_actuator_1_139	dummy-meas	temperature	wire_actuator_1	139	70
+hysteresis_wire_actuator_1_123	dummy-meas	hysteresis	wire_actuator_1	123	2
+hysteresis_wire_actuator_1_122	dummy-meas	hysteresis	wire_actuator_1	122	2
+hysteresis_wire_actuator_1_121	dummy-meas	hysteresis	wire_actuator_1	121	2
+hysteresis_wire_actuator_1_120	dummy-meas	hysteresis	wire_actuator_1	120	2
+hysteresis_wire_actuator_1_119	dummy-meas	hysteresis	wire_actuator_1	119	2
+hysteresis_wire_actuator_1_118	dummy-meas	hysteresis	wire_actuator_1	118	2
+hysteresis_wire_actuator_1_117	dummy-meas	hysteresis	wire_actuator_1	117	2
+hysteresis_wire_actuator_1_116	dummy-meas	hysteresis	wire_actuator_1	116	2
+hysteresis_wire_actuator_1_115	dummy-meas	hysteresis	wire_actuator_1	115	2
+hysteresis_wire_actuator_1_111	dummy-meas	hysteresis	wire_actuator_1	111	2
+hysteresis_wire_actuator_1_114	dummy-meas	hysteresis	wire_actuator_1	114	2
+hysteresis_wire_actuator_1_113	dummy-meas	hysteresis	wire_actuator_1	113	2
+hysteresis_wire_actuator_1_112	dummy-meas	hysteresis	wire_actuator_1	112	2
+hysteresis_wire_actuator_1_131	dummy-meas	hysteresis	wire_actuator_1	131	1
+hysteresis_wire_actuator_1_140	dummy-meas	hysteresis	wire_actuator_1	140	1
+hysteresis_wire_actuator_1_141	dummy-meas	hysteresis	wire_actuator_1	141	1
+hysteresis_wire_actuator_1_142	dummy-meas	hysteresis	wire_actuator_1	142	1
+hysteresis_wire_actuator_1_143	dummy-meas	hysteresis	wire_actuator_1	143	1
+hysteresis_wire_actuator_1_132	dummy-meas	hysteresis	wire_actuator_1	132	1
+hysteresis_wire_actuator_1_133	dummy-meas	hysteresis	wire_actuator_1	133	1
+hysteresis_wire_actuator_1_134	dummy-meas	hysteresis	wire_actuator_1	134	1
+hysteresis_wire_actuator_1_135	dummy-meas	hysteresis	wire_actuator_1	135	1
+hysteresis_wire_actuator_1_136	dummy-meas	hysteresis	wire_actuator_1	136	1
+hysteresis_wire_actuator_1_137	dummy-meas	hysteresis	wire_actuator_1	137	1
+hysteresis_wire_actuator_1_138	dummy-meas	hysteresis	wire_actuator_1	138	1
+hysteresis_wire_actuator_1_139	dummy-meas	hysteresis	wire_actuator_1	139	1
+austenite_start_temperature_wire_actuator_1_0	dummy-meas	austenite_start_temperature	wire_actuator_1	0	69.4
+austenite_finish_temperature_wire_actuator_1_0	dummy-meas	austenite_finish_temperature	wire_actuator_1	0	73.9
+martensite_finish_temperature_wire_actuator_1_0	dummy-meas	martensite_finish_temperature	wire_actuator_1	0	47.2
+martensite_start_temperature_wire_actuator_1_0	dummy-meas	martensite_start_temperature	wire_actuator_1	0	52.4
+strain_wire_actuator_NiTi#6_110	dummy-meas	strain	wire_actuator_NiTi#6	110	0
+strain_wire_actuator_NiTi#6_111	dummy-meas	strain	wire_actuator_NiTi#6	111	0.005
+strain_wire_actuator_NiTi#6_112	dummy-meas	strain	wire_actuator_NiTi#6	112	0.01
+strain_wire_actuator_NiTi#6_113	dummy-meas	strain	wire_actuator_NiTi#6	113	0.015
+strain_wire_actuator_NiTi#6_114	dummy-meas	strain	wire_actuator_NiTi#6	114	0.02
+strain_wire_actuator_NiTi#6_115	dummy-meas	strain	wire_actuator_NiTi#6	115	0.025
+strain_wire_actuator_NiTi#6_116	dummy-meas	strain	wire_actuator_NiTi#6	116	0.03
+strain_wire_actuator_NiTi#6_117	dummy-meas	strain	wire_actuator_NiTi#6	117	0.035
+strain_wire_actuator_NiTi#6_118	dummy-meas	strain	wire_actuator_NiTi#6	118	0.04
+strain_wire_actuator_NiTi#6_119	dummy-meas	strain	wire_actuator_NiTi#6	119	0.045
+strain_wire_actuator_NiTi#6_120	dummy-meas	strain	wire_actuator_NiTi#6	120	0.05
+strain_wire_actuator_NiTi#6_121	dummy-meas	strain	wire_actuator_NiTi#6	121	0.055
+strain_wire_actuator_NiTi#6_122	dummy-meas	strain	wire_actuator_NiTi#6	122	0.06
+strain_wire_actuator_NiTi#6_210	dummy-meas	strain	wire_actuator_NiTi#6	210	0
+strain_wire_actuator_NiTi#6_211	dummy-meas	strain	wire_actuator_NiTi#6	211	0.005
+strain_wire_actuator_NiTi#6_212	dummy-meas	strain	wire_actuator_NiTi#6	212	0.01
+strain_wire_actuator_NiTi#6_213	dummy-meas	strain	wire_actuator_NiTi#6	213	0.015
+strain_wire_actuator_NiTi#6_214	dummy-meas	strain	wire_actuator_NiTi#6	214	0.02
+strain_wire_actuator_NiTi#6_215	dummy-meas	strain	wire_actuator_NiTi#6	215	0.025
+strain_wire_actuator_NiTi#6_216	dummy-meas	strain	wire_actuator_NiTi#6	216	0.03
+strain_wire_actuator_NiTi#6_217	dummy-meas	strain	wire_actuator_NiTi#6	217	0.035
+strain_wire_actuator_NiTi#6_218	dummy-meas	strain	wire_actuator_NiTi#6	218	0.04
+strain_wire_actuator_NiTi#6_219	dummy-meas	strain	wire_actuator_NiTi#6	219	0.045
+strain_wire_actuator_NiTi#6_220	dummy-meas	strain	wire_actuator_NiTi#6	220	0.05
+strain_wire_actuator_NiTi#6_221	dummy-meas	strain	wire_actuator_NiTi#6	221	0.055
+strain_wire_actuator_NiTi#6_222	dummy-meas	strain	wire_actuator_NiTi#6	222	0.06
+strain_wire_actuator_NiTi#6_310	dummy-meas	strain	wire_actuator_NiTi#6	310	0
+strain_wire_actuator_NiTi#6_311	dummy-meas	strain	wire_actuator_NiTi#6	311	0.005
+strain_wire_actuator_NiTi#6_312	dummy-meas	strain	wire_actuator_NiTi#6	312	0.01
+strain_wire_actuator_NiTi#6_313	dummy-meas	strain	wire_actuator_NiTi#6	313	0.015
+strain_wire_actuator_NiTi#6_314	dummy-meas	strain	wire_actuator_NiTi#6	314	0.02
+strain_wire_actuator_NiTi#6_315	dummy-meas	strain	wire_actuator_NiTi#6	315	0.025
+strain_wire_actuator_NiTi#6_316	dummy-meas	strain	wire_actuator_NiTi#6	316	0.03
+strain_wire_actuator_NiTi#6_317	dummy-meas	strain	wire_actuator_NiTi#6	317	0.035
+strain_wire_actuator_NiTi#6_318	dummy-meas	strain	wire_actuator_NiTi#6	318	0.04
+strain_wire_actuator_NiTi#6_319	dummy-meas	strain	wire_actuator_NiTi#6	319	0.045
+strain_wire_actuator_NiTi#6_320	dummy-meas	strain	wire_actuator_NiTi#6	320	0.05
+strain_wire_actuator_NiTi#6_321	dummy-meas	strain	wire_actuator_NiTi#6	321	0.055
+strain_wire_actuator_NiTi#6_322	dummy-meas	strain	wire_actuator_NiTi#6	322	0.06
+martensite_content_wire_actuator_NiTi#6_110	dummy-meas	martensite_content	wire_actuator_NiTi#6	110	0
+martensite_content_wire_actuator_NiTi#6_111	dummy-meas	martensite_content	wire_actuator_NiTi#6	111	0
+martensite_content_wire_actuator_NiTi#6_112	dummy-meas	martensite_content	wire_actuator_NiTi#6	112	0
+martensite_content_wire_actuator_NiTi#6_113	dummy-meas	martensite_content	wire_actuator_NiTi#6	113	0
+martensite_content_wire_actuator_NiTi#6_114	dummy-meas	martensite_content	wire_actuator_NiTi#6	114	0
+martensite_content_wire_actuator_NiTi#6_115	dummy-meas	martensite_content	wire_actuator_NiTi#6	115	0
+martensite_content_wire_actuator_NiTi#6_116	dummy-meas	martensite_content	wire_actuator_NiTi#6	116	0
+martensite_content_wire_actuator_NiTi#6_117	dummy-meas	martensite_content	wire_actuator_NiTi#6	117	0
+martensite_content_wire_actuator_NiTi#6_118	dummy-meas	martensite_content	wire_actuator_NiTi#6	118	0
+martensite_content_wire_actuator_NiTi#6_119	dummy-meas	martensite_content	wire_actuator_NiTi#6	119	0
+martensite_content_wire_actuator_NiTi#6_120	dummy-meas	martensite_content	wire_actuator_NiTi#6	120	0
+martensite_content_wire_actuator_NiTi#6_121	dummy-meas	martensite_content	wire_actuator_NiTi#6	121	0
+martensite_content_wire_actuator_NiTi#6_122	dummy-meas	martensite_content	wire_actuator_NiTi#6	122	0
+martensite_content_wire_actuator_NiTi#6_210	dummy-meas	martensite_content	wire_actuator_NiTi#6	210	0.5
+martensite_content_wire_actuator_NiTi#6_211	dummy-meas	martensite_content	wire_actuator_NiTi#6	211	0.5
+martensite_content_wire_actuator_NiTi#6_212	dummy-meas	martensite_content	wire_actuator_NiTi#6	212	0.5
+martensite_content_wire_actuator_NiTi#6_213	dummy-meas	martensite_content	wire_actuator_NiTi#6	213	0.5
+martensite_content_wire_actuator_NiTi#6_214	dummy-meas	martensite_content	wire_actuator_NiTi#6	214	0.5
+martensite_content_wire_actuator_NiTi#6_215	dummy-meas	martensite_content	wire_actuator_NiTi#6	215	0.5
+martensite_content_wire_actuator_NiTi#6_216	dummy-meas	martensite_content	wire_actuator_NiTi#6	216	0.5
+martensite_content_wire_actuator_NiTi#6_217	dummy-meas	martensite_content	wire_actuator_NiTi#6	217	0.5
+martensite_content_wire_actuator_NiTi#6_218	dummy-meas	martensite_content	wire_actuator_NiTi#6	218	0.5
+martensite_content_wire_actuator_NiTi#6_219	dummy-meas	martensite_content	wire_actuator_NiTi#6	219	0.5
+martensite_content_wire_actuator_NiTi#6_220	dummy-meas	martensite_content	wire_actuator_NiTi#6	220	0.5
+martensite_content_wire_actuator_NiTi#6_221	dummy-meas	martensite_content	wire_actuator_NiTi#6	221	0.5
+martensite_content_wire_actuator_NiTi#6_222	dummy-meas	martensite_content	wire_actuator_NiTi#6	222	0.5
+martensite_content_wire_actuator_NiTi#6_310	dummy-meas	martensite_content	wire_actuator_NiTi#6	310	1
+martensite_content_wire_actuator_NiTi#6_311	dummy-meas	martensite_content	wire_actuator_NiTi#6	311	1
+martensite_content_wire_actuator_NiTi#6_312	dummy-meas	martensite_content	wire_actuator_NiTi#6	312	1
+martensite_content_wire_actuator_NiTi#6_313	dummy-meas	martensite_content	wire_actuator_NiTi#6	313	1
+martensite_content_wire_actuator_NiTi#6_314	dummy-meas	martensite_content	wire_actuator_NiTi#6	314	1
+martensite_content_wire_actuator_NiTi#6_315	dummy-meas	martensite_content	wire_actuator_NiTi#6	315	1
+martensite_content_wire_actuator_NiTi#6_316	dummy-meas	martensite_content	wire_actuator_NiTi#6	316	1
+martensite_content_wire_actuator_NiTi#6_317	dummy-meas	martensite_content	wire_actuator_NiTi#6	317	1
+martensite_content_wire_actuator_NiTi#6_318	dummy-meas	martensite_content	wire_actuator_NiTi#6	318	1
+martensite_content_wire_actuator_NiTi#6_319	dummy-meas	martensite_content	wire_actuator_NiTi#6	319	1
+martensite_content_wire_actuator_NiTi#6_320	dummy-meas	martensite_content	wire_actuator_NiTi#6	320	1
+martensite_content_wire_actuator_NiTi#6_321	dummy-meas	martensite_content	wire_actuator_NiTi#6	321	1
+martensite_content_wire_actuator_NiTi#6_322	dummy-meas	martensite_content	wire_actuator_NiTi#6	322	1
+martensite_content_wire_actuator_NiTi#6_500	dummy-meas	martensite_content	wire_actuator_NiTi#6	500	1
+E-modulus_twinned_martensite_wire_actuator_NiTi#6_0	dummy-meas	E-modulus_twinned_martensite	wire_actuator_NiTi#6	0	22800000000
+hardening_parameter_wire_actuator_NiTi#6_0	dummy-meas	hardening_parameter	wire_actuator_NiTi#6	0	150000000
+plateau_finish_strain_wire_actuator_NiTi#6_0	dummy-meas	plateau_finish_strain	wire_actuator_NiTi#6	0	0.0581
+plateau_start_strain_wire_actuator_NiTi#6_0	dummy-meas	plateau_start_strain	wire_actuator_NiTi#6	0	0.0088
+E-modulus_de-twinned_martensite_wire_actuator_NiTi#6_0	dummy-meas	E-modulus_de-twinned_martensite	wire_actuator_NiTi#6	0	24830000000
+E-modulus_austenite_wire_actuator_NiTi#6_0	dummy-meas	E-modulus_austenite	wire_actuator_NiTi#6	0	53510000000
+max_blocking_stress_NiTi	dummy-meas	maximal_blocking_stress	NiTi	0	500000000
+M420_1_5	dummy-meas	A00	M420	0	4.5e-11
+M420_1_6	dummy-meas	B00	M420	0	-1.6e-10
+M420_1_7	dummy-meas	B00	M420	0	3.55e-10
+M420_1_8	dummy-meas	B00	M420	0	5.25e-10
+M420_2_1	dummy-meas	B01	M420	0	-0.011
+M420_2_2	dummy-meas	B01	M420	0	0.025
+M420_2_3	dummy-meas	B01	M420	0	0.037
+dielectric_strength_M420	dummy-meas	dielectric_strength	M420	0	2000
+lattice_constant_a_Ni2MnGa_sample_1	dummy-meas	lattice_constant_a	Ni2MnGa_sample_1	0	0.59
+lattice_constant_c_Ni2MnGa_sample_1	dummy-meas	lattice_constant_c	Ni2MnGa_sample_1	0	0.55
+M420_1_9	dummy-meas	C00	M420	0	1.4166399999999998e-08
+M420_1_10	dummy-meas	C00	M420	0	1.4166399999999998e-08
 \.
 
 
 --
--- Data for Name: concr_param_matrix; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_param_matrix; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_param_matrix (concr_param_id, index_id, value) FROM stdin;
@@ -4989,65 +5162,11 @@ M420_2_3	2	5
 
 
 --
--- Data for Name: concr_param_matrix_additional; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: concr_param_matrix_additional; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.concr_param_matrix_additional (concr_param_id, index_id, value, callversion) FROM stdin;
-cp_mod_A10_matrix_model_1_M420_0_1	1	1	\N
-cp_mod_A10_matrix_model_1_M420_0_1	2	1	\N
-cp_mod_A10_matrix_model_1_M420_0_2	1	1	\N
-cp_mod_A10_matrix_model_1_M420_0_2	2	2	\N
-cp_mod_A10_matrix_model_1_M420_0_3	1	1	\N
-cp_mod_A10_matrix_model_1_M420_0_3	2	3	\N
-cp_mod_A10_matrix_model_1_M420_0_4	1	3	\N
-cp_mod_A10_matrix_model_1_M420_0_4	2	3	\N
-cp_mod_A10_matrix_model_1_M420_0_5	1	5	\N
-cp_mod_A10_matrix_model_1_M420_0_5	2	5	\N
-cp_mod_B10_matrix_model_2_M420_0_1	1	3	\N
-cp_mod_B10_matrix_model_2_M420_0_1	2	1	\N
-cp_mod_B10_matrix_model_2_M420_0_2	1	3	\N
-cp_mod_B10_matrix_model_2_M420_0_2	2	3	\N
-cp_mod_B10_matrix_model_2_M420_0_3	1	1	\N
-cp_mod_B10_matrix_model_2_M420_0_3	2	5	\N
-cp_mod_C10_matrix_model_3_M420_0_1	1	1	\N
-cp_mod_C10_matrix_model_3_M420_0_1	2	1	\N
-cp_mod_C10_matrix_model_3_M420_0_2	1	3	\N
-cp_mod_C10_matrix_model_3_M420_0_2	2	3	\N
-cp_mod_A01_matrix_model_4_M420_0_1	1	1	\N
-cp_mod_A01_matrix_model_4_M420_0_1	2	1	\N
-cp_mod_A01_matrix_model_4_M420_0_2	1	1	\N
-cp_mod_A01_matrix_model_4_M420_0_2	2	2	\N
-cp_mod_A01_matrix_model_4_M420_0_3	1	1	\N
-cp_mod_A01_matrix_model_4_M420_0_3	2	3	\N
-cp_mod_A01_matrix_model_4_M420_0_4	1	3	\N
-cp_mod_A01_matrix_model_4_M420_0_4	2	3	\N
-cp_mod_A01_matrix_model_4_M420_0_5	1	5	\N
-cp_mod_A01_matrix_model_4_M420_0_5	2	5	\N
-cp_mod_B01_matrix_model_5_M420_0_1	1	3	\N
-cp_mod_B01_matrix_model_5_M420_0_1	2	1	\N
-cp_mod_B01_matrix_model_5_M420_0_2	1	3	\N
-cp_mod_B01_matrix_model_5_M420_0_2	2	3	\N
-cp_mod_B01_matrix_model_5_M420_0_3	1	1	\N
-cp_mod_B01_matrix_model_5_M420_0_3	2	5	\N
-cp_mod_C01_matrix_model_6_M420_0_1	1	1	\N
-cp_mod_C01_matrix_model_6_M420_0_1	2	1	\N
-cp_mod_C01_matrix_model_6_M420_0_2	1	3	\N
-cp_mod_C01_matrix_model_6_M420_0_2	2	3	\N
-cp_mod_A00_matrix_model_1_M420_0_1	1	1	\N
-cp_mod_A00_matrix_model_1_M420_0_1	2	1	\N
-cp_mod_A00_matrix_model_1_M420_0_2	1	1	\N
-cp_mod_A00_matrix_model_1_M420_0_2	2	2	\N
-cp_mod_A00_matrix_model_1_M420_0_3	1	1	\N
-cp_mod_A00_matrix_model_1_M420_0_3	2	3	\N
-cp_mod_A00_matrix_model_1_M420_0_4	1	3	\N
-cp_mod_A00_matrix_model_1_M420_0_4	2	3	\N
-cp_mod_A00_matrix_model_1_M420_0_5	1	5	\N
-cp_mod_A00_matrix_model_1_M420_0_5	2	5	\N
-cp_mod_A11_matrix_model_1_M420_0_1	1	1	\N
-cp_mod_A11_matrix_model_1_M420_0_1	2	1	\N
-cp_mod_A11_matrix_model_1_M420_0_2	1	1	\N
 cp_mod_A11_matrix_model_1_M420_0_2	2	2	\N
-cp_mod_A11_matrix_model_1_M420_0_3	1	1	\N
 cp_mod_A11_matrix_model_1_M420_0_3	2	3	\N
 cp_mod_A11_matrix_model_1_M420_0_4	1	3	\N
 cp_mod_A11_matrix_model_1_M420_0_4	2	3	\N
@@ -5153,11 +5272,65 @@ cp_mod_C10_matrix_model_6_M420_0_1	1	1	\N
 cp_mod_C10_matrix_model_6_M420_0_1	2	1	\N
 cp_mod_C10_matrix_model_6_M420_0_2	1	3	\N
 cp_mod_C10_matrix_model_6_M420_0_2	2	3	\N
+cp_mod_A10_matrix_model_1_M420_0_1	1	1	\N
+cp_mod_A10_matrix_model_1_M420_0_1	2	1	\N
+cp_mod_A10_matrix_model_1_M420_0_2	1	1	\N
+cp_mod_A10_matrix_model_1_M420_0_2	2	2	\N
+cp_mod_A10_matrix_model_1_M420_0_3	1	1	\N
+cp_mod_A10_matrix_model_1_M420_0_3	2	3	\N
+cp_mod_A10_matrix_model_1_M420_0_4	1	3	\N
+cp_mod_A10_matrix_model_1_M420_0_4	2	3	\N
+cp_mod_A10_matrix_model_1_M420_0_5	1	5	\N
+cp_mod_A10_matrix_model_1_M420_0_5	2	5	\N
+cp_mod_B10_matrix_model_2_M420_0_1	1	3	\N
+cp_mod_B10_matrix_model_2_M420_0_1	2	1	\N
+cp_mod_B10_matrix_model_2_M420_0_2	1	3	\N
+cp_mod_B10_matrix_model_2_M420_0_2	2	3	\N
+cp_mod_B10_matrix_model_2_M420_0_3	1	1	\N
+cp_mod_B10_matrix_model_2_M420_0_3	2	5	\N
+cp_mod_C10_matrix_model_3_M420_0_1	1	1	\N
+cp_mod_C10_matrix_model_3_M420_0_1	2	1	\N
+cp_mod_C10_matrix_model_3_M420_0_2	1	3	\N
+cp_mod_C10_matrix_model_3_M420_0_2	2	3	\N
+cp_mod_A01_matrix_model_4_M420_0_1	1	1	\N
+cp_mod_A01_matrix_model_4_M420_0_1	2	1	\N
+cp_mod_A01_matrix_model_4_M420_0_2	1	1	\N
+cp_mod_A01_matrix_model_4_M420_0_2	2	2	\N
+cp_mod_A01_matrix_model_4_M420_0_3	1	1	\N
+cp_mod_A01_matrix_model_4_M420_0_3	2	3	\N
+cp_mod_A01_matrix_model_4_M420_0_4	1	3	\N
+cp_mod_A01_matrix_model_4_M420_0_4	2	3	\N
+cp_mod_A01_matrix_model_4_M420_0_5	1	5	\N
+cp_mod_A01_matrix_model_4_M420_0_5	2	5	\N
+cp_mod_B01_matrix_model_5_M420_0_1	1	3	\N
+cp_mod_B01_matrix_model_5_M420_0_1	2	1	\N
+cp_mod_B01_matrix_model_5_M420_0_2	1	3	\N
+cp_mod_B01_matrix_model_5_M420_0_2	2	3	\N
+cp_mod_B01_matrix_model_5_M420_0_3	1	1	\N
+cp_mod_B01_matrix_model_5_M420_0_3	2	5	\N
+cp_mod_C01_matrix_model_6_M420_0_1	1	1	\N
+cp_mod_C01_matrix_model_6_M420_0_1	2	1	\N
+cp_mod_C01_matrix_model_6_M420_0_2	1	3	\N
+cp_mod_C01_matrix_model_6_M420_0_2	2	3	\N
+cp_mod_A00_matrix_model_1_M420_0_1	1	1	\N
+cp_mod_A00_matrix_model_1_M420_0_1	2	1	\N
+cp_mod_A00_matrix_model_1_M420_0_2	1	1	\N
+cp_mod_A00_matrix_model_1_M420_0_2	2	2	\N
+cp_mod_A00_matrix_model_1_M420_0_3	1	1	\N
+cp_mod_A00_matrix_model_1_M420_0_3	2	3	\N
+cp_mod_A00_matrix_model_1_M420_0_4	1	3	\N
+cp_mod_A00_matrix_model_1_M420_0_4	2	3	\N
+cp_mod_A00_matrix_model_1_M420_0_5	1	5	\N
+cp_mod_A00_matrix_model_1_M420_0_5	2	5	\N
+cp_mod_A11_matrix_model_1_M420_0_1	1	1	\N
+cp_mod_A11_matrix_model_1_M420_0_1	2	1	\N
+cp_mod_A11_matrix_model_1_M420_0_2	1	1	\N
+cp_mod_A11_matrix_model_1_M420_0_3	1	1	\N
 \.
 
 
 --
--- Data for Name: constants; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: constants; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.constants (param_id, value) FROM stdin;
@@ -5167,7 +5340,7 @@ vacuum_permeability	0.0000012566
 
 
 --
--- Data for Name: curve_condition; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: curve_condition; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.curve_condition (curve_id, param_id, value, in_number, operator) FROM stdin;
@@ -5179,7 +5352,7 @@ stress-strain_curve_martensite	martensite_content	\N	-100	\N
 
 
 --
--- Data for Name: curve_params; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: curve_params; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.curve_params (curve_id, param_id) FROM stdin;
@@ -5205,15 +5378,7 @@ curve_magnetic_stress	magnetic_field_strength
 
 
 --
--- Data for Name: external_source; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY public.external_source (source_id, source_name, source_type, source_description) FROM stdin;
-\.
-
-
---
--- Data for Name: material; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: material; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.material (mat_id, mat_name, mat_type) FROM stdin;
@@ -5225,7 +5390,7 @@ elastomer_1	Wacker_Elastosil2030	DE
 
 
 --
--- Data for Name: material_condition; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: material_condition; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.material_condition (mod_id, mat_type, abstract_object_id) FROM stdin;
@@ -5238,7 +5403,7 @@ calc_yeoh_minR	DE	\N
 
 
 --
--- Data for Name: material_types; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: material_types; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.material_types (mat_type) FROM stdin;
@@ -5250,7 +5415,7 @@ PC
 
 
 --
--- Data for Name: measinput; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: measinput; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.measinput (meas_id, param_id) FROM stdin;
@@ -5258,7 +5423,7 @@ COPY public.measinput (meas_id, param_id) FROM stdin;
 
 
 --
--- Data for Name: measoutput; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: measoutput; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.measoutput (meas_id, param_id) FROM stdin;
@@ -5266,19 +5431,20 @@ COPY public.measoutput (meas_id, param_id) FROM stdin;
 
 
 --
--- Data for Name: measurement; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: measurement; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.measurement (meas_id, meas_name) FROM stdin;
 meas_flux_over_field	measurement of flux density over magnetic field
 tensile_test	tensile test
 base_value	 
-measured_at	 
+measured_at	 given data
+dummy-data	 given data
 \.
 
 
 --
--- Data for Name: model; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: model; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.model (mod_id, mod_name, mod_type, mod_equation, function_name) FROM stdin;
@@ -5314,7 +5480,7 @@ matrix_model_6	Matrixtransformation	matrixoperation	C^{m \\bar e} &= (C^{me})^{-
 
 
 --
--- Data for Name: model_condition; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: model_condition; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.model_condition (mod_id, param_id, value, in_number, operator) FROM stdin;
@@ -5324,7 +5490,7 @@ calc_martensite_asc	hysteresis	1	-1	=
 
 
 --
--- Data for Name: model_condition_compare; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: model_condition_compare; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.model_condition_compare (mod_id, param_id, in_number, operator, compare_position) FROM stdin;
@@ -5340,7 +5506,7 @@ COPY public.model_condition_compare (mod_id, param_id, in_number, operator, comp
 
 
 --
--- Data for Name: model_condition_interpol; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: model_condition_interpol; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.model_condition_interpol (mod_id, param_id, value, in_number) FROM stdin;
@@ -5348,7 +5514,7 @@ COPY public.model_condition_interpol (mod_id, param_id, value, in_number) FROM s
 
 
 --
--- Data for Name: modelinput; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: modelinput; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.modelinput (mod_id, param_id, in_number) FROM stdin;
@@ -5435,7 +5601,7 @@ calc_maximum_strain_mag	lattice_constant_a	2
 
 
 --
--- Data for Name: modelinput_matrix; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: modelinput_matrix; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.modelinput_matrix (mod_id, param_id, index_id, value) FROM stdin;
@@ -5447,7 +5613,7 @@ calc_max_blocking_stress_PC	B00	1	3
 
 
 --
--- Data for Name: modeloutput; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: modeloutput; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.modeloutput (mod_id, param_id, out_number) FROM stdin;
@@ -5486,7 +5652,7 @@ calc_maximum_strain_mag	maximum_strain_mag	1
 
 
 --
--- Data for Name: modeloutput_pek_bits; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: modeloutput_pek_bits; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.modeloutput_pek_bits (mod_id, "bit") FROM stdin;
@@ -5500,7 +5666,7 @@ matrix_model_6	e
 
 
 --
--- Data for Name: modeltype; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: modeltype; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.modeltype (modeltype) FROM stdin;
@@ -5515,7 +5681,7 @@ linear_interpolation
 
 
 --
--- Data for Name: param; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: param; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.param (param_id, param_name, param_unit, param_symbol) FROM stdin;
@@ -5581,7 +5747,7 @@ lattice_constant_c	lattice constant c	nm	c
 
 
 --
--- Data for Name: param_piezo; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: param_piezo; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.param_piezo (param_id, index_id, param_matrix, value) FROM stdin;
@@ -5613,7 +5779,7 @@ C11	e	C	1
 
 
 --
--- Data for Name: param_semantic; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: param_semantic; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.param_semantic (param_id, value, semantic) FROM stdin;
@@ -5625,15 +5791,7 @@ hysteresis	2	descending
 
 
 --
--- Data for Name: producer; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY public.producer (object_id, producer_id) FROM stdin;
-\.
-
-
---
--- Data for Name: sample; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: sample; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.sample (sample_id, mat_id, description, sample_name) FROM stdin;
@@ -5643,7 +5801,7 @@ sample1_elastomer1	elastomer_1	\N	sample_Wacker_Elastosil2030
 
 
 --
--- Data for Name: temp_step_view; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: temp_step_view; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.temp_step_view (concr_param_id, mod_meas_id, param_id, mat_sample_id, meas_time, value, mod_id) FROM stdin;
@@ -5651,17 +5809,15 @@ COPY public.temp_step_view (concr_param_id, mod_meas_id, param_id, mat_sample_id
 
 
 --
--- Data for Name: temp_view; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: temp_view; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.temp_view (concr_param_id, mod_meas_id, param_id, mat_sample_id, meas_time, value, mod_id, step) FROM stdin;
-mechanic_stress_sample1_elastomer1_tens_1_68	\N	mechanic_stress	sample1_elastomer1	68	303300	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_11	\N	easy_hard_axis	Ni2MnGa_sample_1	11	1	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_115	\N	easy_hard_axis	Ni2MnGa_sample_1	115	0	\N	0
 strain_wire_actuator_NiTi#6_221	\N	strain	wire_actuator_NiTi#6	221	0.055	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_333	\N	mechanic_stress	sample1_elastomer1	333	1068300	\N	0
 martensite_content_wire_actuator_NiTi#6_116	\N	martensite_content	wire_actuator_NiTi#6	116	0	\N	0
-mechanic_stress_sample1_elastomer1_tens_1_108	\N	mechanic_stress	sample1_elastomer1	108	422300	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_30	\N	easy_hard_axis	Ni2MnGa_sample_1	30	1	\N	0
 strain_sample1_elastomer1_tens_1_377	\N	strain	sample1_elastomer1	377	1.88	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_372	\N	mechanic_stress	sample1_elastomer1	372	1198300	\N	0
@@ -5721,6 +5877,7 @@ strain_sample1_elastomer1_tens_1_293	\N	strain	sample1_elastomer1	293	1.46	\N	0
 hysteresis_wire_actuator_1_135	\N	hysteresis	wire_actuator_1	135	1	\N	0
 strain_sample1_elastomer1_tens_1_163	\N	strain	sample1_elastomer1	163	0.81	\N	0
 temperature_wire_actuator_1_120	\N	temperature	wire_actuator_1	120	71	\N	0
+M420_1_10	\N	C00	M420	0	1.4166399999999998e-08	\N	0
 \N	\N	vacuum_permeability	Ni2MnGa_sample_1	0	1.2566e-06	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_13	\N	magnetic_field_strength	Ni2MnGa_sample_1	13	120000	\N	0
 strain_sample1_elastomer1_tens_1_95	\N	strain	sample1_elastomer1	95	0.47	\N	0
@@ -5756,6 +5913,8 @@ mechanic_stress_sample1_elastomer1_tens_1_39	\N	mechanic_stress	sample1_elastome
 mechanic_stress_sample1_elastomer1_tens_1_13	\N	mechanic_stress	sample1_elastomer1	13	71000	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_2_110	\N	magnetic_field_strength	Ni2MnGa_sample_1	110	90000	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_120	\N	easy_hard_axis	Ni2MnGa_sample_1	120	0	\N	0
+mechanic_stress_sample1_elastomer1_tens_1_68	\N	mechanic_stress	sample1_elastomer1	68	303300	\N	0
+mechanic_stress_sample1_elastomer1_tens_1_108	\N	mechanic_stress	sample1_elastomer1	108	422300	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_44	\N	mechanic_stress	sample1_elastomer1	44	216300	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_144	\N	easy_hard_axis	Ni2MnGa_sample_1	144	0	\N	0
 strain_sample1_elastomer1_tens_1_50	\N	strain	sample1_elastomer1	50	0.245	\N	0
@@ -5916,6 +6075,7 @@ magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_4	\N	magnetic_fie
 strain_sample1_elastomer1_tens_1_218	\N	strain	sample1_elastomer1	218	1.085	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_352	\N	mechanic_stress	sample1_elastomer1	352	1128300	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_249	\N	mechanic_stress	sample1_elastomer1	249	798300	\N	0
+M420_1_9	\N	C00	M420	0	1.4166399999999998e-08	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_283	\N	mechanic_stress	sample1_elastomer1	283	901300	\N	0
 \N	\N	vacuum_permittivity	Ni2MnGa	0	8.854e-12	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_47	\N	magnetic_field_strength	Ni2MnGa_sample_1	47	460000	\N	0
@@ -6021,8 +6181,8 @@ strain_sample1_elastomer1_tens_1_398	\N	strain	sample1_elastomer1	398	1.985	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_340	\N	mechanic_stress	sample1_elastomer1	340	1088300	\N	0
 \N	\N	vacuum_permittivity	Ni2MnGa_sample_1	0	8.854e-12	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_360	\N	mechanic_stress	sample1_elastomer1	360	1158300	\N	0
-relative_permittivity_el_1	\N	relative_permittivity	elastomer_1	0	3.2	\N	0
 martensite_content_wire_actuator_NiTi#6_322	\N	martensite_content	wire_actuator_NiTi#6	322	1	\N	0
+relative_permittivity_el_1	\N	relative_permittivity	elastomer_1	0	3.2	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_390	\N	mechanic_stress	sample1_elastomer1	390	1263300	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_393	\N	mechanic_stress	sample1_elastomer1	393	1268300	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_2_121	\N	easy_hard_axis	Ni2MnGa_sample_1	121	0	\N	0
@@ -6066,7 +6226,6 @@ mechanic_stress_sample1_elastomer1_tens_1_223	\N	mechanic_stress	sample1_elastom
 strain_sample1_elastomer1_tens_1_328	\N	strain	sample1_elastomer1	328	1.635	\N	0
 strain_sample1_elastomer1_tens_1_2	\N	strain	sample1_elastomer1	2	0.005	\N	0
 strain_sample1_elastomer1_tens_1_170	\N	strain	sample1_elastomer1	170	0.845	\N	0
-M420_1_10	\N	C00	M420	0	1600	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_388	\N	mechanic_stress	sample1_elastomer1	388	1253300	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_27	\N	magnetic_field_strength	Ni2MnGa_sample_1	27	260000	\N	0
 easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_33	\N	easy_hard_axis	Ni2MnGa_sample_1	33	1	\N	0
@@ -6234,8 +6393,8 @@ strain_sample1_elastomer1_tens_1_264	\N	strain	sample1_elastomer1	264	1.315	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_112	\N	mechanic_stress	sample1_elastomer1	112	433300	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_15	\N	mechanic_stress	sample1_elastomer1	15	82300	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_5	\N	magnetic_field_strength	Ni2MnGa_sample_1	5	40000	\N	0
-strain_sample1_elastomer1_tens_1_308	\N	strain	sample1_elastomer1	308	1.535	\N	0
 M420_1_2	\N	A00	M420	0	1.87e-11	\N	0
+strain_sample1_elastomer1_tens_1_308	\N	strain	sample1_elastomer1	308	1.535	\N	0
 magnetic_field_strength_Ni2MnGa_sample1_meas_flux_over_field_1_19	\N	magnetic_field_strength	Ni2MnGa_sample_1	19	180000	\N	0
 strain_sample1_elastomer1_tens_1_81	\N	strain	sample1_elastomer1	81	0.4	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_307	\N	mechanic_stress	sample1_elastomer1	307	978300	\N	0
@@ -6753,7 +6912,6 @@ strain_sample1_elastomer1_tens_1_13	\N	strain	sample1_elastomer1	13	0.06	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_353	\N	mechanic_stress	sample1_elastomer1	353	1128300	\N	0
 strain_sample1_elastomer1_tens_1_169	\N	strain	sample1_elastomer1	169	0.84	\N	0
 hysteresis_wire_actuator_1_116	\N	hysteresis	wire_actuator_1	116	2	\N	0
-M420_1_9	\N	C00	M420	0	1600	\N	0
 strain_sample1_elastomer1_tens_1_378	\N	strain	sample1_elastomer1	378	1.885	\N	0
 mechanic_stress_sample1_elastomer1_tens_1_100	\N	mechanic_stress	sample1_elastomer1	100	400300	\N	0
 strain_sample1_elastomer1_tens_1_150	\N	strain	sample1_elastomer1	150	0.745	\N	0
@@ -6882,26 +7040,26 @@ easy_hard_axis_Ni2MnGa_sample1_meas_flux_over_field_1_43	\N	easy_hard_axis	Ni2Mn
 strain_sample1_elastomer1_tens_1_203	\N	strain	sample1_elastomer1	203	1.01	\N	0
 strain_sample1_elastomer1_tens_1_381	\N	strain	sample1_elastomer1	381	1.9	\N	0
 strain_sample1_elastomer1_tens_1_83	\N	strain	sample1_elastomer1	83	0.41	\N	0
-cp_mod_A01_matrix_model_4_M420_0_1	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.5399999999984e-11	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_2	mod_matrix_model_4_A01_M420_0	A01	M420	0	-5.700000000016e-12	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_3	mod_matrix_model_4_A01_M420_0	A01	M420	0	-6.4999999999645e-12	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_4	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.86999999999212e-11	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_5	mod_matrix_model_4_A01_M420_0	A01	M420	0	4.49999999998277e-11	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_1	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.35929071606054e-11	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_2	mod_matrix_model_4_A01_M420_0	A01	M420	0	-7.50709283939462e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_3	mod_matrix_model_4_A01_M420_0	A01	M420	0	-2.49051276259318e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_4	mod_matrix_model_4_A01_M420_0	A01	M420	0	9.80395019200361e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_5	mod_matrix_model_4_A01_M420_0	A01	M420	0	2.55437514117913e-11	matrix_model_4	1
 cp_mod_A10_matrix_model_1_M420_0_1	mod_matrix_model_1_A10_M420_0	A10	M420	0	120197869377.449	matrix_model_1	1
 cp_mod_A10_matrix_model_1_M420_0_2	mod_matrix_model_1_A10_M420_0	A10	M420	0	72804504448.5392	matrix_model_1	1
 cp_mod_A10_matrix_model_1_M420_0_3	mod_matrix_model_1_A10_M420_0	A10	M420	0	67086386624.0066	matrix_model_1	1
 cp_mod_A10_matrix_model_1_M420_0_4	mod_matrix_model_1_A10_M420_0	A10	M420	0	100113530808.133	matrix_model_1	1
 cp_mod_A10_matrix_model_1_M420_0_5	mod_matrix_model_1_A10_M420_0	A10	M420	0	22222222222.2222	matrix_model_1	1
-cp_mod_B01_matrix_model_5_M420_0_3	mod_matrix_model_5_B01_M420_0	B01	M420	0	3.28125e-13	matrix_model_5	1
-cp_mod_B01_matrix_model_5_M420_0_1	mod_matrix_model_5_B01_M420_0	B01	M420	0	-1e-13	matrix_model_5	1
-cp_mod_B01_matrix_model_5_M420_0_2	mod_matrix_model_5_B01_M420_0	B01	M420	0	2.21875e-13	matrix_model_5	1
+cp_mod_B01_matrix_model_5_M420_0_3	mod_matrix_model_5_B01_M420_0	B01	M420	0	0.0370595211203976	matrix_model_5	1
+cp_mod_B01_matrix_model_5_M420_0_1	mod_matrix_model_5_B01_M420_0	B01	M420	0	-0.0112943302462164	matrix_model_5	1
+cp_mod_B01_matrix_model_5_M420_0_2	mod_matrix_model_5_B01_M420_0	B01	M420	0	0.0250592952337926	matrix_model_5	1
 cp_mod_B10_matrix_model_2_M420_0_3	mod_matrix_model_2_B10_M420_0	B10	M420	0	11.6666666666667	matrix_model_2	1
 cp_mod_B10_matrix_model_2_M420_0_1	mod_matrix_model_2_B10_M420_0	B10	M420	0	-7.06471256063577	matrix_model_2	1
 cp_mod_B10_matrix_model_2_M420_0_2	mod_matrix_model_2_B10_M420_0	B10	M420	0	14.0726597172051	matrix_model_2	1
-cp_mod_C01_matrix_model_6_M420_0_1	mod_matrix_model_6_C01_M420_0	C01	M420	0	0.000625	matrix_model_6	1
-cp_mod_C01_matrix_model_6_M420_0_2	mod_matrix_model_6_C01_M420_0	C01	M420	0	0.000625	matrix_model_6	1
-cp_mod_C10_matrix_model_3_M420_0_1	mod_matrix_model_3_C10_M420_0	C10	M420	0	1599.99999999388	matrix_model_3	1
-cp_mod_C10_matrix_model_3_M420_0_2	mod_matrix_model_3_C10_M420_0	C10	M420	0	1599.99999999274	matrix_model_3	1
+cp_mod_C01_matrix_model_6_M420_0_1	mod_matrix_model_6_C01_M420_0	C01	M420	0	70589564.0388525	matrix_model_6	1
+cp_mod_C01_matrix_model_6_M420_0_2	mod_matrix_model_6_C01_M420_0	C01	M420	0	70589564.0388525	matrix_model_6	1
+cp_mod_C10_matrix_model_3_M420_0_1	mod_matrix_model_3_C10_M420_0	C10	M420	0	8.0414e-09	matrix_model_3	1
+cp_mod_C10_matrix_model_3_M420_0_2	mod_matrix_model_3_C10_M420_0	C10	M420	0	6.90989778098875e-09	matrix_model_3	1
 cp_mod_linear_interpol_initial_stress_initial_stress_linear_interpolation_initial_stress_sample1_elastomer1_0	mod_linear_interpolation_initial_stress_initial_stress_sample1_elastomer1_0	initial_stress	sample1_elastomer1	0	59400	linear_interpolation_initial_stress	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_1_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_1_magnetization	magnetization	Ni2MnGa_sample_1	1	0	calc_magnetization	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_2_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_2_magnetization	magnetization	Ni2MnGa_sample_1	2	79792.73436256566	calc_magnetization	1
@@ -7090,7 +7248,6 @@ cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_315_mechan
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_316_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_316_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	316	203820000	1d_non_linear_mech_mod_v2	1
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_317_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_317_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	317	204570000	1d_non_linear_mech_mod_v2	1
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_318_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_318_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	318	205320000	1d_non_linear_mech_mod_v2	1
-cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_27	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	27	62833.01245	calc_mag_energy_density	3
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_319_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_319_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	319	206070000	1d_non_linear_mech_mod_v2	1
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_320_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_320_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	320	206820000	1d_non_linear_mech_mod_v2	1
 cp_mod_mechanic_stress_1d_non_linear_mech_mod_v2_wire_actuator_NiTi#6_321_mechanic_stress	mod_1d_non_linear_mech_mod_v2_mechanic_stress_wire_actuator_NiTi#6_321_mechanic_stress	mechanic_stress	wire_actuator_NiTi#6	321	207570000	1d_non_linear_mech_mod_v2	1
@@ -7105,21 +7262,21 @@ cp_mod_A00_matrix_model_1_M420_0_2	mod_matrix_model_1_A00_M420_0	A00	M420	0	-5.7
 cp_mod_A00_matrix_model_1_M420_0_3	mod_matrix_model_1_A00_M420_0	A00	M420	0	-6.49999999999999e-12	matrix_model_1	2
 cp_mod_A00_matrix_model_1_M420_0_4	mod_matrix_model_1_A00_M420_0	A00	M420	0	1.87e-11	matrix_model_1	2
 cp_mod_A00_matrix_model_1_M420_0_5	mod_matrix_model_1_A00_M420_0	A00	M420	0	4.5e-11	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_1	mod_matrix_model_1_A11_M420_0	A11	M420	0	120197869377.48	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_2	mod_matrix_model_1_A11_M420_0	A11	M420	0	72804504448.5705	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_3	mod_matrix_model_1_A11_M420_0	A11	M420	0	67086386623.9447	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_4	mod_matrix_model_1_A11_M420_0	A11	M420	0	100113530808.257	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_5	mod_matrix_model_1_A11_M420_0	A11	M420	0	22222222222.3073	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_1	mod_matrix_model_1_A11_M420_0	A11	M420	0	127420865309.707	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_2	mod_matrix_model_1_A11_M420_0	A11	M420	0	80027500380.7973	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_3	mod_matrix_model_1_A11_M420_0	A11	M420	0	52698431980.2742	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_4	mod_matrix_model_1_A11_M420_0	A11	M420	0	128773831986.699	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_5	mod_matrix_model_1_A11_M420_0	A11	M420	0	39148517532.8784	matrix_model_1	2
 cp_mod_B00_matrix_model_2_M420_0_3	mod_matrix_model_2_B00_M420_0	B00	M420	0	5.25000000000002e-10	matrix_model_2	2
 cp_mod_B00_matrix_model_2_M420_0_1	mod_matrix_model_2_B00_M420_0	B00	M420	0	-1.6e-10	matrix_model_2	2
 cp_mod_B00_matrix_model_2_M420_0_2	mod_matrix_model_2_B00_M420_0	B00	M420	0	3.55e-10	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_3	mod_matrix_model_2_B11_M420_0	B11	M420	0	0.00729166666669459	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_1	mod_matrix_model_2_B11_M420_0	B11	M420	0	-0.00441544535041736	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_2	mod_matrix_model_2_B11_M420_0	B11	M420	0	0.0087954123232931	matrix_model_2	2
-cp_mod_C00_matrix_model_3_M420_0_1	mod_matrix_model_3_C00_M420_0	C00	M420	0	1600.00000000001	matrix_model_3	2
-cp_mod_C00_matrix_model_3_M420_0_2	mod_matrix_model_3_C00_M420_0	C00	M420	0	1600	matrix_model_3	2
-cp_mod_C11_matrix_model_3_M420_0_1	mod_matrix_model_3_C11_M420_0	C11	M420	0	30422222.2229637	matrix_model_3	2
-cp_mod_C11_matrix_model_3_M420_0_2	mod_matrix_model_3_C11_M420_0	C11	M420	0	46706574.4658744	matrix_model_3	2
+cp_mod_B11_matrix_model_2_M420_0_3	mod_matrix_model_2_B11_M420_0	B11	M420	0	1450825312.34196	matrix_model_2	2
+cp_mod_B11_matrix_model_2_M420_0_1	mod_matrix_model_2_B11_M420_0	B11	M420	0	-964471223.088693	matrix_model_2	2
+cp_mod_B11_matrix_model_2_M420_0_2	mod_matrix_model_2_B11_M420_0	B11	M420	0	2059980296.10146	matrix_model_2	2
+cp_mod_C00_matrix_model_3_M420_0_1	mod_matrix_model_3_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_3	2
+cp_mod_C00_matrix_model_3_M420_0_2	mod_matrix_model_3_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_3	2
+cp_mod_C11_matrix_model_3_M420_0_1	mod_matrix_model_3_C11_M420_0	C11	M420	0	124356455.343597	matrix_model_3	2
+cp_mod_C11_matrix_model_3_M420_0_2	mod_matrix_model_3_C11_M420_0	C11	M420	0	144719941.118566	matrix_model_3	2
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_1_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_1_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	1	0	calc_mag_polarization	2
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_2_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_2_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	2	0.10026755000000001	calc_mag_polarization	2
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_3_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_3_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	3	0.12479048999999999	calc_mag_polarization	2
@@ -7270,6 +7427,7 @@ cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_23	mod_calc_m
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_24	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	24	51763.516449999996	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_25	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	25	55344.8183	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_26	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	26	59034.6503	calc_mag_energy_density	3
+cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_27	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	27	62833.01245	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_28	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	28	66739.90490000001	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_29	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	29	70755.32720000001	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_30	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	30	74879.27940000001	calc_mag_energy_density	3
@@ -7398,7 +7556,6 @@ cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_29_relative_permeabi
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_30_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_30_relative_permeability	relative_permeability	Ni2MnGa_sample_1	30	2.1465578709928814	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_31_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_31_relative_permeability	relative_permeability	Ni2MnGa_sample_1	31	2.1371286540400023	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_32_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_32_relative_permeability	relative_permeability	Ni2MnGa_sample_1	32	2.128307825006546	calc_rel_perm	3
-cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_300000	\N	magnetic_stress	Ni2MnGa_sample_1	1162	1521598.9463500008	calc_magnetic_stress	4
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_33_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_33_relative_permeability	relative_permeability	Ni2MnGa_sample_1	33	2.1200380739694413	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_34_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_34_relative_permeability	relative_permeability	Ni2MnGa_sample_1	34	2.1122697611158534	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_35_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_35_relative_permeability	relative_permeability	Ni2MnGa_sample_1	35	2.104958290812744	calc_rel_perm	3
@@ -7519,7 +7676,6 @@ cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_27_flux_density	mod_calc_
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_28_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_28_flux_density	flux_density	Ni2MnGa_sample_1	28	0.7353977600000001	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_29_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_29_flux_density	flux_density	Ni2MnGa_sample_1	29	0.7588167000000001	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_30_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_30_flux_density	flux_density	Ni2MnGa_sample_1	30	0.78223574	calc_flux_density	4
-cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_310000	\N	magnetic_stress	Ni2MnGa_sample_1	1164	1553885.8216750007	calc_magnetic_stress	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_31_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_31_flux_density	flux_density	Ni2MnGa_sample_1	31	0.80565476	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_32_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_32_flux_density	flux_density	Ni2MnGa_sample_1	32	0.8290738	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_33_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_33_flux_density	flux_density	Ni2MnGa_sample_1	33	0.8524927499999999	calc_flux_density	4
@@ -7705,6 +7861,8 @@ cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_260000	\N	magnetic
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_270000	\N	magnetic_stress	Ni2MnGa_sample_1	1156	1416831.318850001	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_280000	\N	magnetic_stress	Ni2MnGa_sample_1	1158	1453071.695675001	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_290000	\N	magnetic_stress	Ni2MnGa_sample_1	1160	1487994.242600001	calc_magnetic_stress	4
+cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_300000	\N	magnetic_stress	Ni2MnGa_sample_1	1162	1521598.9463500008	calc_magnetic_stress	4
+cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_310000	\N	magnetic_stress	Ni2MnGa_sample_1	1164	1553885.8216750007	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_320000	\N	magnetic_stress	Ni2MnGa_sample_1	1166	1584854.8737375007	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_330000	\N	magnetic_stress	Ni2MnGa_sample_1	1168	1614506.0870500007	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_340000	\N	magnetic_stress	Ni2MnGa_sample_1	1170	1642839.457925001	calc_magnetic_stress	4
@@ -7742,7 +7900,7 @@ cp_mod_maximal_blocking_stress_load_calc_max_block_load_hold_stick_Ni2MnGa_sampl
 
 
 --
--- Data for Name: temp_view_results; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: temp_view_results; Type: TABLE DATA; Schema: public; Owner: mena
 --
 
 COPY public.temp_view_results (concr_param_id, mod_meas_id, param_id, mat_sample_id, meas_time, value, mod_id, step) FROM stdin;
@@ -7809,7 +7967,6 @@ cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_118_magnetization	mod_c
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_119_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_119_magnetization	magnetization	Ni2MnGa_sample_1	119	500567.69059366547	calc_magnetization	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_12_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_12_magnetization	magnetization	Ni2MnGa_sample_1	12	177039.2885564221	calc_magnetization	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_120_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_120_magnetization	magnetization	Ni2MnGa_sample_1	120	502094.4612446284	calc_magnetization	1
-cp_mod_A10_matrix_model_4_M420_0_2	mod_matrix_model_4_A10_M420_0	A10	M420	0	72804504448.5705	matrix_model_4	3
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_121_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_121_magnetization	magnetization	Ni2MnGa_sample_1	121	503621.2796434824	calc_magnetization	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_122_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_122_magnetization	magnetization	Ni2MnGa_sample_1	122	505148.06621040904	calc_magnetization	1
 cp_mod_magnetization_calc_magnetization_Ni2MnGa_sample_1_123_magnetization	mod_calc_magnetization_magnetization_Ni2MnGa_sample_1_123_magnetization	magnetization	Ni2MnGa_sample_1	123	506674.836861372	calc_magnetization	1
@@ -7952,18 +8109,18 @@ cp_mod_A10_matrix_model_1_M420_0_5	mod_matrix_model_1_A10_M420_0	A10	M420	0	2222
 cp_mod_B10_matrix_model_2_M420_0_1	mod_matrix_model_2_B10_M420_0	B10	M420	0	-7.06471256063577	matrix_model_2	1
 cp_mod_B10_matrix_model_2_M420_0_2	mod_matrix_model_2_B10_M420_0	B10	M420	0	14.0726597172051	matrix_model_2	1
 cp_mod_B10_matrix_model_2_M420_0_3	mod_matrix_model_2_B10_M420_0	B10	M420	0	11.6666666666667	matrix_model_2	1
-cp_mod_C10_matrix_model_3_M420_0_1	mod_matrix_model_3_C10_M420_0	C10	M420	0	1599.99999999388	matrix_model_3	1
-cp_mod_C10_matrix_model_3_M420_0_2	mod_matrix_model_3_C10_M420_0	C10	M420	0	1599.99999999274	matrix_model_3	1
-cp_mod_A01_matrix_model_4_M420_0_1	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.5399999999984e-11	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_2	mod_matrix_model_4_A01_M420_0	A01	M420	0	-5.700000000016e-12	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_3	mod_matrix_model_4_A01_M420_0	A01	M420	0	-6.4999999999645e-12	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_4	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.86999999999212e-11	matrix_model_4	1
-cp_mod_A01_matrix_model_4_M420_0_5	mod_matrix_model_4_A01_M420_0	A01	M420	0	4.49999999998277e-11	matrix_model_4	1
-cp_mod_B01_matrix_model_5_M420_0_1	mod_matrix_model_5_B01_M420_0	B01	M420	0	-1e-13	matrix_model_5	1
-cp_mod_B01_matrix_model_5_M420_0_2	mod_matrix_model_5_B01_M420_0	B01	M420	0	2.21875e-13	matrix_model_5	1
-cp_mod_B01_matrix_model_5_M420_0_3	mod_matrix_model_5_B01_M420_0	B01	M420	0	3.28125e-13	matrix_model_5	1
-cp_mod_C01_matrix_model_6_M420_0_1	mod_matrix_model_6_C01_M420_0	C01	M420	0	0.000625	matrix_model_6	1
-cp_mod_C01_matrix_model_6_M420_0_2	mod_matrix_model_6_C01_M420_0	C01	M420	0	0.000625	matrix_model_6	1
+cp_mod_C10_matrix_model_3_M420_0_1	mod_matrix_model_3_C10_M420_0	C10	M420	0	8.0414e-09	matrix_model_3	1
+cp_mod_C10_matrix_model_3_M420_0_2	mod_matrix_model_3_C10_M420_0	C10	M420	0	6.90989778098875e-09	matrix_model_3	1
+cp_mod_A01_matrix_model_4_M420_0_1	mod_matrix_model_4_A01_M420_0	A01	M420	0	1.35929071606054e-11	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_2	mod_matrix_model_4_A01_M420_0	A01	M420	0	-7.50709283939462e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_3	mod_matrix_model_4_A01_M420_0	A01	M420	0	-2.49051276259318e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_4	mod_matrix_model_4_A01_M420_0	A01	M420	0	9.80395019200361e-12	matrix_model_4	1
+cp_mod_A01_matrix_model_4_M420_0_5	mod_matrix_model_4_A01_M420_0	A01	M420	0	2.55437514117913e-11	matrix_model_4	1
+cp_mod_B01_matrix_model_5_M420_0_1	mod_matrix_model_5_B01_M420_0	B01	M420	0	-0.0112943302462164	matrix_model_5	1
+cp_mod_B01_matrix_model_5_M420_0_2	mod_matrix_model_5_B01_M420_0	B01	M420	0	0.0250592952337926	matrix_model_5	1
+cp_mod_B01_matrix_model_5_M420_0_3	mod_matrix_model_5_B01_M420_0	B01	M420	0	0.0370595211203976	matrix_model_5	1
+cp_mod_C01_matrix_model_6_M420_0_1	mod_matrix_model_6_C01_M420_0	C01	M420	0	70589564.0388525	matrix_model_6	1
+cp_mod_C01_matrix_model_6_M420_0_2	mod_matrix_model_6_C01_M420_0	C01	M420	0	70589564.0388525	matrix_model_6	1
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_1_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_1_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	1	0	calc_mag_polarization	2
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_10_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_10_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	10	0.20076155999999998	calc_mag_polarization	2
 cp_mod_magnetic_polarization_calc_mag_polarization_Ni2MnGa_sample_1_101_magnetic_polarization	mod_calc_mag_polarization_magnetic_polarization_Ni2MnGa_sample_1_101_magnetic_polarization	magnetic_polarization	Ni2MnGa_sample_1	101	0	calc_mag_polarization	2
@@ -8095,41 +8252,41 @@ cp_mod_A00_matrix_model_1_M420_0_2	mod_matrix_model_1_A00_M420_0	A00	M420	0	-5.7
 cp_mod_A00_matrix_model_1_M420_0_3	mod_matrix_model_1_A00_M420_0	A00	M420	0	-6.49999999999999e-12	matrix_model_1	2
 cp_mod_A00_matrix_model_1_M420_0_4	mod_matrix_model_1_A00_M420_0	A00	M420	0	1.87e-11	matrix_model_1	2
 cp_mod_A00_matrix_model_1_M420_0_5	mod_matrix_model_1_A00_M420_0	A00	M420	0	4.5e-11	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_1	mod_matrix_model_1_A11_M420_0	A11	M420	0	120197869377.48	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_2	mod_matrix_model_1_A11_M420_0	A11	M420	0	72804504448.5705	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_3	mod_matrix_model_1_A11_M420_0	A11	M420	0	67086386623.9447	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_4	mod_matrix_model_1_A11_M420_0	A11	M420	0	100113530808.257	matrix_model_1	2
-cp_mod_A11_matrix_model_1_M420_0_5	mod_matrix_model_1_A11_M420_0	A11	M420	0	22222222222.3073	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_1	mod_matrix_model_1_A11_M420_0	A11	M420	0	127420865309.707	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_2	mod_matrix_model_1_A11_M420_0	A11	M420	0	80027500380.7973	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_3	mod_matrix_model_1_A11_M420_0	A11	M420	0	52698431980.2742	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_4	mod_matrix_model_1_A11_M420_0	A11	M420	0	128773831986.699	matrix_model_1	2
+cp_mod_A11_matrix_model_1_M420_0_5	mod_matrix_model_1_A11_M420_0	A11	M420	0	39148517532.8784	matrix_model_1	2
 cp_mod_B00_matrix_model_2_M420_0_1	mod_matrix_model_2_B00_M420_0	B00	M420	0	-1.6e-10	matrix_model_2	2
 cp_mod_B00_matrix_model_2_M420_0_2	mod_matrix_model_2_B00_M420_0	B00	M420	0	3.55e-10	matrix_model_2	2
 cp_mod_B00_matrix_model_2_M420_0_3	mod_matrix_model_2_B00_M420_0	B00	M420	0	5.25000000000002e-10	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_1	mod_matrix_model_2_B11_M420_0	B11	M420	0	-0.00441544535041736	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_2	mod_matrix_model_2_B11_M420_0	B11	M420	0	0.0087954123232931	matrix_model_2	2
-cp_mod_B11_matrix_model_2_M420_0_3	mod_matrix_model_2_B11_M420_0	B11	M420	0	0.00729166666669459	matrix_model_2	2
-cp_mod_C00_matrix_model_3_M420_0_1	mod_matrix_model_3_C00_M420_0	C00	M420	0	1600.00000000001	matrix_model_3	2
-cp_mod_C00_matrix_model_3_M420_0_2	mod_matrix_model_3_C00_M420_0	C00	M420	0	1600	matrix_model_3	2
-cp_mod_C11_matrix_model_3_M420_0_1	mod_matrix_model_3_C11_M420_0	C11	M420	0	30422222.2229637	matrix_model_3	2
-cp_mod_C11_matrix_model_3_M420_0_2	mod_matrix_model_3_C11_M420_0	C11	M420	0	46706574.4658744	matrix_model_3	2
-cp_mod_A00_matrix_model_4_M420_0_1	mod_matrix_model_4_A00_M420_0	A00	M420	0	0.1936000000154	matrix_model_4	2
-cp_mod_A00_matrix_model_4_M420_0_2	mod_matrix_model_4_A00_M420_0	A00	M420	0	0.1935999999943	matrix_model_4	2
-cp_mod_A00_matrix_model_4_M420_0_3	mod_matrix_model_4_A00_M420_0	A00	M420	0	-1.04049999999645e-11	matrix_model_4	2
-cp_mod_A00_matrix_model_4_M420_0_4	mod_matrix_model_4_A00_M420_0	A00	M420	0	1.87e-11	matrix_model_4	2
-cp_mod_A00_matrix_model_4_M420_0_5	mod_matrix_model_4_A00_M420_0	A00	M420	0	2.190400000045	matrix_model_4	2
-cp_mod_A11_matrix_model_4_M420_0_1	mod_matrix_model_4_A11_M420_0	A11	M420	0	120197869377.48	matrix_model_4	2
-cp_mod_A11_matrix_model_4_M420_0_2	mod_matrix_model_4_A11_M420_0	A11	M420	0	72804504448.5704	matrix_model_4	2
-cp_mod_A11_matrix_model_4_M420_0_3	mod_matrix_model_4_A11_M420_0	A11	M420	0	67086386623.9445	matrix_model_4	2
-cp_mod_A11_matrix_model_4_M420_0_4	mod_matrix_model_4_A11_M420_0	A11	M420	0	100113530808.257	matrix_model_4	2
-cp_mod_A11_matrix_model_4_M420_0_5	mod_matrix_model_4_A11_M420_0	A11	M420	0	22222222222.3073	matrix_model_4	2
+cp_mod_B11_matrix_model_2_M420_0_1	mod_matrix_model_2_B11_M420_0	B11	M420	0	-964471223.088693	matrix_model_2	2
+cp_mod_B11_matrix_model_2_M420_0_2	mod_matrix_model_2_B11_M420_0	B11	M420	0	2059980296.10146	matrix_model_2	2
+cp_mod_B11_matrix_model_2_M420_0_3	mod_matrix_model_2_B11_M420_0	B11	M420	0	1450825312.34196	matrix_model_2	2
+cp_mod_C00_matrix_model_3_M420_0_1	mod_matrix_model_3_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_3	2
+cp_mod_C00_matrix_model_3_M420_0_2	mod_matrix_model_3_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_3	2
+cp_mod_C11_matrix_model_3_M420_0_1	mod_matrix_model_3_C11_M420_0	C11	M420	0	124356455.343597	matrix_model_3	2
+cp_mod_C11_matrix_model_3_M420_0_2	mod_matrix_model_3_C11_M420_0	C11	M420	0	144719941.118566	matrix_model_3	2
+cp_mod_A00_matrix_model_4_M420_0_1	mod_matrix_model_4_A00_M420_0	A00	M420	0	1.53070415606054e-11	matrix_model_4	2
+cp_mod_A00_matrix_model_4_M420_0_2	mod_matrix_model_4_A00_M420_0	A00	M420	0	-5.79295843939462e-12	matrix_model_4	2
+cp_mod_A00_matrix_model_4_M420_0_3	mod_matrix_model_4_A00_M420_0	A00	M420	0	-6.38627276259318e-12	matrix_model_4	2
+cp_mod_A00_matrix_model_4_M420_0_4	mod_matrix_model_4_A00_M420_0	A00	M420	0	1.86579501920036e-11	matrix_model_4	2
+cp_mod_A00_matrix_model_4_M420_0_5	mod_matrix_model_4_A00_M420_0	A00	M420	0	4.50000000000001e-11	matrix_model_4	2
+cp_mod_A11_matrix_model_4_M420_0_1	mod_matrix_model_4_A11_M420_0	A11	M420	0	127420865309.708	matrix_model_4	2
+cp_mod_A11_matrix_model_4_M420_0_2	mod_matrix_model_4_A11_M420_0	A11	M420	0	80027500380.7979	matrix_model_4	2
+cp_mod_A11_matrix_model_4_M420_0_3	mod_matrix_model_4_A11_M420_0	A11	M420	0	52698431980.2744	matrix_model_4	2
+cp_mod_A11_matrix_model_4_M420_0_4	mod_matrix_model_4_A11_M420_0	A11	M420	0	128773831986.7	matrix_model_4	2
+cp_mod_A11_matrix_model_4_M420_0_5	mod_matrix_model_4_A11_M420_0	A11	M420	0	39148517532.8785	matrix_model_4	2
 cp_mod_B00_matrix_model_5_M420_0_1	mod_matrix_model_5_B00_M420_0	B00	M420	0	-1.6e-10	matrix_model_5	2
-cp_mod_B00_matrix_model_5_M420_0_2	mod_matrix_model_5_B00_M420_0	B00	M420	0	3.55e-10	matrix_model_5	2
-cp_mod_B00_matrix_model_5_M420_0_3	mod_matrix_model_5_B00_M420_0	B00	M420	0	5.25e-10	matrix_model_5	2
-cp_mod_B11_matrix_model_5_M420_0_1	mod_matrix_model_5_B11_M420_0	B11	M420	0	-0.00441544535041739	matrix_model_5	2
-cp_mod_B11_matrix_model_5_M420_0_2	mod_matrix_model_5_B11_M420_0	B11	M420	0	0.0087954123232931	matrix_model_5	2
-cp_mod_B11_matrix_model_5_M420_0_3	mod_matrix_model_5_B11_M420_0	B11	M420	0	0.00729166666669458	matrix_model_5	2
-cp_mod_C00_matrix_model_6_M420_0_1	mod_matrix_model_6_C00_M420_0	C00	M420	0	1600	matrix_model_6	2
-cp_mod_C00_matrix_model_6_M420_0_2	mod_matrix_model_6_C00_M420_0	C00	M420	0	1600	matrix_model_6	2
-cp_mod_C11_matrix_model_6_M420_0_1	mod_matrix_model_6_C11_M420_0	C11	M420	0	0.000625000000002391	matrix_model_6	2
-cp_mod_C11_matrix_model_6_M420_0_2	mod_matrix_model_6_C11_M420_0	C11	M420	0	0.000625000000002836	matrix_model_6	2
+cp_mod_B00_matrix_model_5_M420_0_2	mod_matrix_model_5_B00_M420_0	B00	M420	0	3.5416e-10	matrix_model_5	2
+cp_mod_B00_matrix_model_5_M420_0_3	mod_matrix_model_5_B00_M420_0	B00	M420	0	5.25000000000001e-10	matrix_model_5	2
+cp_mod_B11_matrix_model_5_M420_0_1	mod_matrix_model_5_B11_M420_0	B11	M420	0	-1022404785.7948	matrix_model_5	2
+cp_mod_B11_matrix_model_5_M420_0_2	mod_matrix_model_5_B11_M420_0	B11	M420	0	2036594485.65553	matrix_model_5	2
+cp_mod_B11_matrix_model_5_M420_0_3	mod_matrix_model_5_B11_M420_0	B11	M420	0	1450825312.34197	matrix_model_5	2
+cp_mod_C00_matrix_model_6_M420_0_1	mod_matrix_model_6_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_6	2
+cp_mod_C00_matrix_model_6_M420_0_2	mod_matrix_model_6_C00_M420_0	C00	M420	0	1.41664e-08	matrix_model_6	2
+cp_mod_C11_matrix_model_6_M420_0_1	mod_matrix_model_6_C11_M420_0	C11	M420	0	124356455.343597	matrix_model_6	2
+cp_mod_C11_matrix_model_6_M420_0_2	mod_matrix_model_6_C11_M420_0	C11	M420	0	144719941.118566	matrix_model_6	2
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_6	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	6	5858.72795	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_7	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	7	7486.4881000000005	calc_mag_energy_density	3
 cp_mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density_1	mod_calc_mag_energy_density_Ni2MnGa_sample_1_mag_energy_density	mag_energy_density	Ni2MnGa_sample_1	1	0	calc_mag_energy_density	3
@@ -8294,7 +8451,6 @@ cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_134_relative_permeab
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_135_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_135_relative_permeability	relative_permeability	Ni2MnGa_sample_1	135	2.54410641226091	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_136_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_136_relative_permeability	relative_permeability	Ni2MnGa_sample_1	136	2.504351651849663	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_137_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_137_relative_permeability	relative_permeability	Ni2MnGa_sample_1	137	2.466805047128937	calc_rel_perm	3
-cp_mod_A10_matrix_model_4_M420_0_3	mod_matrix_model_4_A10_M420_0	A10	M420	0	67086386623.9447	matrix_model_4	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_138_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_138_relative_permeability	relative_permeability	Ni2MnGa_sample_1	138	2.4312879886093324	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_139_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_139_relative_permeability	relative_permeability	Ni2MnGa_sample_1	139	2.397640458379755	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_14_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_14_relative_permeability	relative_permeability	Ni2MnGa_sample_1	14	2.494714675742847	calc_rel_perm	3
@@ -8324,7 +8480,6 @@ cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_160_relative_permeab
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_161_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_161_relative_permeability	relative_permeability	Ni2MnGa_sample_1	161	1.9284312165101598	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_162_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_162_relative_permeability	relative_permeability	Ni2MnGa_sample_1	162	1.9132110326329441	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_17_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_17_relative_permeability	relative_permeability	Ni2MnGa_sample_1	17	2.376395780280121	calc_rel_perm	3
-cp_mod_A10_matrix_model_4_M420_0_4	mod_matrix_model_4_A10_M420_0	A10	M420	0	100113530808.257	matrix_model_4	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_18_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_18_relative_permeability	relative_permeability	Ni2MnGa_sample_1	18	2.346236108640496	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_19_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_19_relative_permeability	relative_permeability	Ni2MnGa_sample_1	19	2.3194272021504236	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_2_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_2_relative_permeability	relative_permeability	Ni2MnGa_sample_1	2	8.979273436256566	calc_rel_perm	3
@@ -8354,7 +8509,6 @@ cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_40_relative_permeabi
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_41_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_41_relative_permeability	relative_permeability	Ni2MnGa_sample_1	41	2.0687667117618975	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_42_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_42_relative_permeability	relative_permeability	Ni2MnGa_sample_1	42	2.0637645912508784	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_43_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_43_relative_permeability	relative_permeability	Ni2MnGa_sample_1	43	2.0590006669546694	calc_rel_perm	3
-cp_mod_A10_matrix_model_4_M420_0_5	mod_matrix_model_4_A10_M420_0	A10	M420	0	22222222222.3073	matrix_model_4	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_44_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_44_relative_permeability	relative_permeability	Ni2MnGa_sample_1	44	2.054458320532704	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_45_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_45_relative_permeability	relative_permeability	Ni2MnGa_sample_1	45	2.0501222635394214	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_46_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_46_relative_permeability	relative_permeability	Ni2MnGa_sample_1	46	2.0459792738783666	calc_rel_perm	3
@@ -8379,22 +8533,26 @@ cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_62_relative_permeabi
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_7_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_7_relative_permeability	relative_permeability	Ni2MnGa_sample_1	7	3.2309210037667784	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_8_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_8_relative_permeability	relative_permeability	Ni2MnGa_sample_1	8	3.0356010550010235	calc_rel_perm	3
 cp_mod_relative_permeability_calc_rel_perm_Ni2MnGa_sample_1_9_relative_permeability	mod_calc_rel_perm_relative_permeability_Ni2MnGa_sample_1_9_relative_permeability	relative_permeability	Ni2MnGa_sample_1	9	2.889110894477161	calc_rel_perm	3
-cp_mod_A01_matrix_model_1_M420_0_1	mod_matrix_model_1_A01_M420_0	A01	M420	0	1.53999999999841e-11	matrix_model_1	3
-cp_mod_A01_matrix_model_1_M420_0_2	mod_matrix_model_1_A01_M420_0	A01	M420	0	-5.70000000001608e-12	matrix_model_1	3
-cp_mod_A01_matrix_model_1_M420_0_3	mod_matrix_model_1_A01_M420_0	A01	M420	0	-6.49999999996453e-12	matrix_model_1	3
-cp_mod_A01_matrix_model_1_M420_0_4	mod_matrix_model_1_A01_M420_0	A01	M420	0	1.86999999999213e-11	matrix_model_1	3
-cp_mod_A01_matrix_model_1_M420_0_5	mod_matrix_model_1_A01_M420_0	A01	M420	0	4.49999999998277e-11	matrix_model_1	3
-cp_mod_B01_matrix_model_2_M420_0_1	mod_matrix_model_2_B01_M420_0	B01	M420	0	-1.00000000000001e-13	matrix_model_2	3
-cp_mod_B01_matrix_model_2_M420_0_2	mod_matrix_model_2_B01_M420_0	B01	M420	0	2.21875000000001e-13	matrix_model_2	3
-cp_mod_B01_matrix_model_2_M420_0_3	mod_matrix_model_2_B01_M420_0	B01	M420	0	3.28125e-13	matrix_model_2	3
-cp_mod_C01_matrix_model_3_M420_0_1	mod_matrix_model_3_C01_M420_0	C01	M420	0	30422222.2229637	matrix_model_3	3
-cp_mod_C01_matrix_model_3_M420_0_2	mod_matrix_model_3_C01_M420_0	C01	M420	0	46706574.4658744	matrix_model_3	3
-cp_mod_A10_matrix_model_4_M420_0_1	mod_matrix_model_4_A10_M420_0	A10	M420	0	120197869377.48	matrix_model_4	3
-cp_mod_B10_matrix_model_5_M420_0_1	mod_matrix_model_5_B10_M420_0	B10	M420	0	-9.45358421359599e-11	matrix_model_5	3
-cp_mod_B10_matrix_model_5_M420_0_2	mod_matrix_model_5_B10_M420_0	B10	M420	0	1.88312082910712e-10	matrix_model_5	3
-cp_mod_B10_matrix_model_5_M420_0_3	mod_matrix_model_5_B10_M420_0	B10	M420	0	2.39682249812461e-10	matrix_model_5	3
-cp_mod_C10_matrix_model_6_M420_0_1	mod_matrix_model_6_C10_M420_0	C10	M420	0	3.28707085455831e-08	matrix_model_6	3
-cp_mod_C10_matrix_model_6_M420_0_2	mod_matrix_model_6_C10_M420_0	C10	M420	0	2.14102620762873e-08	matrix_model_6	3
+cp_mod_A01_matrix_model_1_M420_0_1	mod_matrix_model_1_A01_M420_0	A01	M420	0	1.35929071606055e-11	matrix_model_1	3
+cp_mod_A01_matrix_model_1_M420_0_2	mod_matrix_model_1_A01_M420_0	A01	M420	0	-7.50709283939466e-12	matrix_model_1	3
+cp_mod_A01_matrix_model_1_M420_0_3	mod_matrix_model_1_A01_M420_0	A01	M420	0	-2.49051276259319e-12	matrix_model_1	3
+cp_mod_A01_matrix_model_1_M420_0_4	mod_matrix_model_1_A01_M420_0	A01	M420	0	9.80395019200366e-12	matrix_model_1	3
+cp_mod_A01_matrix_model_1_M420_0_5	mod_matrix_model_1_A01_M420_0	A01	M420	0	2.55437514117913e-11	matrix_model_1	3
+cp_mod_B01_matrix_model_2_M420_0_1	mod_matrix_model_2_B01_M420_0	B01	M420	0	-0.011	matrix_model_2	3
+cp_mod_B01_matrix_model_2_M420_0_2	mod_matrix_model_2_B01_M420_0	B01	M420	0	0.0250000000000002	matrix_model_2	3
+cp_mod_B01_matrix_model_2_M420_0_3	mod_matrix_model_2_B01_M420_0	B01	M420	0	0.0370595211203975	matrix_model_2	3
+cp_mod_C01_matrix_model_3_M420_0_1	mod_matrix_model_3_C01_M420_0	C01	M420	0	70589564.0388528	matrix_model_3	3
+cp_mod_C01_matrix_model_3_M420_0_2	mod_matrix_model_3_C01_M420_0	C01	M420	0	72002066.8080778	matrix_model_3	3
+cp_mod_A10_matrix_model_4_M420_0_1	mod_matrix_model_4_A10_M420_0	A10	M420	0	120993245639.767	matrix_model_4	3
+cp_mod_A10_matrix_model_4_M420_0_2	mod_matrix_model_4_A10_M420_0	A10	M420	0	73599880710.8577	matrix_model_4	3
+cp_mod_A10_matrix_model_4_M420_0_3	mod_matrix_model_4_A10_M420_0	A10	M420	0	66426959648.0118	matrix_model_4	3
+cp_mod_A10_matrix_model_4_M420_0_4	mod_matrix_model_4_A10_M420_0	A10	M420	0	99451550706.5426	matrix_model_4	3
+cp_mod_A10_matrix_model_4_M420_0_5	mod_matrix_model_4_A10_M420_0	A10	M420	0	22222222222.2223	matrix_model_4	3
+cp_mod_B10_matrix_model_5_M420_0_1	mod_matrix_model_5_B10_M420_0	B10	M420	0	-6.66439756424805	matrix_model_5	3
+cp_mod_B10_matrix_model_5_M420_0_2	mod_matrix_model_5_B10_M420_0	B10	M420	0	14.234253276912	matrix_model_5	3
+cp_mod_B10_matrix_model_5_M420_0_3	mod_matrix_model_5_B10_M420_0	B10	M420	0	11.6666666666666	matrix_model_5	3
+cp_mod_C10_matrix_model_6_M420_0_1	mod_matrix_model_6_C10_M420_0	C10	M420	0	8.04139999999999e-09	matrix_model_6	3
+cp_mod_C10_matrix_model_6_M420_0_2	mod_matrix_model_6_C10_M420_0	C10	M420	0	6.90989778098874e-09	matrix_model_6	3
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_610000magnetic_field_strength	\N	magnetic_field_strength	Ni2MnGa_sample_1	1224	610000	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_610000	\N	magnetic_stress	Ni2MnGa_sample_1	1224	1933421.2960250007	calc_magnetic_stress	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_10_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_10_flux_density	flux_density	Ni2MnGa_sample_1	10	0.31385556	calc_flux_density	4
@@ -8426,7 +8584,6 @@ cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_124_flux_density	mod_calc
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_125_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_125_flux_density	flux_density	Ni2MnGa_sample_1	125	0.9421086999999999	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_126_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_126_flux_density	flux_density	Ni2MnGa_sample_1	126	0.9565932999999999	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_127_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_127_flux_density	flux_density	Ni2MnGa_sample_1	127	0.9710778	calc_flux_density	4
-cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_0	\N	magnetic_stress	Ni2MnGa_sample_1	1102	0	calc_magnetic_stress	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_128_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_128_flux_density	flux_density	Ni2MnGa_sample_1	128	0.9855623999999998	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_129_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_129_flux_density	flux_density	Ni2MnGa_sample_1	129	1.000047	calc_flux_density	4
 cp_mod_flux_density_calc_flux_density_Ni2MnGa_sample_1_13_flux_density	mod_calc_flux_density_flux_density_Ni2MnGa_sample_1_13_flux_density	flux_density	Ni2MnGa_sample_1	13	0.3841126	calc_flux_density	4
@@ -8531,6 +8688,7 @@ cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_10000	\N	magnetic_
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_200000magnetic_field_strength	\N	magnetic_field_strength	Ni2MnGa_sample_1	1142	200000	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_200000	\N	magnetic_stress	Ni2MnGa_sample_1	1142	1126249.4350250012	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_0magnetic_field_strength	\N	magnetic_field_strength	Ni2MnGa_sample_1	1102	0	calc_magnetic_stress	4
+cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_0	\N	magnetic_stress	Ni2MnGa_sample_1	1102	0	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_80000magnetic_field_strength	\N	magnetic_field_strength	Ni2MnGa_sample_1	1118	80000	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_80000	\N	magnetic_stress	Ni2MnGa_sample_1	1118	477876.2687250006	calc_magnetic_stress	4
 cp_mod__magnetic_stress_calc_magnetic_stress_Ni2MnGa_sample_1_590000magnetic_field_strength	\N	magnetic_field_strength	Ni2MnGa_sample_1	1220	590000	calc_magnetic_stress	4
@@ -8648,7 +8806,7 @@ cp_mod_maximal_blocking_stress_load_calc_max_block_load_hold_stick_Ni2MnGa_sampl
 
 
 --
--- Name: characteristic_curve characteristic_curve_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: characteristic_curve characteristic_curve_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.characteristic_curve
@@ -8656,7 +8814,7 @@ ALTER TABLE ONLY public.characteristic_curve
 
 
 --
--- Name: component_parts component_parts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: component_parts component_parts_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.component_parts
@@ -8664,7 +8822,7 @@ ALTER TABLE ONLY public.component_parts
 
 
 --
--- Name: component component_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: component component_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.component
@@ -8672,7 +8830,7 @@ ALTER TABLE ONLY public.component
 
 
 --
--- Name: concr_meas concr_meas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_meas concr_meas_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_meas
@@ -8680,7 +8838,7 @@ ALTER TABLE ONLY public.concr_meas
 
 
 --
--- Name: concr_model concr_model_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_model concr_model_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_model
@@ -8688,7 +8846,7 @@ ALTER TABLE ONLY public.concr_model
 
 
 --
--- Name: concr_param_matrix_additional concr_param_matrix_additional_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_param_matrix_additional concr_param_matrix_additional_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_param_matrix_additional
@@ -8696,7 +8854,7 @@ ALTER TABLE ONLY public.concr_param_matrix_additional
 
 
 --
--- Name: concr_param_matrix concr_param_matrix_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_param_matrix concr_param_matrix_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_param_matrix
@@ -8704,7 +8862,7 @@ ALTER TABLE ONLY public.concr_param_matrix
 
 
 --
--- Name: concr_param concr_param_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_param concr_param_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_param
@@ -8712,7 +8870,7 @@ ALTER TABLE ONLY public.concr_param
 
 
 --
--- Name: concr_component conr_component_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_component conr_component_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_component
@@ -8720,7 +8878,7 @@ ALTER TABLE ONLY public.concr_component
 
 
 --
--- Name: constants constants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: constants constants_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.constants
@@ -8728,7 +8886,7 @@ ALTER TABLE ONLY public.constants
 
 
 --
--- Name: curve_condition curve_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_condition curve_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_condition
@@ -8736,7 +8894,7 @@ ALTER TABLE ONLY public.curve_condition
 
 
 --
--- Name: curve_params curve_params_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_params curve_params_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_params
@@ -8744,15 +8902,7 @@ ALTER TABLE ONLY public.curve_params
 
 
 --
--- Name: external_source external_source_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.external_source
-    ADD CONSTRAINT external_source_pkey PRIMARY KEY (source_id);
-
-
---
--- Name: material_condition material_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: material_condition material_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.material_condition
@@ -8760,7 +8910,7 @@ ALTER TABLE ONLY public.material_condition
 
 
 --
--- Name: material material_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: material material_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.material
@@ -8768,7 +8918,7 @@ ALTER TABLE ONLY public.material
 
 
 --
--- Name: material_types material_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: material_types material_types_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.material_types
@@ -8776,7 +8926,7 @@ ALTER TABLE ONLY public.material_types
 
 
 --
--- Name: measinput measinput_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: measinput measinput_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measinput
@@ -8784,7 +8934,7 @@ ALTER TABLE ONLY public.measinput
 
 
 --
--- Name: measoutput measoutput_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: measoutput measoutput_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measoutput
@@ -8792,7 +8942,7 @@ ALTER TABLE ONLY public.measoutput
 
 
 --
--- Name: measurement measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: measurement measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measurement
@@ -8800,7 +8950,7 @@ ALTER TABLE ONLY public.measurement
 
 
 --
--- Name: model_condition_compare mod_con_compare_pk; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition_compare mod_con_compare_pk; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition_compare
@@ -8808,7 +8958,7 @@ ALTER TABLE ONLY public.model_condition_compare
 
 
 --
--- Name: model_condition model_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition model_condition_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition
@@ -8816,7 +8966,7 @@ ALTER TABLE ONLY public.model_condition
 
 
 --
--- Name: model model_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: model model_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model
@@ -8824,7 +8974,7 @@ ALTER TABLE ONLY public.model
 
 
 --
--- Name: modelinput_matrix modelinput_matrix_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput_matrix modelinput_matrix_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput_matrix
@@ -8832,7 +8982,7 @@ ALTER TABLE ONLY public.modelinput_matrix
 
 
 --
--- Name: modelinput modelinput_mod_id_in_number_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput modelinput_mod_id_in_number_key; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput
@@ -8840,7 +8990,7 @@ ALTER TABLE ONLY public.modelinput
 
 
 --
--- Name: modelinput modelinput_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput modelinput_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput
@@ -8848,7 +8998,7 @@ ALTER TABLE ONLY public.modelinput
 
 
 --
--- Name: modeloutput_pek_bits modeloutput_pek_bits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modeloutput_pek_bits modeloutput_pek_bits_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modeloutput_pek_bits
@@ -8856,7 +9006,7 @@ ALTER TABLE ONLY public.modeloutput_pek_bits
 
 
 --
--- Name: param_piezo param_piezo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: param_piezo param_piezo_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.param_piezo
@@ -8864,7 +9014,7 @@ ALTER TABLE ONLY public.param_piezo
 
 
 --
--- Name: param param_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: param param_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.param
@@ -8872,7 +9022,7 @@ ALTER TABLE ONLY public.param
 
 
 --
--- Name: param_semantic param_semantic_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: param_semantic param_semantic_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.param_semantic
@@ -8880,7 +9030,7 @@ ALTER TABLE ONLY public.param_semantic
 
 
 --
--- Name: modeltype pk; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modeltype pk; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modeltype
@@ -8888,7 +9038,7 @@ ALTER TABLE ONLY public.modeltype
 
 
 --
--- Name: modeloutput pkk; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: modeloutput pkk; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modeloutput
@@ -8896,15 +9046,7 @@ ALTER TABLE ONLY public.modeloutput
 
 
 --
--- Name: producer producer_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.producer
-    ADD CONSTRAINT producer_pkey PRIMARY KEY (object_id, producer_id);
-
-
---
--- Name: sample sample_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sample sample_pkey; Type: CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.sample
@@ -8912,35 +9054,35 @@ ALTER TABLE ONLY public.sample
 
 
 --
--- Name: concr_param_concr_param_id_idx; Type: INDEX; Schema: public; Owner: -
+-- Name: concr_param_concr_param_id_idx; Type: INDEX; Schema: public; Owner: mena
 --
 
 CREATE INDEX concr_param_concr_param_id_idx ON public.concr_param USING btree (concr_param_id);
 
 
 --
--- Name: fki_fks component parts; Type: INDEX; Schema: public; Owner: -
+-- Name: fki_fks component parts; Type: INDEX; Schema: public; Owner: mena
 --
 
 CREATE INDEX "fki_fks component parts" ON public.component_parts USING btree (concr_component_id);
 
 
 --
--- Name: ftk; Type: INDEX; Schema: public; Owner: -
+-- Name: ftk; Type: INDEX; Schema: public; Owner: mena
 --
 
 CREATE UNIQUE INDEX ftk ON public.concr_parameter USING btree (concr_param_id);
 
 
 --
--- Name: param_semantic_unique; Type: INDEX; Schema: public; Owner: -
+-- Name: param_semantic_unique; Type: INDEX; Schema: public; Owner: mena
 --
 
 CREATE UNIQUE INDEX param_semantic_unique ON public.param_semantic USING btree (param_id, value);
 
 
 --
--- Name: concr_param_matrix concr_param_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_param_matrix concr_param_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_param_matrix
@@ -8948,7 +9090,7 @@ ALTER TABLE ONLY public.concr_param_matrix
 
 
 --
--- Name: concr_param concr_param_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_param concr_param_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_param
@@ -8956,7 +9098,7 @@ ALTER TABLE ONLY public.concr_param
 
 
 --
--- Name: constants constants_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: constants constants_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.constants
@@ -8964,7 +9106,7 @@ ALTER TABLE ONLY public.constants
 
 
 --
--- Name: curve_params curve_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_params curve_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_params
@@ -8972,7 +9114,7 @@ ALTER TABLE ONLY public.curve_params
 
 
 --
--- Name: material fk_mat_type; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: material fk_mat_type; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.material
@@ -8980,7 +9122,7 @@ ALTER TABLE ONLY public.material
 
 
 --
--- Name: component_parts fks component parts; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: component_parts fks component parts; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.component_parts
@@ -8988,7 +9130,7 @@ ALTER TABLE ONLY public.component_parts
 
 
 --
--- Name: concr_component ftk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_component ftk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_component
@@ -8996,7 +9138,7 @@ ALTER TABLE ONLY public.concr_component
 
 
 --
--- Name: model_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition
@@ -9004,7 +9146,7 @@ ALTER TABLE ONLY public.model_condition
 
 
 --
--- Name: curve_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_condition
@@ -9012,7 +9154,7 @@ ALTER TABLE ONLY public.curve_condition
 
 
 --
--- Name: material_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: material_condition ftk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.material_condition
@@ -9020,7 +9162,7 @@ ALTER TABLE ONLY public.material_condition
 
 
 --
--- Name: modelinput_matrix ftk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput_matrix ftk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput_matrix
@@ -9028,7 +9170,7 @@ ALTER TABLE ONLY public.modelinput_matrix
 
 
 --
--- Name: model_condition ftk1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition ftk1; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition
@@ -9036,7 +9178,7 @@ ALTER TABLE ONLY public.model_condition
 
 
 --
--- Name: curve_condition ftk1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_condition ftk1; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_condition
@@ -9044,7 +9186,7 @@ ALTER TABLE ONLY public.curve_condition
 
 
 --
--- Name: concr_meas ftk_meas; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_meas ftk_meas; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_meas
@@ -9052,7 +9194,7 @@ ALTER TABLE ONLY public.concr_meas
 
 
 --
--- Name: concr_model ftk_model; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: concr_model ftk_model; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.concr_model
@@ -9060,7 +9202,7 @@ ALTER TABLE ONLY public.concr_model
 
 
 --
--- Name: model_condition_interpol ftkmod_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition_interpol ftkmod_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition_interpol
@@ -9068,7 +9210,7 @@ ALTER TABLE ONLY public.model_condition_interpol
 
 
 --
--- Name: model_condition_interpol ftkparam_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition_interpol ftkparam_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition_interpol
@@ -9076,7 +9218,7 @@ ALTER TABLE ONLY public.model_condition_interpol
 
 
 --
--- Name: measinput measinput_meas_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: measinput measinput_meas_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measinput
@@ -9084,7 +9226,7 @@ ALTER TABLE ONLY public.measinput
 
 
 --
--- Name: measinput measinput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: measinput measinput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measinput
@@ -9092,7 +9234,7 @@ ALTER TABLE ONLY public.measinput
 
 
 --
--- Name: measoutput measoutput_meas_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: measoutput measoutput_meas_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measoutput
@@ -9100,7 +9242,7 @@ ALTER TABLE ONLY public.measoutput
 
 
 --
--- Name: measoutput measoutput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: measoutput measoutput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.measoutput
@@ -9108,7 +9250,7 @@ ALTER TABLE ONLY public.measoutput
 
 
 --
--- Name: model_condition_compare mod_id_1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition_compare mod_id_1; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition_compare
@@ -9116,7 +9258,7 @@ ALTER TABLE ONLY public.model_condition_compare
 
 
 --
--- Name: modelinput modelinput_mod_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput modelinput_mod_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput
@@ -9124,7 +9266,7 @@ ALTER TABLE ONLY public.modelinput
 
 
 --
--- Name: modelinput modelinput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: modelinput modelinput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modelinput
@@ -9132,7 +9274,7 @@ ALTER TABLE ONLY public.modelinput
 
 
 --
--- Name: modeloutput modeloutput_mod_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: modeloutput modeloutput_mod_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modeloutput
@@ -9140,7 +9282,7 @@ ALTER TABLE ONLY public.modeloutput
 
 
 --
--- Name: modeloutput modeloutput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: modeloutput modeloutput_param_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.modeloutput
@@ -9148,7 +9290,7 @@ ALTER TABLE ONLY public.modeloutput
 
 
 --
--- Name: param_semantic param_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: param_semantic param_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.param_semantic
@@ -9156,7 +9298,7 @@ ALTER TABLE ONLY public.param_semantic
 
 
 --
--- Name: curve_params param_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: curve_params param_id; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.curve_params
@@ -9164,7 +9306,7 @@ ALTER TABLE ONLY public.curve_params
 
 
 --
--- Name: model_condition_compare param_id_1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model_condition_compare param_id_1; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model_condition_compare
@@ -9172,7 +9314,7 @@ ALTER TABLE ONLY public.model_condition_compare
 
 
 --
--- Name: sample sample_mat_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: sample sample_mat_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.sample
@@ -9180,13 +9322,11 @@ ALTER TABLE ONLY public.sample
 
 
 --
--- Name: model typefk; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: model typefk; Type: FK CONSTRAINT; Schema: public; Owner: mena
 --
 
 ALTER TABLE ONLY public.model
     ADD CONSTRAINT typefk FOREIGN KEY (mod_type) REFERENCES public.modeltype(modeltype) ON UPDATE CASCADE;
-
-
 
 
 --

@@ -1,0 +1,59 @@
+param_id;param_name;param_unit;param_symbol
+electric_field;eletric field;V/m;E
+vacuum_permittivity;vacuum permittivity;F/m;ε_0
+relative_permittivity;relative permittivity;dimensionless quantity;ε_r
+twinning_stress;twinning stress;Pa;σ_tw
+magnetic_field_strength;magnetic field strength;A/m;H
+magnetization;magnetization;A/m;M
+flux_density;flux density;T;B
+magnetic_polarization;magnetic polarization;T;J
+relative_permeability;relative permeability;dimensionless quantity;μ_r
+vacuum_permeability;vacuum permeability;H/m;μ_0
+easy_hard_axis;easy/hard axis;dimensionless quantity;undefined
+magnetic_stress;magnetic stress;Pa;σ_M
+maximum_strain_mag;maximum strain in the magnetic field;dimensionless quantity;ϵ_0
+mag_energy_density;free magnetization energy density;J/m^3;g
+young_modulus_neo_Hookean;Young modulus according to Neo Hookean model;Pa;Y_NH
+young_modulus;Young modulus;Pa;Y
+Yeoh_vector_3;Yeoh vector, index 3;Pa;C_Yeoh[3]
+Yeoh_vector_2;Yeoh vector, index 2;Pa;C_Yeoh[2]
+Yeoh_vector_1;Yeoh vector, index 1;Pa;C_Yeoh[1]
+strain;strain;dimensionless quantity;ε
+mechanic_stress;mechanic stress;Pa;σ
+A;;undefined;undefined
+B;;undefined;undefined
+C;;undefined;undefined
+A00;mechanical compliance at constant electric field;m^2/N;s^E
+C10;permittivity at constant mechanic strain;F/m;ϵ^S
+C11;inverse permittivity at constant mechanic strain;m/F;β^S
+C01;inverse permittivity constant mechanic stress;m/F;β^T
+A01;mechanical compliance at constant flux density;m^2/N;s^D
+B10;piezoelectric strain constant;N/(Vm);e
+B11;piezoelectric coupling;N/C;h
+B00;piezoelectric charge constant;C/N;d
+B01;piezoelectric stress constant;Vm/N;g
+A10;mechanical stiffness at constant electric field;N/m^2;c^E
+A11;mechanical stiffness at constant flux density;N/m^2;c^D
+C00;permittivity at constant mechanic stress;F/m;ϵ^T
+martensite_content;martensite content;dimensionless quantity;ξ
+temperature;temperature;°C;T
+martensite_start_temperature;martensite start temperature;°C;M_s
+martensite_finish_temperature;martensite finish temperature;°C;M_f
+austenite_start_temperature;austenite start temperature;°C;A_s
+austenite_finish_temperature;austenite finish temperature;°C;A_f
+hysteresis;hysteresis;dimensionless quantity;undefined
+E-modulus_austenite;E-modulus austenite;Pa;E_A
+E-modulus_twinned_martensite;E-modulus twinned martensite;Pa;E_M
+E-modulus_de-twinned_martensite;E-modulus de-twinned martensite;Pa;E_D
+hardening_parameter;hardening parameter;Pa;H
+plateau_start_strain;plateau start strain;dimensionless quantity;ε_ps
+plateau_finish_strain;plateau finish strain;dimensionless quantity;ε_pf
+dielectric_strength;dielectric strength;V/m;E_BFS
+initial_strain;initial strain;dimensionless quantity;σ_ini
+initial_stress;initial stress;Pa;ε_ini
+maximal_blocking_stress;maximum blocking stress;Pa;σ_B
+maximal_blocking_stress_hold;maximum blocking stress hold;Pa;σ_B,max,hold
+maximal_blocking_stress_load;maximum blocking stress load;Pa;σ_B,max,load
+max_magnetic_stress;maximum magnetic stress;Pa;σ_M
+lattice_constant_a;lattice constant a;nm;a
+lattice_constant_c;lattice constant c;nm;c

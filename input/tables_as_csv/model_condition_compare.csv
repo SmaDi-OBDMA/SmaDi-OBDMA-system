@@ -1,0 +1,9 @@
+mod_id;param_id;in_number;operator;compare_position
+1d_non_linear_mech_mod_v1;strain;-1;<;1
+1d_non_linear_mech_mod_v1;plateau_start_strain;-1;<;2
+1d_non_linear_mech_mod_v2;strain;-1;>;1
+1d_non_linear_mech_mod_v2;plateau_start_strain;-1;>;2
+1d_non_linear_mech_mod_v2;strain;-2;<;1
+1d_non_linear_mech_mod_v2;plateau_finish_strain;-2;<;2
+1d_non_linear_mech_mod_v3;plateau_finish_strain;-1;<;1
+1d_non_linear_mech_mod_v3;strain;-1;<;2

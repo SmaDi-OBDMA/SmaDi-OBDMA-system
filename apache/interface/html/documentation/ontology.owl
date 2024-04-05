@@ -1,0 +1,1400 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="urn:absolute/smadiont#"
+     xml:base="urn:absolute/smadiont"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="https://schema.org/">
+    <owl:Ontology rdf:about="urn:absolute/smadiont#">
+        <dc:title xml:lang="en">SmaDi-Ontology</dc:title>
+        <terms:description xml:lang="en">Ontology for the SmaDi-OBDMA-System</terms:description>
+        <rdfs:label xml:lang="en">SmaDi-Ontology</rdfs:label>
+        <schema:citation xml:lang="en">---</schema:citation>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- https://schema.org/citation -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/citation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- urn:absolute/smadiont#corresponds_with -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#corresponds_with">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">corresponds with</rdfs:label>
+        <rdfs:label xml:lang="de">korrespondiert mit</rdfs:label>
+        <skos:definition xml:lang="en">depcits the dependance of one physical quantity to another</skos:definition>
+        <skos:definition xml:lang="de">zeigt die Abhängigkeit von zwei physikalischen Größen</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#curve_param1 -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#curve_param1">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="de">Kennlinie-Parameter 1</rdfs:label>
+        <rdfs:label xml:lang="en">curve parameter 1</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt den ersten Parameter eines Tuples einer Kennlinie</skos:definition>
+        <skos:definition xml:lang="en">depicts the first parameter of a tuple of a characteristic curve</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#curve_param2 -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#curve_param2">
+        <rdfs:label xml:lang="de">Kennlinie-Parameter 2</rdfs:label>
+        <rdfs:label xml:lang="en">curve parameter 2</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt den zweiten Parameter eines Tuples einer Kennlinie</skos:definition>
+        <skos:definition xml:lang="en">depicts the second parameter of a tuple of a characteristic curve</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#determined_with -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#determined_with">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="de">bestimmt mit</rdfs:label>
+        <rdfs:label xml:lang="en">determined with</rdfs:label>
+        <skos:definition xml:lang="de">Die Daten wurde mithilfe linearer Interpolation ermittelt</skos:definition>
+        <skos:definition xml:lang="en">The data was determined with the help of linear interpolation</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_boundary_condition -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_boundary_condition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has boundary condition</rdfs:label>
+        <rdfs:label xml:lang="de">hat Randbedingung</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Randbedingungen, die bei einer Messung/einer Berechnung gelten müssen</skos:definition>
+        <skos:definition xml:lang="en">depicts the boundary conditions of a calculation or a measurement</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_curve -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_curve">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has curve</rdfs:label>
+        <rdfs:label xml:lang="de">hat Kennlinie</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt, ob ein Objekt eine assoziierte Kennlinie hat</skos:definition>
+        <skos:definition xml:lang="en">depicts whether an object has an associated characteristic curve</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_input -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_input">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has input</rdfs:label>
+        <rdfs:label xml:lang="de">hat Eingabe</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Eingabe eines Modells</skos:definition>
+        <skos:definition xml:lang="en">depicts the input to a model</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_input_characteristic_curve -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_input_characteristic_curve">
+        <rdfs:subPropertyOf rdf:resource="urn:absolute/smadiont#has_input"/>
+        <rdfs:label xml:lang="en">has input characteristic curve</rdfs:label>
+        <rdfs:label xml:lang="de">hat Eingabe Kennlinie</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Eingabe zu einem Modell, wenn dieses nicht auf einzelnen Werten basiert, sondern auf einer Kennlinie</skos:definition>
+        <skos:definition xml:lang="en">describes the input of a model if it is not based on single values but on a characteristic curve</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_input_parameter -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_input_parameter">
+        <rdfs:subPropertyOf rdf:resource="urn:absolute/smadiont#has_input"/>
+        <rdfs:label xml:lang="en">has input parameter</rdfs:label>
+        <rdfs:label xml:lang="de">hat Eingabe Parameter</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Eingabe für ein Modell, wenn es sich um einzelne Parameter handelt</skos:definition>
+        <skos:definition xml:lang="en">depicts the input of a model if it consists of single values (not curves)</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_output -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_output">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has output</rdfs:label>
+        <rdfs:label xml:lang="de">hat Ausgabe</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Herkunft einer physikalischen Größe, z.B. das Modell oder die Messung, mit deren Hilfe sie berechnet wurde</skos:definition>
+        <skos:definition xml:lang="en">depicts the origin of a physical quantity, e.g., the model or measurement, it is based on</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_parameter -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_parameter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has parameter</rdfs:label>
+        <rdfs:label xml:lang="de">hat Parameter</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Parameter, die zu einem Objekt gehören</skos:definition>
+        <skos:definition xml:lang="en">depicts the parameters of an object</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_tuple -->
+
+
+    <owl:ObjectProperty rdf:about="urn:absolute/smadiont#has_tuple">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label xml:lang="en">has tuple</rdfs:label>
+        <rdfs:label xml:lang="de">hat Tupel</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt die Tupel, d.h. Datenpunkte einer Kennlinie</skos:definition>
+        <skos:definition xml:lang="en">depicts the tuples, thus data points of a characteristic curve</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- urn:absolute/smadiont#has_column -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_column">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has column</rdfs:label>
+        <rdfs:label xml:lang="de">hat Spalte</rdfs:label>
+        <skos:definition xml:lang="de">Bei physikalischen Größen, die als Matrizen vorliegen, gibt es die Spaltennummer an</skos:definition>
+        <skos:definition xml:lang="en">if a physical quantity is situated in a matrix, this depicts the column number</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_description -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_description">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has description</rdfs:label>
+        <rdfs:label xml:lang="de">hat Beschreibung</rdfs:label>
+        <skos:definition xml:lang="en">depicts the description of an object (e.g., meta data)</skos:definition>
+        <skos:definition xml:lang="de">gibt die Beschreibung eines Objektes (z.B. Metadaten)</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_equation -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_equation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has equation</rdfs:label>
+        <rdfs:label xml:lang="de">hat Gleichung</rdfs:label>
+        <skos:definition xml:lang="en">depicts the equation of a model</skos:definition>
+        <skos:definition xml:lang="de">gibt die Modellgleichung an</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_name -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has name</rdfs:label>
+        <rdfs:label xml:lang="de">hat Name</rdfs:label>
+        <skos:definition xml:lang="en">depicts the name of an object</skos:definition>
+        <skos:definition xml:lang="de">gibt den Namen eines Objektes an</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_row -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_row">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has row</rdfs:label>
+        <rdfs:label xml:lang="de">hat Zeile</rdfs:label>
+        <skos:definition xml:lang="de">Bei physikalischen Größen, die als Matrizen vorliegen, gibt es die Zeilennummer an</skos:definition>
+        <skos:definition xml:lang="en">if a physical quantity is situated in a matrix, this depicts the row number</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_symbol -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_symbol">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has symbol</rdfs:label>
+        <rdfs:label xml:lang="de">hat Symbol</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt das Symbol einer physikalischen Größe</skos:definition>
+        <skos:definition xml:lang="en">depicts the symbol of a physical quantity</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_unit -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_unit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has unit</rdfs:label>
+        <rdfs:label xml:lang="de">hat Einheit</rdfs:label>
+        <skos:definition xml:lang="en">depicts the unit of a physical quantity</skos:definition>
+        <skos:definition xml:lang="de">gibt die Einheit einer physikalischen Größe an</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:absolute/smadiont#has_value -->
+
+
+    <owl:DatatypeProperty rdf:about="urn:absolute/smadiont#has_value">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:label xml:lang="en">has value</rdfs:label>
+        <rdfs:label xml:lang="de">hat Wert</rdfs:label>
+        <skos:definition xml:lang="de">beschreibt den Wert einer physikalischen Größe</skos:definition>
+        <skos:definition xml:lang="en">depicts the value of a physical quantity</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- urn:absolute/smadiont#DE -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#DE">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_materialtypes"/>
+        <rdfs:label xml:lang="de">DE</rdfs:label>
+        <rdfs:label xml:lang="en">DE</rdfs:label>
+        <skos:definition xml:lang="en">Dielectric elastomer transducers consist of thin elastomer films coated with flexible electrodes. Application of an electric field results in electrostatic pressure, which causes deformation.</skos:definition>
+        <skos:definition xml:lang="de">Dielektrische Elastomeraufnehmer bestehen aus dünnen Elastomerfolien, die mit flexiblen Elektroden beschichtet sind. Das Anlegen eines elektrischen Feldes führt zu einem elektrostatischen Druck, der eine Verformung bewirkt.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#DE-material -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#DE-material">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#DE"/>
+        <rdfs:label xml:lang="de">DE-material</rdfs:label>
+        <rdfs:label xml:lang="en">DE-material</rdfs:label>
+        <skos:definition xml:lang="en">Material having dielectrical properties</skos:definition>
+        <skos:definition xml:lang="de">Material mit dielektrischen Eigenschaften</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#E-modulus_austenite -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#E-modulus_austenite">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+        <rdfs:label xml:lang="de">E-Modul für Austenit</rdfs:label>
+        <rdfs:label xml:lang="en">E-modulus austenite</rdfs:label>
+        <skos:definition xml:lang="de">Gibt den E-Modul für Austenit an</skos:definition>
+        <skos:definition xml:lang="en">Young modulus for austenite</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#E-modulus_de-twinned_martensite -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#E-modulus_de-twinned_martensite">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+        <rdfs:label xml:lang="de">E-Modul für entzwillingten Martensit</rdfs:label>
+        <rdfs:label xml:lang="en">E-modulus de-twinned martensite</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#E-modulus_twinned_martensite -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#E-modulus_twinned_martensite">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+        <rdfs:label xml:lang="de">E-Modul für verzwillingten Martensit</rdfs:label>
+        <rdfs:label xml:lang="en">E-modulus twinned martensite</rdfs:label>
+        <skos:definition xml:lang="de">Gibt den E-Modul für Martensit im vollständig verzwillingten Zustand an</skos:definition>
+        <skos:definition xml:lang="en">Specifies the young modulus for martensite in the fully twinned state</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#MSMA -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#MSMA">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_materialtypes"/>
+        <rdfs:label xml:lang="en">MSMA</rdfs:label>
+        <rdfs:label xml:lang="de">Magnetische Formgedächtnislegierung (MFGL)</rdfs:label>
+        <skos:definition xml:lang="de">MFGL sind Formgedächtnislegierungen, die neben dem thermischen Formgedächtniseffekt zusätzlich einen magnetischen Formgedächtniseffekt aufweisen</skos:definition>
+        <skos:definition xml:lang="en">MSMA are shape memory alloys having next to the themic shape memory effect also a magnetic shape memory effect</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#MSMA-material -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#MSMA-material">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#MSMA"/>
+        <rdfs:label xml:lang="en">MSMA-material</rdfs:label>
+        <rdfs:label xml:lang="de">Material, das einen magnetischen Formgedächtniseffekt aufweist</rdfs:label>
+        <skos:definition xml:lang="en">Material having the magnetic shape memory effect</skos:definition>
+        <skos:definition xml:lang="de">Material, das einen magnetischen Formgedächtniseffekt aufweist</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#MSMA-stick -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#MSMA-stick">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#MSMA"/>
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#component_level"/>
+        <rdfs:label xml:lang="de">Druck-Zug-Stick</rdfs:label>
+        <rdfs:label xml:lang="en">MSMA-stick</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#PC -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#PC">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_materialtypes"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#PC-material -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#PC-material">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#PC"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#SMA -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#SMA">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_materialtypes"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#SMA-material -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#SMA-material">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#SMA"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#Yeoh_vector -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#Yeoh_vector">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#Yeoh_vector_1 -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#Yeoh_vector_1">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#Yeoh_vector"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#Yeoh_vector_2 -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#Yeoh_vector_2">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#Yeoh_vector"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#Yeoh_vector_3 -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#Yeoh_vector_3">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#Yeoh_vector"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#austenite_finish_temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#austenite_finish_temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#phase_transformation_temperature"/>
+        <rdfs:label xml:lang="de">Austenit-Finish-Temperatur</rdfs:label>
+        <rdfs:label xml:lang="en">Austenite finish temperature</rdfs:label>
+        <skos:definition xml:lang="de">Gibt an bei welcher Temperatur die Umwandlung von Martensit in Austenit beendet ist</skos:definition>
+        <skos:definition xml:lang="en">Indicates the temperature at which the transformation from martensite to austenite is completed</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#austenite_start_temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#austenite_start_temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#phase_transformation_temperature"/>
+        <rdfs:label xml:lang="de">Austenit-Start-Temperatur</rdfs:label>
+        <rdfs:label xml:lang="en">Austenite start temperature</rdfs:label>
+        <skos:definition xml:lang="de">Gibt an bei welcher Temperatur die Umwandlung von Martensit in Austenit beginnt</skos:definition>
+        <skos:definition xml:lang="en">Indicates the temperature at which the transformation from martensite to austenite has started</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#characteristic_curve -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#characteristic_curve"/>
+    
+
+
+    <!-- urn:absolute/smadiont#component_curves -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#component_curves">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#characteristic_curve"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#component_level -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#component_level">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_levels"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#continuum_level -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#continuum_level">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_levels"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#curve_magnetic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#curve_magnetic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_curves"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#dielectric_strength -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#dielectric_strength">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#elastic_parameters -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#elastic_parameters">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#electric_field -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#electric_field">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#electric_permittivity_parameters -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#electric_permittivity_parameters">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#electrostatic_pressure_model -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#electrostatic_pressure_model">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#elements_of_levels -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#elements_of_levels"/>
+    
+
+
+    <!-- urn:absolute/smadiont#elements_of_materialtypes -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#elements_of_materialtypes"/>
+    
+
+
+    <!-- urn:absolute/smadiont#flux_density -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#flux_density">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#hardening_parameter -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#hardening_parameter">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#hysteresis_martensite_content -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#hysteresis_martensite_content">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#component_curves"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#identification_parameters -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#identification_parameters">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#initial_strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#initial_strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#identification_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#initial_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#initial_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#identification_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#electric_permittivity_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#electric_permittivity_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#lattice_constant -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#lattice_constant">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#lattice_constant_a -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#lattice_constant_a">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#lattice_constant"/>
+        <owl:disjointWith rdf:resource="urn:absolute/smadiont#lattice_constant_c"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#lattice_constant_c -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#lattice_constant_c">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#lattice_constant"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mag_energy_density -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mag_energy_density">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_curve -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_curve">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_curves"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_curve_easy_axis -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_curve_easy_axis">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#magnetic_curve"/>
+        <owl:disjointWith rdf:resource="urn:absolute/smadiont#magnetic_curve_hard_axis"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_curve_hard_axis -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_curve_hard_axis">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#magnetic_curve"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_field_strength -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_field_strength">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_polarization -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_polarization">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#stress_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#magnetization -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#magnetization">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#martensite_content -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#martensite_content">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#martensite_finish_temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#martensite_finish_temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#phase_transformation_temperature"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#martensite_start_temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#martensite_start_temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#phase_transformation_temperature"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#material -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#material">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#micro_level"/>
+        <owl:disjointWith rdf:resource="urn:absolute/smadiont#sample"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#material_curves -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#material_curves">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#characteristic_curve"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#material_parameter -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#material_parameter">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#max_magnetic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#max_magnetic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#maximum_blocking_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#maximum_blocking_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#maximum_blocking_stress_hold -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#maximum_blocking_stress_hold">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#maximum_blocking_stress"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#maximum_blocking_stress_load -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#maximum_blocking_stress_load">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#maximum_blocking_stress"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#maximum_strain_mag -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#maximum_strain_mag">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#strain_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#measurement -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#measurement"/>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#stress_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_compliance -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_compliance">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#mechanical_compliance"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#mechanical_compliance"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_stiffness -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_stiffness">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#mechanical_stiffness"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#mechanical_stiffness"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#micro_level -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#micro_level">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elements_of_levels"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#model -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#model"/>
+    
+
+
+    <!-- urn:absolute/smadiont#parameter -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#parameter">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#physical_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#permittivity_at_constant_mechanic_strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#permittivity_at_constant_mechanic_strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#electric_permittivity_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#permittivity_at_constant_mechanic_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#permittivity_at_constant_mechanic_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#electric_permittivity_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#phase_transformation_temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#phase_transformation_temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#physical_constant -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#physical_constant">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#physical_quantity -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#physical_quantity"/>
+    
+
+
+    <!-- urn:absolute/smadiont#piezoelectric_charge_constant -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#piezoelectric_charge_constant">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#piezoelectric_coupling_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#piezoelectric_coupling -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#piezoelectric_coupling">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#piezoelectric_coupling_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#piezoelectric_coupling_parameters -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#piezoelectric_coupling_parameters">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#piezoelectric_strain_constant -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#piezoelectric_strain_constant">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#piezoelectric_coupling_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#piezoelectric_stress_constant -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#piezoelectric_stress_constant">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#piezoelectric_coupling_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#plateau_finish_strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#plateau_finish_strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#strain_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#plateau_start_strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#plateau_start_strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#strain_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#relative_permeability -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#relative_permeability">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#relative_permittivity -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#relative_permittivity">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#sample -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#sample">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#micro_level"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#state_dependent_quantity -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#state_dependent_quantity">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#physical_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#strain -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#strain">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#strain_parameter -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#strain_parameter">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#stress-strain_curve_elastomer -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#stress-strain_curve_elastomer">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_curves"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#stress-strain_curve_martensite -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#stress-strain_curve_martensite">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_curves"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#stress_parameter -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#stress_parameter">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#temperature -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#temperature">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#state_dependent_quantity"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#tensile_test -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#tensile_test">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#measurement"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#twinning_stress -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#twinning_stress">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#material_parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#vacuum_permeability -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#vacuum_permeability">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#physical_constant"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#vacuum_permittivity -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#vacuum_permittivity">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#physical_constant"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#wire_actuator -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#wire_actuator">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#SMA"/>
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#component_level"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#yeoh_minR -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#yeoh_minR">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus_Neo_Hookean_minR -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus_Neo_Hookean_minR">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus_initial_gradient -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus_initial_gradient">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus_minR -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus_minR">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#model"/>
+    </owl:Class>
+    
+
+
+    <!-- urn:absolute/smadiont#young_modulus_neo_Hookean -->
+
+
+    <owl:Class rdf:about="urn:absolute/smadiont#young_modulus_neo_Hookean">
+        <rdfs:subClassOf rdf:resource="urn:absolute/smadiont#elastic_parameters"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:absolute/smadiont#DE"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#DE-material"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#MSMA"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#MSMA-material"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#PC"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#PC-material"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#SMA"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#SMA-material"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:absolute/smadiont#DE"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#MSMA"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#PC"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#SMA"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:absolute/smadiont#Yeoh_vector"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#Yeoh_vector_1"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#Yeoh_vector_2"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#Yeoh_vector_3"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#young_modulus"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#young_modulus_neo_Hookean"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:absolute/smadiont#component_curves"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#hysteresis_martensite_content"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#magnetic_curve"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#material_curves"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#stress-strain_curve_elastomer"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#stress-strain_curve_martensite"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="urn:absolute/smadiont#dielectric_strength"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#maximum_blocking_stress"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#maximum_blocking_stress_hold"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#maximum_blocking_stress_load"/>
+            <rdf:Description rdf:about="urn:absolute/smadiont#relative_permittivity"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,6 @@
+meas_id;meas_name
+meas_flux_over_field;measurement of flux density over magnetic field
+tensile_test;tensile test
+base_value; 
+measured_at; 
+dummy-data;Dummy data

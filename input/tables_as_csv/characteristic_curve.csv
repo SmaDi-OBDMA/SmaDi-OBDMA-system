@@ -1,0 +1,7 @@
+curve_id;curve_name;curve_descripton
+magnetic_curve_easy_axis;magnetic curve easy axis;
+magnetic_curve_hard_axis;magnetic curve hard axis;
+hysteresis_martensite_content;hysterese model for martensit content over temperature;
+stress-strain_curve_martensite;stress-strain curve in dependence of martensite;
+stress-strain_curve_elastomer;stress-strain curve for elastomer materials;
+curve_magnetic_stress;curve of magnetic stress;

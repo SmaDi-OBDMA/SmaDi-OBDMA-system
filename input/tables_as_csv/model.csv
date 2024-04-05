@@ -1,0 +1,29 @@
+mod_id;mod_name;mod_type;mod_equation;function_name
+electrostatic_pressure_model;electrostatic pressure model;simple_calculation;σ_el = ϵ_r*ϵ_0*E^2;mod_el_pres
+calc_magnetization;calc magnetization based on characteristic curve;simple_calculation;M = B μ_0 -H;calc_magnetization
+calc_flux_density;calc flux density based on characteristic curve;simple_calculation;B = μ_0 μ_r H;calc_flux_density
+calc_mag_polarization;calc magnetic polarization based on characteristic curve;simple_calculation;J = M μ_0;calc_mag_polarization
+calc_rel_perm;calc relative permeability based on characteristic curve;simple_calculation;μ_r = 1 + J/(H μ_0);calc_rel_perm
+calc_mag_energy_density;calc of the magnetic energy density;agg_integral;g_{n+1}=g_n+(H_{n+1}-H_n)*(J_{n+1}-J_n)/2;calc_mag_energy_density
+calc_young_modulus_initial_slope;parameter identification with initial slope;simple_calculation;Y = σ_ini / ε_ini;ym_init_slope
+calc_neo_hookean_initial_slope;parameter identifikation Neo Hookean with initial slope;simple_calculation;Y_NH = 3σ_i / (ε_i^2 - 1/ε_i);calc_neo_hookean_initial_slope
+calc_young_modulus_minR;calc of young modulus with error minimization;aggregate;minR over Y = σ / ε;calc_young_modulus_minr
+calc_young_modulus_Neo_Hookean_minR;calc of young modulus Neo Hookean with error minimization;aggregate;minR over Y_NH = 3σ_i / (λ_i^2 - 1/λ_i);calc_neo_hook_minr
+calc_yeoh_minR;calc of the Yeoh parameter vector with error minimization;aggregate;;calc_yeoh_minr
+calc_martensite_asc;martensite content in relation to temperature, ascending;simple_calculation;1/2* cos(PI*(T-Mf)/(Ms-Mf))+1/2;calc_martensite_asc
+calc_martensite_desc;martensite content in relation to temperature, descending;simple_calculation;1/2* cos(PI*(T-As)/(Af-As))+1/2;calc_martensite_desc
+1d_non_linear_mech_mod_v1;one-dimensional non-linear mechanical model, 0<ε<ε_ps;simple_calculation;σ = ε⋅(E_A - (E_A -E_M) * ξ);mech_mod_v1
+1d_non_linear_mech_mod_v2;one-dimensional non-linear mechanical model, ε_ps<ε<ε_pf;simple_calculation;σ = ε_ps⋅(E_A - (E_A -E_M) * ξ)+(ε-ε_ps)*H;mech_mod_v2
+1d_non_linear_mech_mod_v3;one-dimensional non-linear mechanical model, ε_pf<ε;simple_calculation;σ = ε_ps⋅(E_A - (E_A -E_M) * ξ)+(ε_pf-ε_ps)*H+(ε-ε_pf)*E_D;mech_mod_v3
+calc_magnetic_stress;calc of magnetic stress with magnetic curve;complex_sum;σ_M = (ge-gh)/ϵ_0;calc_magn_stress
+calc_max_magn_stress;max magnetic stress as maximum of characteristic curve;aggregate_simple;σ_M = max(σ);max
+linear_interpolation_initial_stress;linear interpolation;linear_interpolation;y=(y_1-y_2)/(x_1-x_2)*(x-x_1) + y_1);linear_interpol_initial_stress
+calc_max_block_load_hold;calc of maximum blocking stress hold and load;simple_calculation;(1.) σ_B,max,load = σ_mag,max - σ_tw (2.) σ_B,max,hold = σ_mag,max + σ_tw;calc_max_block_stress_lh
+calc_max_blocking_stress_PC;calc maximum blocking stress for PC materials;simple_calculation;σ_B-max = d_33,1/s^E_33,1*E_BFS;calc_max_block_pc
+calc_maximum_strain_mag;calc maximum strain in the magnetic field via lattice constants;simple_calculation;ϵ_0 = 1-c/a;calc_max_strain_mag
+matrix_model_2;Matrixtransformation;matrixoperation; B^{\bar m e} = B^{me}(A^{me})^{-1};matrix_func_2
+matrix_model_1;Matrixtransformation;matrixoperation;A^{\bar m e} = (A^{me})^{-1};matrix_func_1
+matrix_model_3;Matrixtransformation;matrixoperation;C^{\bar m e} = C^{me} - [e][m] B^{me} (A^{me})^{-1}(B^{me})^T;matrix_func_3
+matrix_model_4;Matrixtransformation;matrixoperation;A^{m \bar e} = A^{me} - [e][m] (B^{me})^T (C^{me})^{-1} B^{me};matrix_func_4
+matrix_model_5;Matrixtransformation;matrixoperation;B^{m \bar e} = (C^{me})^{-1} B^{me};matrix_func_5
+matrix_model_6;Matrixtransformation;matrixoperation;C^{m \bar e} &= (C^{me})^{-1};matrix_func_6

@@ -1,0 +1,1268 @@
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "urn:absolute/smadiont#DE"
+    }, {
+      "@id" : "urn:absolute/smadiont#DE-material"
+    }, {
+      "@id" : "urn:absolute/smadiont#MSMA"
+    }, {
+      "@id" : "urn:absolute/smadiont#MSMA-material"
+    }, {
+      "@id" : "urn:absolute/smadiont#PC"
+    }, {
+      "@id" : "urn:absolute/smadiont#PC-material"
+    }, {
+      "@id" : "urn:absolute/smadiont#SMA"
+    }, {
+      "@id" : "urn:absolute/smadiont#SMA-material"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid10",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "urn:absolute/smadiont#DE"
+    }, {
+      "@id" : "urn:absolute/smadiont#MSMA"
+    }, {
+      "@id" : "urn:absolute/smadiont#PC"
+    }, {
+      "@id" : "urn:absolute/smadiont#SMA"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid15",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "urn:absolute/smadiont#Yeoh_vector"
+    }, {
+      "@id" : "urn:absolute/smadiont#Yeoh_vector_1"
+    }, {
+      "@id" : "urn:absolute/smadiont#Yeoh_vector_2"
+    }, {
+      "@id" : "urn:absolute/smadiont#Yeoh_vector_3"
+    }, {
+      "@id" : "urn:absolute/smadiont#young_modulus"
+    }, {
+      "@id" : "urn:absolute/smadiont#young_modulus_neo_Hookean"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid22",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "urn:absolute/smadiont#component_curves"
+    }, {
+      "@id" : "urn:absolute/smadiont#hysteresis_martensite_content"
+    }, {
+      "@id" : "urn:absolute/smadiont#magnetic_curve"
+    }, {
+      "@id" : "urn:absolute/smadiont#material_curves"
+    }, {
+      "@id" : "urn:absolute/smadiont#stress-strain_curve_elastomer"
+    }, {
+      "@id" : "urn:absolute/smadiont#stress-strain_curve_martensite"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid29",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AllDisjointClasses" ],
+  "http://www.w3.org/2002/07/owl#members" : [ {
+    "@list" : [ {
+      "@id" : "urn:absolute/smadiont#dielectric_strength"
+    }, {
+      "@id" : "urn:absolute/smadiont#maximum_blocking_stress"
+    }, {
+      "@id" : "urn:absolute/smadiont#maximum_blocking_stress_hold"
+    }, {
+      "@id" : "urn:absolute/smadiont#maximum_blocking_stress_load"
+    }, {
+      "@id" : "urn:absolute/smadiont#relative_permittivity"
+    } ]
+  } ]
+}, {
+  "@id" : "http://purl.org/dc/elements/1.1/title",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#definition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://schema.org/citation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "urn:absolute/smadiont#",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/elements/1.1/title" : [ {
+    "@language" : "en",
+    "@value" : "SmaDi-Ontology"
+  } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@language" : "en",
+    "@value" : "Ontology for the SmaDi-OBDMA-System"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "SmaDi-Ontology"
+  } ],
+  "https://schema.org/citation" : [ {
+    "@language" : "en",
+    "@value" : "---"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#DE",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "DE"
+  }, {
+    "@language" : "en",
+    "@value" : "DE"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_materialtypes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "Dielectric elastomer transducers consist of thin elastomer films coated with flexible electrodes. Application of an electric field results in electrostatic pressure, which causes deformation."
+  }, {
+    "@language" : "de",
+    "@value" : "Dielektrische Elastomeraufnehmer bestehen aus dünnen Elastomerfolien, die mit flexiblen Elektroden beschichtet sind. Das Anlegen eines elektrischen Feldes führt zu einem elektrostatischen Druck, der eine Verformung bewirkt."
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#DE-material",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "DE-material"
+  }, {
+    "@language" : "en",
+    "@value" : "DE-material"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#DE"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "Material having dielectrical properties"
+  }, {
+    "@language" : "de",
+    "@value" : "Material mit dielektrischen Eigenschaften"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#E-modulus_austenite",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "E-Modul für Austenit"
+  }, {
+    "@language" : "en",
+    "@value" : "E-modulus austenite"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Gibt den E-Modul für Austenit an"
+  }, {
+    "@language" : "en",
+    "@value" : "Young modulus for austenite"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#E-modulus_de-twinned_martensite",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "E-Modul für entzwillingten Martensit"
+  }, {
+    "@language" : "en",
+    "@value" : "E-modulus de-twinned martensite"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#E-modulus_twinned_martensite",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "E-Modul für verzwillingten Martensit"
+  }, {
+    "@language" : "en",
+    "@value" : "E-modulus twinned martensite"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Gibt den E-Modul für Martensit im vollständig verzwillingten Zustand an"
+  }, {
+    "@language" : "en",
+    "@value" : "Specifies the young modulus for martensite in the fully twinned state"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#MSMA",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "MSMA"
+  }, {
+    "@language" : "de",
+    "@value" : "Magnetische Formgedächtnislegierung (MFGL)"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_materialtypes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "MFGL sind Formgedächtnislegierungen, die neben dem thermischen Formgedächtniseffekt zusätzlich einen magnetischen Formgedächtniseffekt aufweisen"
+  }, {
+    "@language" : "en",
+    "@value" : "MSMA are shape memory alloys having next to the themic shape memory effect also a magnetic shape memory effect"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#MSMA-material",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "MSMA-material"
+  }, {
+    "@language" : "de",
+    "@value" : "Material, das einen magnetischen Formgedächtniseffekt aufweist"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#MSMA"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "Material having the magnetic shape memory effect"
+  }, {
+    "@language" : "de",
+    "@value" : "Material, das einen magnetischen Formgedächtniseffekt aufweist"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#MSMA-stick",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Druck-Zug-Stick"
+  }, {
+    "@language" : "en",
+    "@value" : "MSMA-stick"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#MSMA"
+  }, {
+    "@id" : "urn:absolute/smadiont#component_level"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#PC",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_materialtypes"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#PC-material",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#PC"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#SMA",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_materialtypes"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#SMA-material",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#SMA"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#Yeoh_vector",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#Yeoh_vector_1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#Yeoh_vector"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#Yeoh_vector_2",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#Yeoh_vector"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#Yeoh_vector_3",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#Yeoh_vector"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#austenite_finish_temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Austenit-Finish-Temperatur"
+  }, {
+    "@language" : "en",
+    "@value" : "Austenite finish temperature"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#phase_transformation_temperature"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Gibt an bei welcher Temperatur die Umwandlung von Martensit in Austenit beendet ist"
+  }, {
+    "@language" : "en",
+    "@value" : "Indicates the temperature at which the transformation from martensite to austenite is completed"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#austenite_start_temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Austenit-Start-Temperatur"
+  }, {
+    "@language" : "en",
+    "@value" : "Austenite start temperature"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#phase_transformation_temperature"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Gibt an bei welcher Temperatur die Umwandlung von Martensit in Austenit beginnt"
+  }, {
+    "@language" : "en",
+    "@value" : "Indicates the temperature at which the transformation from martensite to austenite has started"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#characteristic_curve",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#component_curves",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#characteristic_curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#component_level",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_levels"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#continuum_level",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_levels"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#corresponds_with",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "corresponds with"
+  }, {
+    "@language" : "de",
+    "@value" : "korrespondiert mit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "depcits the dependance of one physical quantity to another"
+  }, {
+    "@language" : "de",
+    "@value" : "zeigt die Abhängigkeit von zwei physikalischen Größen"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#curve_magnetic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_curves"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#curve_param1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Kennlinie-Parameter 1"
+  }, {
+    "@language" : "en",
+    "@value" : "curve parameter 1"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt den ersten Parameter eines Tuples einer Kennlinie"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the first parameter of a tuple of a characteristic curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#curve_param2",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Kennlinie-Parameter 2"
+  }, {
+    "@language" : "en",
+    "@value" : "curve parameter 2"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt den zweiten Parameter eines Tuples einer Kennlinie"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the second parameter of a tuple of a characteristic curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#determined_with",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "bestimmt mit"
+  }, {
+    "@language" : "en",
+    "@value" : "determined with"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Die Daten wurde mithilfe linearer Interpolation ermittelt"
+  }, {
+    "@language" : "en",
+    "@value" : "The data was determined with the help of linear interpolation"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#dielectric_strength",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#elastic_parameters",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#electric_field",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#electric_permittivity_parameters",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#electrostatic_pressure_model",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#elements_of_levels",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#elements_of_materialtypes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#flux_density",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#hardening_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_boundary_condition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has boundary condition"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Randbedingung"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Randbedingungen, die bei einer Messung/einer Berechnung gelten müssen"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the boundary conditions of a calculation or a measurement"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_column",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has column"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Spalte"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Bei physikalischen Größen, die als Matrizen vorliegen, gibt es die Spaltennummer an"
+  }, {
+    "@language" : "en",
+    "@value" : "if a physical quantity is situated in a matrix, this depicts the column number"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_curve",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has curve"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Kennlinie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt, ob ein Objekt eine assoziierte Kennlinie hat"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts whether an object has an associated characteristic curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has description"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Beschreibung"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "depicts the description of an object (e.g., meta data)"
+  }, {
+    "@language" : "de",
+    "@value" : "gibt die Beschreibung eines Objektes (z.B. Metadaten)"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_equation",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has equation"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Gleichung"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "depicts the equation of a model"
+  }, {
+    "@language" : "de",
+    "@value" : "gibt die Modellgleichung an"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_input",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has input"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Eingabe"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Eingabe eines Modells"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the input to a model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_input_characteristic_curve",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has input characteristic curve"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Eingabe Kennlinie"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "urn:absolute/smadiont#has_input"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Eingabe zu einem Modell, wenn dieses nicht auf einzelnen Werten basiert, sondern auf einer Kennlinie"
+  }, {
+    "@language" : "en",
+    "@value" : "describes the input of a model if it is not based on single values but on a characteristic curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_input_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has input parameter"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Eingabe Parameter"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "urn:absolute/smadiont#has_input"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Eingabe für ein Modell, wenn es sich um einzelne Parameter handelt"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the input of a model if it consists of single values (not curves)"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_name",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has name"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Name"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "depicts the name of an object"
+  }, {
+    "@language" : "de",
+    "@value" : "gibt den Namen eines Objektes an"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_output",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has output"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Ausgabe"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Herkunft einer physikalischen Größe, z.B. das Modell oder die Messung, mit deren Hilfe sie berechnet wurde"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the origin of a physical quantity, e.g., the model or measurement, it is based on"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has parameter"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Parameter"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Parameter, die zu einem Objekt gehören"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the parameters of an object"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_row",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has row"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Zeile"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "Bei physikalischen Größen, die als Matrizen vorliegen, gibt es die Zeilennummer an"
+  }, {
+    "@language" : "en",
+    "@value" : "if a physical quantity is situated in a matrix, this depicts the row number"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_symbol",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has symbol"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Symbol"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt das Symbol einer physikalischen Größe"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the symbol of a physical quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_tuple",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has tuple"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Tupel"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt die Tupel, d.h. Datenpunkte einer Kennlinie"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the tuples, thus data points of a characteristic curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_unit",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has unit"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Einheit"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "en",
+    "@value" : "depicts the unit of a physical quantity"
+  }, {
+    "@language" : "de",
+    "@value" : "gibt die Einheit einer physikalischen Größe an"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#has_value",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "has value"
+  }, {
+    "@language" : "de",
+    "@value" : "hat Wert"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" : [ {
+    "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@language" : "de",
+    "@value" : "beschreibt den Wert einer physikalischen Größe"
+  }, {
+    "@language" : "en",
+    "@value" : "depicts the value of a physical quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#hysteresis_martensite_content",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#component_curves"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#identification_parameters",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#initial_strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#identification_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#initial_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#identification_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#electric_permittivity_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#inverse_permittivity_at_constant_mechanic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#electric_permittivity_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#lattice_constant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#lattice_constant_a",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#lattice_constant"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "urn:absolute/smadiont#lattice_constant_c"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#lattice_constant_c",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#lattice_constant"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mag_energy_density",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_curve",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_curves"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_curve_easy_axis",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#magnetic_curve"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "urn:absolute/smadiont#magnetic_curve_hard_axis"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_curve_hard_axis",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#magnetic_curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_field_strength",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_polarization",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#stress_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#magnetization",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#martensite_content",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#martensite_finish_temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#phase_transformation_temperature"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#martensite_start_temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#phase_transformation_temperature"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#material",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#micro_level"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "urn:absolute/smadiont#sample"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#material_curves",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#characteristic_curve"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#material_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#max_magnetic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#maximum_blocking_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#maximum_blocking_stress_hold",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#maximum_blocking_stress"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#maximum_blocking_stress_load",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#maximum_blocking_stress"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#maximum_strain_mag",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#strain_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#measurement",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#stress_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_compliance",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_compliance_at_constant_electric_field",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#mechanical_compliance"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_compliance_at_constant_flux_density",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#mechanical_compliance"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_stiffness",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_stiffness_at_constant_electric_field",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#mechanical_stiffness"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#mechanical_stiffness_at_constant_flux_density",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#mechanical_stiffness"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#micro_level",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elements_of_levels"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#model",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#physical_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#permittivity_at_constant_mechanic_strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#electric_permittivity_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#permittivity_at_constant_mechanic_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#electric_permittivity_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#phase_transformation_temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#physical_constant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#physical_quantity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "urn:absolute/smadiont#piezoelectric_charge_constant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#piezoelectric_coupling_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#piezoelectric_coupling",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#piezoelectric_coupling_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#piezoelectric_coupling_parameters",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#piezoelectric_strain_constant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#piezoelectric_coupling_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#piezoelectric_stress_constant",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#piezoelectric_coupling_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#plateau_finish_strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#strain_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#plateau_start_strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#strain_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#relative_permeability",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#relative_permittivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#sample",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#micro_level"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#state_dependent_quantity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#physical_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#strain",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#strain_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#stress-strain_curve_elastomer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_curves"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#stress-strain_curve_martensite",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_curves"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#stress_parameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#temperature",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#state_dependent_quantity"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#tensile_test",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#measurement"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#twinning_stress",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#material_parameter"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#vacuum_permeability",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#physical_constant"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#vacuum_permittivity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#physical_constant"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#wire_actuator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#SMA"
+  }, {
+    "@id" : "urn:absolute/smadiont#component_level"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#yeoh_minR",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus_Neo_Hookean_initial_gradient",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus_Neo_Hookean_minR",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus_initial_gradient",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus_minR",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#model"
+  } ]
+}, {
+  "@id" : "urn:absolute/smadiont#young_modulus_neo_Hookean",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "urn:absolute/smadiont#elastic_parameters"
+  } ]
+} ]

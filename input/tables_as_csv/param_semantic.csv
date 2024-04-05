@@ -1,0 +1,5 @@
+param_id;value;semantic
+easy_hard_axis;0;easy axis
+easy_hard_axis;1;hard axis
+hysteresis;1;ascending
+hysteresis;2;descending

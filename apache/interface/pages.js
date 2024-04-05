@@ -52,8 +52,8 @@ Choose a template for the query
     <input type="checkbox" id="input" name="input" onclick="paramabf.tabulate();">
     <label for="input"> input </label>
     <br>
-    <input type="checkbox" id="description" name="description" onclick="paramabf.tabulate();">
-    <label for="description"> description </label>
+    <input type="checkbox" id="metadata" name="metadata" onclick="paramabf.tabulate();">
+    <label for="metadata"> metadata </label>
     <br>
   <br>
   <button class="w3-button w3-round w3-light-blue w3-hover-blue" onclick="paramabf.query();">submit</button> <span id="info"></span>
@@ -162,7 +162,7 @@ const paramabf = {
             input: document.getElementById("input").checked,
             input_value: document.getElementById("input").checked,
             input_unit: document.getElementById("input").checked,
-            description: document.getElementById("description").checked,
+            metadata: document.getElementById("metadata").checked,
         };
         return cols;
     },  
